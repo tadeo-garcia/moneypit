@@ -1,31 +1,37 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 
 db = SQLAlchemy()
+
+user_rewards = db.Table('user_rewards',
+  db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+  db.Column('reward_id', db.Integer, db.ForeignKey('reward.id'), primary_key=True)
+)
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(30), nullable=False)
-  first_name = db.Column(db.String(30))
-  last_name = db.Column(db.String(30))
   email = db.Column(db.String(30), nullable=False, unique=True)
   hashed_password = db.Column(db.String(100), nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False)
+  updated_at = db.Column(db.DateTime, nullable=False)
+
+  user_rewards = db.relationship("Reward", secondary=user_rewards, lazy='subquery',
+                                backref=db.backref('users', lazy=True))
 
   @property
   def password(self):
-      return self.hashed_password
+    return self.hashed_password
 
   @password.setter
   def password(self, password):
-      self.hashed_password = generate_password_hash(password)
+    self.hashed_password = generate_password_hash(password)
 
   def check_password(self, password):
-      return check_password_hash(self.password, password)
+    return check_password_hash(self.password, password)
 
   def to_dict(self):
     return {
@@ -34,47 +40,65 @@ class User(db.Model, UserMixin):
       "email": self.email
     }
 
+class Project(db.Model):
+  __tablename__ = 'projects'
 
-# class Category(db.Model):
-#     __tablename__ = 'categories'
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(50), nullable=False)
+  id = db.Column(db.Integer, primary_key=True, nullable=False)
+  owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+  description = db.Column(db.String(1000), nullable=False)
+  organization = db.Column(db.String(50))
+  location = db.Column(db.String(100), nullable=False)
+  category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
+  funding_goal = db.Column(db.Integer, nullable=False, default=0)
+  launch_date = db.Column(db.DateTime, nullable=False)
+  end_date = db.Column(db.DateTime, nullable=False)
+  total_pledges = db.Column(db.Integer, server_default=0)
+  created_at = db.Column(db.DateTime, nullable=False)
+  updated_at = db.Column(db.DateTime, nullable=False)
 
+  def increment(self):
+    self.total_pledges += 1
 
-# class Pledge(db.Model):
-#     __tablename__ = 'pledges'
-#     id = db.Column(db.Integer, primary_key=True)
-#     pledge_amount = db.Column(db.Integer, nullable=False)
-#     reward_id = db.Column(db.Integer)
-#     pledge_date = db.Column(db.DateTime, nullable=False,
-#                             server_default=func.now())
-#     # Do we want a static method, or to query the join tables?
-#     total_pledges = db.Column(db.Integer, server_default=0)
-#     backer_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-#     project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
+class Category(db.Model):
+  __tablename__ = 'categories'
 
-#     def increment(self):
-#         self.total_pledges += 1
-
-
-# class Reward(db.Model):
-#     __tablename__ = 'rewards'
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(50), nullable=False)
-#     minimum_donation = db.Column(db.Integer, nullable=False)
-#     picture = db.Column(db.String)
-#     description = db.Column(db.Text, nullable=False)
-#     delivery_date = db.Column(db.DateTime, nullable=False)
-#     # Do we want a static method, or to query the join tables?
-#     total_rewards = db.Column(db.Integer, server_default=0)
-#     project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
-
-#     def increment(self):
-#         self.total_rewards += 1
+  id = db.Column(db.Integer, primary_key=True)
+  title = db.Column(db.String(50), nullable=False)
 
 
-# class Earned_Reward(db.Model):
-#         __tablename__ = 'earned_rewards'
-#     id = db.Column(db.Integer, primary_key=True)
-#     project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
-#     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+class Pledge(db.Model):
+  __tablename__ = 'pledges'
+
+  id = db.Column(db.Integer, primary_key=True)
+  pledge_amount = db.Column(db.Integer, nullable=False)
+  reward_id = db.Column(db.Integer)
+  backer_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
+  reated_at = db.Column(db.DateTime, nullable=False)
+  updated_at = db.Column(db.DateTime, nullable=False)
+
+
+class Reward(db.Model):
+  __tablename__ = 'rewards'
+
+  id = db.Column(db.Integer, primary_key=True)
+  title = db.Column(db.String(50), nullable=False)
+  minimum_donation = db.Column(db.Integer, nullable=False)
+  picture = db.Column(db.String)
+  description = db.Column(db.Text, nullable=False)
+  delivery_date = db.Column(db.DateTime, nullable=False)
+  reward_count = db.Column(db.Integer, server_default=0)
+  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False)
+  updated_at = db.Column(db.DateTime, nullable=False)
+
+  def increment(self):
+      self.reward_count += 1
+
+
+# class User_Reward(db.Model):
+#   __tablename__ = 'user_rewards'
+
+#   id = db.Column(db.Integer, primary_key=True)
+#   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
+#   reward_id = db.Column(db.Integer, db.ForeignKey("rewards.id"), nullable=False)

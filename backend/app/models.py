@@ -56,6 +56,8 @@ class Project(db.Model):
   created_at = db.Column(db.DateTime, nullable=False)
   updated_at = db.Column(db.DateTime, nullable=False)
 
+  project_rewards = db.relationship("Reward", lazy='subquery')
+
   def increment(self):
     self.total_pledges += 1
 

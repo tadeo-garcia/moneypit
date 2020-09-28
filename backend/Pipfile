@@ -22,6 +22,10 @@ werkzeug = "==1.0.1"
 wtforms = "==2.3.3"
 psycopg2-binary = "==2.8.6"
 flask-jwt-extended = "==3.24.1"
+<<<<<<< HEAD
+=======
+flask-login = "*"
+>>>>>>> f92112ab9b396320615beb6e814d19f1fdbf419e
 
 [requires]
 python_version = "3.8"

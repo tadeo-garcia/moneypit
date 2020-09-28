@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+import datetime
 
 db = SQLAlchemy()
 
@@ -16,10 +17,10 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(30), nullable=False)
   email = db.Column(db.String(30), nullable=False, unique=True)
   hashed_password = db.Column(db.String(100), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False)
-  updated_at = db.Column(db.DateTime, nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-  user_rewards = db.relationship("Reward  ", secondary=user_rewards, lazy='subquery',
+  user_rewards = db.relationship("Reward", secondary=user_rewards, lazy='subquery',
                                 backref=db.backref('users', lazy=True))
 
   @property
@@ -50,11 +51,11 @@ class Project(db.Model):
   location = db.Column(db.String(100), nullable=False)
   category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
   funding_goal = db.Column(db.Integer, nullable=False, default=0)
-  launch_date = db.Column(db.DateTime, nullable=False)
-  end_date = db.Column(db.DateTime, nullable=False)
+  launch_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  end_date = db.Column(db.DateTime, nullable=False, default= "2030-10-28 23:06:16.227442")
   total_pledges = db.Column(db.Integer, default=0)
-  created_at = db.Column(db.DateTime, nullable=False)
-  updated_at = db.Column(db.DateTime, nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
   project_rewards = db.relationship("Reward", lazy='subquery')
 
@@ -76,8 +77,8 @@ class Pledge(db.Model):
   reward_id = db.Column(db.Integer)
   backer_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
-  reated_at = db.Column(db.DateTime, nullable=False)
-  updated_at = db.Column(db.DateTime, nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
 
 class Reward(db.Model):
@@ -91,8 +92,8 @@ class Reward(db.Model):
   delivery_date = db.Column(db.DateTime, nullable=False)
   reward_count = db.Column(db.Integer, default=0)
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False)
-  updated_at = db.Column(db.DateTime, nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
   def increment(self):
       self.reward_count += 1

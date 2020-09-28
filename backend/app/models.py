@@ -5,8 +5,8 @@ from flask_login import UserMixin
 db = SQLAlchemy()
 
 user_rewards = db.Table('user_rewards',
-  db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-  db.Column('reward_id', db.Integer, db.ForeignKey('reward.id'), primary_key=True)
+  db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+  db.Column('reward_id', db.Integer, db.ForeignKey('rewards.id'), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
   created_at = db.Column(db.DateTime, nullable=False)
   updated_at = db.Column(db.DateTime, nullable=False)
 
-  user_rewards = db.relationship("Reward", secondary=user_rewards, lazy='subquery',
+  user_rewards = db.relationship("Reward  ", secondary=user_rewards, lazy='subquery',
                                 backref=db.backref('users', lazy=True))
 
   @property
@@ -52,7 +52,7 @@ class Project(db.Model):
   funding_goal = db.Column(db.Integer, nullable=False, default=0)
   launch_date = db.Column(db.DateTime, nullable=False)
   end_date = db.Column(db.DateTime, nullable=False)
-  total_pledges = db.Column(db.Integer, server_default=0)
+  total_pledges = db.Column(db.Integer, default=0)
   created_at = db.Column(db.DateTime, nullable=False)
   updated_at = db.Column(db.DateTime, nullable=False)
 
@@ -89,7 +89,7 @@ class Reward(db.Model):
   picture = db.Column(db.String)
   description = db.Column(db.Text, nullable=False)
   delivery_date = db.Column(db.DateTime, nullable=False)
-  reward_count = db.Column(db.Integer, server_default=0)
+  reward_count = db.Column(db.Integer, default=0)
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False)
   updated_at = db.Column(db.DateTime, nullable=False)

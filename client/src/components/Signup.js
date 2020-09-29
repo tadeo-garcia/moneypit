@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../store/auth';
-import { Redirect, NavLink, Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import '../css/signup.css'
-
-let emailDiv = "login-input";
-let passwordDiv = "login-input";
-
-function Login() {
+let emailDiv = "signup-input";
+let passwordDiv = "signup-input";
+function Signup() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,16 +14,14 @@ function Login() {
   const [noPassword, setNoPassword] = useState('');
   const currentUserId = useSelector(state => state.auth.id);
   const dispatch = useDispatch();
-
   const handleSubmit = e => {
     e.preventDefault();
-    emailDiv = "login-input";
-    passwordDiv = "login-input";
+    emailDiv = "signup-input";
+    passwordDiv = "signup-input";
     setNoEmail('');
     setNoPassword('');
     setNoInfo('');
     if (email && password) {
-      console.log(username, email, password)
       dispatch(signup(username, email.toLocaleLowerCase(), password));
     } else if (!email && password) {
       emailDiv = "bad-input";
@@ -39,47 +35,46 @@ function Login() {
       setNoInfo("You can't get in if you're not a member!")
     }
   }
-
   if (currentUserId) return <Redirect to='/home' />
-
   return (
     <>
-      <div className='auth_container'>
-        <div className="login-container">
-          <div className='login-redirect'>
-            Have and account? <Link to='/login' style={{textDecoration: 'none', color: 'blue', fontWeight: 'bold'}} > Log in </Link>
+      <div className='signup_master'>
+        <div className="signup-container">
+          <div className="signup-container-box">
+            <div className='signup-redirect'>
+              Have and account? <Link to='/login' style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Log in </Link>
+            </div>
+            <form className='form_container' onSubmit={handleSubmit}>
+              <div className='signup-label'>
+                Sign up
+                </div>
+              <div>
+                <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
+              </div>
+              <div>
+                <span style={{ color: 'red' }}>{noInfo}</span>
+                <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
+              </div>
+              <div>
+                <span style={{ color: 'red' }}>{noInfo}</span>
+                <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
+              </div>
+              <span style={{ color: 'red' }}>{noEmail}</span>
+              <div>
+                <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
+              </div>
+              <span style={{ color: 'red' }}>{noPassword}</span>
+              <div>
+                <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
+              </div>
+              <div>
+                <button type='submit' className='signup-button'>Create account</button>
+              </div>
+            </form>
           </div>
-          <form className='form_container' onSubmit={handleSubmit}>
-            <div className='form-label'>
-              Sign up
-            </div>
-            <div>
-              <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
-            </div>
-            <div>
-              <span style={{ color: 'red' }}>{noInfo}</span>
-              <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
-            </div>
-            <div>
-              <span style={{ color: 'red' }}>{noInfo}</span>
-              <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
-            </div>
-            <span style={{ color: 'red' }}>{noEmail}</span>
-            <div>
-              <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
-            </div>
-            <span style={{ color: 'red' }}>{noPassword}</span>
-            <div>
-              <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
-            </div>
-            <div>
-              <button type='submit' className='login-button'>Create account</button>
-            </div>
-          </form>
         </div>
       </div>
     </>
   )
 }
-
-export default Login;
+export default Signup;

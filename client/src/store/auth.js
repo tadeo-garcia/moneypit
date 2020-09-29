@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 const SET_USER = 'auth/SET_USER';
 const LOGOUT_USER = 'auth/LOGOUT_USER';
@@ -22,7 +22,7 @@ export const login = (username, password) => {
       method: 'put',
       headers: {
         "Content-Type": "application/json",
-        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+        // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
       body: JSON.stringify({ username, password })
     })
@@ -40,7 +40,7 @@ export const signup = (username, password, passwordConfirm) => {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
-        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+        // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
       body: JSON.stringify({ username, password, passwordConfirm })
     })
@@ -57,7 +57,7 @@ export const logout = () => {
     const res = await fetch('/api/session', {
       method: 'delete',
       headers: {
-        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+        // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
     })
     if (res.ok) {

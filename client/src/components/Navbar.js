@@ -18,12 +18,27 @@ function Navbar() {
 
   return (
     <div id='modal-navbar-div'>
-      <div id='explorer' onClick={e => showExplorerModal()} >
-        Explorer
-        {displayExplorer}
+      <div id='left-nav-div'>
+        <div id='explorer' onClick={e => showExplorerModal()} >
+          Explorer
+          {displayExplorer}
+        </div>
+        <div id='startproject'>
+          <NavLink exact to="/start" id="startlink">Start a Project </NavLink>
+        </div>
+      
       </div>
-      <div id='StartProject'>Start a Project</div>
+
+      <div id='mid-nav-div'>
+        <NavLink exact to="/">
+          <div id='logo-div'></div>
+        </NavLink>
+      </div>
+  
+      <div id='right-nav-div'>
       <div><SearchBar /></div>
+      </div>
+  
     </div>
   )
 };

@@ -1,6 +1,6 @@
 #modal-navbar-div{
   width:100%;
-  height:48px;
+  height:60px;
   background-color: #gray;
   display:flex;
   align-items: center;
@@ -11,6 +11,11 @@
   right: 0;
   left: 0;
   z-index: 100;
+}
+
+#left-nav-div{
+  display: flex;
+  align-items: center;
 }
 
 #explorer-container{
@@ -27,3 +32,26 @@
   bottom:0;
 }
 
+#mid-nav-div{
+  display: flex;
+  align-items: center;
+}
+
+#logo-div{
+  background-image:url('/money_pit_logo.png');
+  background-size: 200px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#right-nav-div{
+  display: flex;
+  align-items: center;
+}
+
+#startlink{
+  text-decoration: none;
+}

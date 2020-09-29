@@ -15,7 +15,7 @@ export const logoutUser = () => {
   }
 }
 
-export const login = (username, password) => {
+export const login = (email, password) => {
   return async dispatch => {
     const res = await fetch('api/session/login', {
       method: 'post',
@@ -33,7 +33,7 @@ export const login = (username, password) => {
   }
 }
 
-export const signup = (username, password, passwordConfirm) => {
+export const signup = (email, password, passwordConfirm) => {
   return async dispatch => {
     const res = await fetch('api/session/signup', {
       method: 'post',

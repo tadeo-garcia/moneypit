@@ -1,30 +1,31 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import Login from './components/Login'
-
-import UserList from './components/UsersList';
-
+import React, { useState, useEffect }  from 'react';
+import { BrowserRouter} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Pages from './pages/Pages'
+import { setUser } from './store/auth';
 
 function App() {
-    // const needSignIn = useSelector(state => !state.authentication.token);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loadUser = async () => {
+      // enter your back end route to get the current user
+      const res = await fetch("/api/session");
+      if (res.ok) {
+        res.data = await res.json(); // current user info
+        dispatch(setUser(res.data.user))
+      }
+      setLoading(false);
+    }
+    loadUser();
+  }, [dispatch]);
+
+  if (loading) return null;
 
   return (
     <BrowserRouter>
-        <nav>
-            <ul>
-                <li><NavLink to="/" activeclass="active">Home</NavLink></li>
-                <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
-            </ul>
-        </nav>
-        <Switch>
-            <Route path="/users">
-                <UserList />
-            </Route>
-            <Route exact path="/login" component={Login} />
-            <Route path="/">
-                <h1>My Home Page</h1>
-            </Route>
-        </Switch>
+      <Pages />
     </BrowserRouter>
   );
 }

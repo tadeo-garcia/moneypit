@@ -1,5 +1,4 @@
 // import Cookies from 'js-cookie';
-
 const SET_USER = 'auth/SET_USER';
 const LOGOUT_USER = 'auth/LOGOUT_USER';
 
@@ -19,12 +18,12 @@ export const logoutUser = () => {
 export const login = (username, password) => {
   return async dispatch => {
     const res = await fetch('api/session/login', {
-      method: 'put',
+      method: 'post',
       headers: {
         "Content-Type": "application/json",
         // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ email, password })
     })
     res.data = await res.json(); // {user with the scope of currentUser}
     if (res.ok) {
@@ -42,7 +41,7 @@ export const signup = (username, password, passwordConfirm) => {
         'Content-Type': 'application/json',
         // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
-      body: JSON.stringify({ username, password, passwordConfirm })
+      body: JSON.stringify({ email, password, passwordConfirm })
     })
     res.data = await res.json();
     if (res.ok) {

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/auth';
-import { Redirect } from 'react-router-dom';
+import { signup } from '../store/auth';
+import { Redirect, NavLink, Link } from 'react-router-dom';
+import '../css/signup.css'
 
 let emailDiv = "login-input";
 let passwordDiv = "login-input";
 
-function Login({ showModal }) {
+function Login() {
+  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [noInfo, setNoInfo] = useState('');
@@ -23,7 +25,8 @@ function Login({ showModal }) {
     setNoPassword('');
     setNoInfo('');
     if (email && password) {
-      dispatch(login(email.toLocaleLowerCase(), password));
+      console.log(username, email, password)
+      dispatch(signup(username, email.toLocaleLowerCase(), password));
     } else if (!email && password) {
       emailDiv = "bad-input";
       setNoEmail("Oi! We're gonna need that email of yours!")
@@ -37,23 +40,29 @@ function Login({ showModal }) {
     }
   }
 
-  const handleDemo = e => {
-    e.preventDefault();
-    dispatch(login('demo@tacktivity.com', 'password'));
-  }
-
   if (currentUserId) return <Redirect to='/home' />
 
   return (
     <>
-      <div>
+      <div className='auth_container'>
         <div className="login-container">
-          <i className='fas fa-thumbtack fa-3x' />
-          <h3>Welcome to Tacktivity</h3>
-          <form onSubmit={handleSubmit}>
+          <div className='login-redirect'>
+            Have and account? <Link to='/login' style={{textDecoration: 'none', color: 'blue', fontWeight: 'bold'}} > Log in </Link>
+          </div>
+          <form className='form_container' onSubmit={handleSubmit}>
+            <div className='form-label'>
+              Sign up
+            </div>
+            <div>
+              <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
+            </div>
             <div>
               <span style={{ color: 'red' }}>{noInfo}</span>
               <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
+            </div>
+            <div>
+              <span style={{ color: 'red' }}>{noInfo}</span>
+              <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
             </div>
             <span style={{ color: 'red' }}>{noEmail}</span>
             <div>
@@ -61,17 +70,12 @@ function Login({ showModal }) {
             </div>
             <span style={{ color: 'red' }}>{noPassword}</span>
             <div>
-              <button type='submit' className='login-button'>Log in</button>
+              <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
+            </div>
+            <div>
+              <button type='submit' className='login-button'>Create account</button>
             </div>
           </form>
-          <div className='form-break' />
-          <div className='signup-redirect' onClick={e => showModal('signup')}>
-            Not on Tacktivity yet? Sign up
-          </div>
-          <div className='form-break' />
-          <div>
-            <button type='submit' className='login-button demo' onClick={handleDemo}>Demo User</button>
-          </div>
         </div>
       </div>
     </>

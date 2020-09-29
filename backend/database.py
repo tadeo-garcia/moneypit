@@ -14,6 +14,7 @@ with app.app_context():
   angela = User(username = 'Angela', email = 'angela@aa.io', password = 'password')
   soonmi = User(username = 'Soon-Mi', email = 'soonmi@aa.io', password = 'password')
   alissa = User(username = 'Alissa', email = 'alissa@aa.io', password = 'password')
+  demo = User(username = 'Demo', email = 'demo@moneypit.com', password = 'password')
 
   db.session.add(ian)
   db.session.add(javier)

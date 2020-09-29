@@ -1,78 +1,77 @@
-import React, { Component } from 'react'
-import { login } from './UserFunctions'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/auth';
+import { Redirect, Link } from 'react-router-dom';
+import '../css/login.css'
 
-class Login extends Component {
-  constructor() {
-    super()
-    this.state = {
-      email: '',
-      password: '',
-      errors: {}
+let emailDiv = "login-input";
+let passwordDiv = "login-input";
+
+function Login({ showModal }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [noInfo, setNoInfo] = useState('');
+  const [noEmail, setNoEmail] = useState('');
+  const [noPassword, setNoPassword] = useState('');
+  const currentUserId = useSelector(state => state.auth.id);
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    emailDiv = "login-input";
+    passwordDiv = "login-input";
+    setNoEmail('');
+    setNoPassword('');
+    setNoInfo('');
+    if (email && password) {
+      dispatch(login(email.toLocaleLowerCase(), password));
+    } else if (!email && password) {
+      emailDiv = "bad-input";
+      setNoEmail("Oi! We're gonna need that email of yours!")
+    } else if (email && !password) {
+      passwordDiv = "bad-input";
+      setNoPassword("What's the password?");
+    } else {
+      emailDiv = "bad-input";
+      passwordDiv = "bad-input";
+      setNoInfo("You can't get in if you're not a member!")
     }
-
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
   }
+  const demo = e => {
+    e.preventDefault();
+    dispatch(login('demo@moneypit.com', 'password'))
+  };
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-  onSubmit(e) {
-    e.preventDefault()
+  if (currentUserId) return <Redirect to='/home' />
 
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    }
-    console.log(user)
-
-    login(user).then(res => {
-      if (!res.error) {
-        this.props.history.push(`/omgitworked`)
-      }
-    })
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-              <div className="form-group">
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Enter email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-lg btn-primary btn-block"
-              >
-                Sign in
-              </button>
-            </form>
-          </div>
+  return (
+    <div className='auth_container'>
+      <div className="login-container">
+        <div>
+          <form className='form_container' onSubmit={handleSubmit}>
+            <div className='login-label'>
+              Log in
+            </div>
+            <div>
+              <span style={{ color: 'red' }}>{noInfo}</span>
+              <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
+            </div>
+            <div>
+              <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
+            </div>
+            <span style={{ color: 'red' }}>{noPassword}</span>
+            <div>
+              <button type='submit' className='login-button'>Log in</button>
+            </div>
+            <button className='demoButton' onClick={demo}>Demo Log in</button>
+          </form>
+        </div>
+        <div className='signUp-redirect'>
+          New to Kickstarter? <Link to="/signup" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Sign up </Link>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
-export default Login
+
+export default Login;

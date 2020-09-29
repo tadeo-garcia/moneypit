@@ -1,16 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-// import LoginPage from './LoginPage';
-// import SignupPage from './SignupPage';
+// import { Route } from 'react-router-dom';
+import Auth from '../components/Auth'
 
 
 
 export default function Pages() {
   return (
     <>
-    //   <Route exact path='/login' component={LoginPage} />
-    //   <Route exact path='/signup' component={SignupPage} />
-  
+      <Auth />
     </>
   )
 }

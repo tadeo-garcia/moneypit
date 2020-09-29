@@ -6,15 +6,16 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .config import Config
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
 
 
 app = Flask(__name__)
 
 app.config.from_object(Config)
-app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(user_routes, url_prefix='/api/session')
 db.init_app(app)
 migrate = Migrate(app, db)
-
+jwt = JWTManager(app)
 ## Application Security
 CORS(app)
 @app.after_request

@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth';
 import { Redirect, Link } from 'react-router-dom';
 import '../css/login.css'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 02be5211f32e4e5f47a0844be86308a63adda774
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,10 +15,15 @@ function Login() {
   const [noPassword, setNoPassword] = useState('');
   const currentUserId = useSelector(state => state.auth.id);
   const dispatch = useDispatch();
+<<<<<<< HEAD
   
   let emailDiv = "form-input";
   let passwordDiv = "form-input";
 
+=======
+  let emailDiv = "form-input";
+  let passwordDiv = "form-input";
+>>>>>>> 02be5211f32e4e5f47a0844be86308a63adda774
   const handleSubmit = e => {
     e.preventDefault();
     setNoEmail('');
@@ -35,9 +43,7 @@ function Login() {
     e.preventDefault();
     dispatch(login('demo@moneypit.com', 'password'))
   };
-
   if (currentUserId) return <Redirect to='/home' />
-
   return (
     <div className='loginWrapper'>
       <div className="loginContainer">
@@ -65,5 +71,4 @@ function Login() {
     </div>
   )
 }
-
 export default Login;

@@ -3,15 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../store/auth';
 import { Redirect, Link } from 'react-router-dom';
 import '../css/signup.css'
-<<<<<<< HEAD
-let emailDiv = "signup-input";
-let passwordDiv = "signup-input";
-=======
 
 let emailDiv = "signup-input";
 let passwordDiv = "signup-input";
 
->>>>>>> 02be5211f32e4e5f47a0844be86308a63adda774
 function Signup() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('');
@@ -84,8 +79,4 @@ function Signup() {
     </>
   )
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 02be5211f32e4e5f47a0844be86308a63adda774
 export default Signup;

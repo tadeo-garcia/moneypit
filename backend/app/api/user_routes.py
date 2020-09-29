@@ -1,12 +1,11 @@
-from flask import Blueprint, jsonify, redirect, url_for
+from flask import Blueprint, jsonify, redirect, url_for, session
 from app.models import User
-from flask_login import current_user, login_user, logout_user,login_required
 from flask_jwt_extended import create_access_token, jwt_required
 
 
-user_routes = Blueprint('users', __name__)
+user_routes = Blueprint('users', __name__, url_prefix='/session')
 
-@user_routes.route('/login', methods=['POST'])
+@user_routes.route('/login', methods=['PUT'])
 def login_user():
   email = request.json.get('email', None)
   if not email:
@@ -40,3 +39,17 @@ def signup_user():
     return {"token": access_token, "user": user.to_dict()}, 200
   except:
     return jsonify{"msg": "Bad data for signup."}, 400
+
+@user_routes.route('/logout', methods= ['DELETE'])
+def logout():
+    logout_user()
+
+from flask import make_response
+
+@app.route('/')
+def index():
+    resp = make_response(render_template(...))
+    resp.set_cookie('username', 'the username')
+    return resp
+
+resp.set_cookie('sessionID', '', expires=0)

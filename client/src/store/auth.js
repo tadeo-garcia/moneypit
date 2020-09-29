@@ -18,7 +18,7 @@ export const logoutUser = () => {
 
 export const login = (username, password) => {
   return async dispatch => {
-    const res = await fetch('/api/session', {
+    const res = await fetch('api/session/login', {
       method: 'put',
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export const login = (username, password) => {
 
 export const signup = (username, password, passwordConfirm) => {
   return async dispatch => {
-    const res = await fetch('/api/users', {
+    const res = await fetch('api/session/signup', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export const signup = (username, password, passwordConfirm) => {
 
 export const logout = () => {
   return async dispatch => {
-    const res = await fetch('/api/session', {
+    const res = await fetch('api/session/logout', {
       method: 'delete',
       headers: {
         // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')

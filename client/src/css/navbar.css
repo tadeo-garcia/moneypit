@@ -1,0 +1,29 @@
+#modal-navbar-div{
+  width:100%;
+  height:48px;
+  background-color: #gray;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  border-bottom: solid 1px #D3D3D3;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#explorer-container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #D3D3D3
+}
+#hide-modal{
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+}
+

@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .models import db, User
 from .api.user_routes import user_routes
+from .api.projects_routes import projects_routes
 from .config import Config
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
@@ -13,6 +14,7 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/session')
+app.register_blueprint(projects_routes, url_prefix='/api/projects')
 db.init_app(app)
 migrate = Migrate(app, db)
 jwt = JWTManager(app)

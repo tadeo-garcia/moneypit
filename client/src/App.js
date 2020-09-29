@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import Login from './components/Login'
 
 import UserList from './components/UsersList';
 
 
 function App() {
+    // const needSignIn = useSelector(state => !state.authentication.token);
 
   return (
     <BrowserRouter>
@@ -18,7 +20,7 @@ function App() {
             <Route path="/users">
                 <UserList />
             </Route>
-
+            <Route exact path="/login" component={Login} />
             <Route path="/">
                 <h1>My Home Page</h1>
             </Route>

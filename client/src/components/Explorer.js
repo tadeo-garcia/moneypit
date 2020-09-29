@@ -10,23 +10,30 @@ export default function Explorer({ hideModal }) {
   const dispatch = useDispatch();
   
   useEffect(() =>{
-      console.log("inside useeffect")
       dispatch(getCategories())
   }, [dispatch])
   
-  const category_list = useSelector(state => state.categories)
+  const category_list = useSelector(state => state.categories.list)
+  const ex_state = useSelector(state=> state)
 
   console.log(category_list)
+  console.log(ex_state)
+
+  if(!category_list){
+    return null
+  }
 
   return (
     <>
       <div id="explorer-container">
         <div id='categories-container'>
-        SCI-FI
-        <br/>
-        APPS
-        <br/>
-        GAMES
+          {category_list.map((category,index)=>{
+            let link = `/projects/${category.title}`
+            return (
+              <a href={link} key={index}> {category.title}</a>
+            )
+          })
+        }
         </div>
         <div onClick={hideModal} id='hide-modal'>
         X

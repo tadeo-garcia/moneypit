@@ -14,13 +14,7 @@ export const getCategories = () => {
         method: "get"
       })
     res.data = await res.json()
-    console.log(res)
     if(res.ok){
-      console.log(res)
-      console.log("~~~")
-      console.log(res.data)
-      console.log("~~~")
-      console.log(res.data.categories)
       dispatch(loadCategories(res.data.categories))
     }
     return res;

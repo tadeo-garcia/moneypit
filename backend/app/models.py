@@ -102,7 +102,7 @@ class Reward(db.Model):
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
   def increment(self):
-      self.reward_count += 1
+    self.reward_count += 1
 
 
 # class User_Reward(db.Model):

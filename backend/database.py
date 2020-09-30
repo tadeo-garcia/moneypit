@@ -3,6 +3,8 @@ load_dotenv()
 
 from app import app, db
 from app.models import User, Category, Project, Pledge, Reward
+import random
+from projects import data
 
 with app.app_context():
   db.drop_all()
@@ -25,32 +27,42 @@ with app.app_context():
   db.session.add(angela)
   db.session.add(soonmi)
   db.session.add(alissa)
+  db.session.add(demo)
 
 
 
 # CATEGORIES
   scifi = Category(title = "Science Fiction")
-  games = Category(title = "Games")
+  games = Category(id = 34, title = "Games")
   books = Category(title = "Books")
+  comics = Category(id = 250, title = "Comic Books")
+  gadget = Category(id = 337, title = "Gadgets")
 
   db.session.add(scifi)
   db.session.add(games)
   db.session.add(books)
+  db.session.add(comics)
+  db.session.add(gadgets)
 
-
+photo description, goal = funding, pledged = current funding, 
+backers_count, creatorId,
+creatorName, creatorAvatar, locationName, categoryName, 
 
 # PROJECTS
-  project1 = Project(title = "Project 1", owner_id = 1, location = "Seattle", category_id = 1, funding_goal = 50000, organization = "Awesome Group", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  project2 = Project(title = "Project 2", owner_id = 2, location = "Dallas", category_id = 2, funding_goal = 250000, organization = "Cool team", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  project3 = Project(title = "Project 3", owner_id = 3, location = "Paris", category_id = 3, funding_goal = 10, organization = "Sweet Design", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  project4 = Project(title = "Project 4", owner_id = 2, location = "Albuquerque", category_id = 2, funding_goal = 10000, organization = "Making Stuff", description = "This is project 4", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  project5 = Project(title = "Project 5", owner_id = 2, location = "Tampa", category_id = 2, funding_goal = 1250000, organization = "Rennie Harris", description = "This is project 5", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
+for project in random:
+  random_id = random.randrang(1,6)
+  project_to_add = Project(title = project["name"], owner_id = random_id, pic = project["photo"], description = project[""], funding_goal = project[] )
+  # project1 = Project(title = "Project 1", owner_id = 1, location = "Seattle", category_id = 1, funding_goal = 50000, organization = "Awesome Group", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
+  # project2 = Project(title = "Project 2", owner_id = 2, location = "Dallas", category_id = 2, funding_goal = 250000, organization = "Cool team", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
+  # project3 = Project(title = "Project 3", owner_id = 3, location = "Paris", category_id = 3, funding_goal = 10, organization = "Sweet Design", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
+  # project4 = Project(title = "Project 4", owner_id = 2, location = "Albuquerque", category_id = 2, funding_goal = 10000, organization = "Making Stuff", description = "This is project 4", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
+  # project5 = Project(title = "Project 5", owner_id = 2, location = "Tampa", category_id = 2, funding_goal = 1250000, organization = "Rennie Harris", description = "This is project 5", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
 
   
-  db.session.add(project1)
-  db.session.add(project2)
-  db.session.add(project3)
-  db.session.add(project4)
-  db.session.add(project5)
+  # db.session.add(project1)
+  # db.session.add(project2)
+  # db.session.add(project3)
+  # db.session.add(project4)
+  # db.session.add(project5)
   
   db.session.commit()

@@ -2,23 +2,24 @@ import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category'
 import { getProjectsByCategory } from '../store/project'
-// import './logoutmodal.css';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Explorer({ hideModal }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   
   useEffect(() =>{
       dispatch(getCategories())
   }, [dispatch])
 
-  // const searchCategory = (e) => {
-  //   console.log(e)
-  //   dispatch(getProjectsByCategory(e.target.innerHTML))
-  // }
+  function searchCategory(e) {
+    e.preventDefault()
+    let category = e.target.innerHTML.trim()
+    dispatch(getProjectsByCategory(category))
+    history.push(`/category/${category}`)
+  }
   
   const category_list = useSelector(state => state.categories.list)
-  const ex_state = useSelector(state=> state)
-
 
   if(!category_list){
     return null
@@ -35,7 +36,7 @@ export default function Explorer({ hideModal }) {
             let link = `/projects/${category.title}`
             return (
               <div id= 'category-div'>
-                <a href={link} key={index} id='category-link'> {category.title}</a>
+                <a href={link} key={index} id='category-link' onClick={searchCategory}> {category.title}</a>
               </div>
             )
           })

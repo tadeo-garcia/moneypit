@@ -9,8 +9,8 @@
   background-color: rgb(255, 255, 255);
   margin-left: auto;
   margin-right: auto;
-  margin-top: 25px;
-  max-width: 500px;
+  margin-top: 175px;
+  max-width: 398px;
 }
 .loginContainer__form {
   padding: 0 25px;
@@ -44,7 +44,7 @@ outline: none;
 }
 .form-input {
   margin-top: 20px;
-  min-height: 48px;
+  min-height: 42px;
   width: 100%;
   color: #111;
   background-color: #fff;

@@ -6,10 +6,12 @@ export default function Project() {
     const history = useHistory();
     const dispatch = useDispatch();
     const project = useSelector(state => state.projects.project)
-    console.log(project)
     if(!project) return 'Loading...'
 
     return (
+        <div>
         <h1>{project.description}</h1>
+        <h1>{project.location}</h1>
+        </div>
     )
 }

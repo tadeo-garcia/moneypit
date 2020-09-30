@@ -7,7 +7,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Pages />5
+      <Pages />
     </BrowserRouter>
   );
 }

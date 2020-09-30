@@ -22,7 +22,7 @@ function Footer() {
                 <Link to='/projects/design&tech' style={{ textDecoration: 'none', color: '#282828' }}>Design & Tech</Link>
               </span>
               <span id='footer-category-list_category'>
-                <Link to='/projects/film' style={{ textDecoration: 'none', color: '#282828'}}>Film</Link>
+                <Link to='/projects/film' style={{ textDecoration: 'none', color: '#282828' }}>Film</Link>
               </span>
               <span id='footer-category-list_category'>
                 <Link to='/projects/food&craft' style={{ textDecoration: 'none', color: '#282828' }}>Food & Craft</Link>

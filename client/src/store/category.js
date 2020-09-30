@@ -7,8 +7,8 @@ export const loadCategories = (categories) => {
     }
 }
 
+
 export const getCategories = () => {
-  console.log('inside getCategories')
     return async dispatch => {
         const res = await fetch('/api/projects/categories', {
         method: "get"

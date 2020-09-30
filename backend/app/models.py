@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
 
   user_rewards = db.relationship("Reward", secondary=user_rewards, lazy='subquery',
                                 backref=db.backref('users', lazy=True))
+  # projects = db.relationship("Project", foreign_keys = [id])
 
   @property
   def password(self):
@@ -57,24 +58,25 @@ class Project(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
+  owner = db.relationship("User", foreign_keys=[owner_id])
   project_rewards = db.relationship("Reward", lazy='subquery')
 
   def increment(self):
     self.total_pledges += 1
 
-  # def to_dict(self):
-  #   return {
-  #     "id": self.id,
-  #     "owner_id": self.owner_id,
-  #     "description": self.description,
-  #     "organization": self.organization,
-  #     "location": self.location,
-  #     "category_id": self.category_id,
-  #     "funding_goal": self.funding_goal,
-  #     "launch_date": self.launch_date,
-  #     "end_date": self.end_date,
-  #     "total_pledges": self.total_pledges
-  #   }
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "owner_id": self.owner_id,
+      "description": self.description,
+      "organization": self.organization,
+      "location": self.location,
+      "category_id": self.category_id,
+      "funding_goal": self.funding_goal,
+      "launch_date": self.launch_date,
+      "end_date": self.end_date,
+      "total_pledges": self.total_pledges
+    }
 
 class Category(db.Model):
   __tablename__ = 'categories'

@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/auth'
 import { getCategories } from '../store/category'
+import { getProjectsByCategory } from '../store/project'
 // import './logoutmodal.css';
 
 export default function Explorer({ hideModal }) {
@@ -12,12 +13,14 @@ export default function Explorer({ hideModal }) {
   useEffect(() =>{
       dispatch(getCategories())
   }, [dispatch])
+
+  // const searchCategory = (e) => {
+  //   console.log(e)
+  //   dispatch(getProjectsByCategory(e.target.innerHTML))
+  // }
   
   const category_list = useSelector(state => state.categories.list)
   const ex_state = useSelector(state=> state)
-
-  console.log(category_list)
-  console.log(ex_state)
 
   if(!category_list){
     return null

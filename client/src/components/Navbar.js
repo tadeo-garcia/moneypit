@@ -46,7 +46,7 @@ function Navbar() {
         {displaySearch}
         </div>
         <div id='login-link'>
-          <NavLink exact to="/start" id="nav-links">Log in </NavLink>
+          <NavLink exact to="/login" id="nav-links">Log in </NavLink>
         </div>
       </div>
   

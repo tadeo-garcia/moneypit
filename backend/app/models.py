@@ -50,10 +50,12 @@ class Project(db.Model):
   title = db.Column(db.String(100), nullable=False)
   description = db.Column(db.String(1000), nullable=False)
   organization = db.Column(db.String(50))
+  avatar = db.Column(db.String(100))
   location = db.Column(db.String(100), nullable=False)
   pic = db.Column(db.String(300), nullable=False)
   category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
   funding_goal = db.Column(db.Integer, nullable=False, default=0)
+  total_funding = db.Column(db.Integer, nullable=False, default=0)
   launch_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   end_date = db.Column(db.DateTime, nullable=False, default= "2030-10-28 23:06:16.227442")
   total_pledges = db.Column(db.Integer, default=0)
@@ -74,6 +76,7 @@ class Project(db.Model):
       "description": self.description,
       "organization": self.organization,
       "location": self.location,
+      "total_funding": self.total_funding,
       "category_id": self.category_id,
       "pic": self.pic,
       "funding_goal": self.funding_goal,

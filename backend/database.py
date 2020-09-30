@@ -4,7 +4,7 @@ load_dotenv()
 from app import app, db
 from app.models import User, Category, Project, Pledge, Reward
 import random
-from projects import data
+from projects.py import data
 
 with app.app_context():
   db.drop_all()
@@ -44,14 +44,11 @@ with app.app_context():
   db.session.add(comics)
   db.session.add(gadgets)
 
-photo description, goal = funding, pledged = current funding, 
-backers_count, creatorId,
-creatorName, creatorAvatar, locationName, categoryName, 
-
 # PROJECTS
 for project in random:
   random_id = random.randrang(1,6)
-  project_to_add = Project(title = project["name"], owner_id = random_id, pic = project["photo"], description = project[""], funding_goal = project[] )
+  project_to_add = Project(id = project["id"], title = project["name"], owner_id = random_id, pic = project["photo"], description = project["description"], funding_goal = project["goal"], total_funding = project["pledged"], total_pledges = project["backers_count"], organization = project["creatorName"], avatar = project["creatorAvatar"], location = project["locationName"] )
+  db.session.add(project_to_add)
   # project1 = Project(title = "Project 1", owner_id = 1, location = "Seattle", category_id = 1, funding_goal = 50000, organization = "Awesome Group", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
   # project2 = Project(title = "Project 2", owner_id = 2, location = "Dallas", category_id = 2, funding_goal = 250000, organization = "Cool team", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
   # project3 = Project(title = "Project 3", owner_id = 3, location = "Paris", category_id = 3, funding_goal = 10, organization = "Sweet Design", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')

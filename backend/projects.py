@@ -367,4 +367,4 @@ gadgets = [{
     "launched_at_formatted": "Tue, 29 Sep 2020 12:00:02 +0000"
   }]
 
-export default data = gadgets
+data = gadgets

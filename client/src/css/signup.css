@@ -84,13 +84,12 @@ transform: scale(.9457)
   border-color: red;
   box-sizing: border-box;
   min-height: 48px;
-  width: 248px;
+  width: 90%;
   color: #111;
   background-color: #fff;
   padding: 8px 16px;
   margin: 4px;
   font-size: 16px;
-  border-radius: 16px;
   border-style: solid;
   border-width: 2px;
 }
@@ -122,10 +121,9 @@ transform: scale(.9457)
 }
 
 .signup-label {
-  margin-top: 6px;
-  margin-bottom: 20px;
-  padding-left: 18px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-left: 20px;
   text-align: left;
   font-size: 28px;
-  font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

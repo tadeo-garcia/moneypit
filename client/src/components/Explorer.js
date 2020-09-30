@@ -25,7 +25,7 @@ export default function Explorer({ hideModal }) {
 
   return (
     <>
-      <div id="explorer-container">
+      <div id="explorer-modal">
         <div id='categories-container'>
           {category_list.map((category,index)=>{
             let link = `/projects/${category.title}`

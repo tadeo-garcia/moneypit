@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import '../css/searchbar.css'
 
-export default function SearchBar() {
+export default function SearchBar({hideModal}) {
   const history = useHistory()
   const dispatch = useDispatch();
 
@@ -23,6 +23,9 @@ export default function SearchBar() {
             placeholder="Search for Projects or Categories"
           />
           <button onClick={handleSubmit} className='submit_button'>search</button>
+        </div>
+        <div onClick={hideModal} id='hide-modal'>
+        X
         </div>
       </div>
     );

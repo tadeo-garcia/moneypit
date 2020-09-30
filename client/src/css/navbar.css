@@ -5,10 +5,8 @@
   align-items: center;
   justify-content: space-between;
   position: fixed;
+  background-color: #ffffff;
   border-bottom: solid 1px #D3D3D3;
-  top: 0;
-  right: 0;
-  left: 0;
   z-index: 100;
 }
 
@@ -20,29 +18,81 @@
   justify-content: space-around;
 }
 
-#explorer-div{
-  padding-left: 50px;
-  padding-right: 50px;
+#explorer-modal{
+  padding-top:0;
+  padding-left:0px;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 200vh;
+  background-color: #ffffff;
 }
 
-#explorer-modal{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #D3D3D3;
+#categories-container{
+  display:flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+  text-decoration: none;
+  color: #037362;
+}
+
+#label-div{
+  position: fixed;
+  width: 80%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+#labels{
+  font-size: 16px;
+  font-weight: 350;
+  color: #037362;
+}
+
+#close-button{
+  color: #037362;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#category-div{
+  position: relative; 
+  top: 40px;
+}
+
+#category-link{
+  font-size: 36px;
+  text-decoration: none;
+  color: #282828;
+}
+
+#category-link:hover{
+  font-size: 36px;
+  color: #037362;
+  cursor: pointer;
 }
 
 #start-project-div{
-  margin-left: -75px;
+  min-width: 125px;
 }
 
 #nav-links{
-  color:black;
+  color:#282828;
   text-decoration: none;
+  padding: 0 10px
 }
 
 #nav-links:hover{
-  color:green;
+  color:#037362;
   text-decoration: none;
   cursor: pointer;
 }
@@ -63,14 +113,39 @@
 }
 
 #right-nav-div{
-  height: auto;
+  height: 18px;
   width: 300px;
   display: flex;
-  align-items: center;
   justify-content: space-around;
 }
 
+#login-link {
+  width:80px;
+}
 
+#search-input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 26px;
+  width:100%;
+  height:60px;
+  box-shadow: 5px 0px 15px 0px grey;
+  z-index: 104;
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.335, 1);
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.335, 1);
+}
+
+#close-search-button{
+  position: absolute;
+  top:5px;
+  right: 5px;
+  height: 50px;
+  width: 5%;
+  border: 0px solid white;
+  background-color: #ffffff;
+  z-index: 105;
+}
 
 #hide-modal{
   position:fixed;

@@ -17,14 +17,12 @@ export const loadProjectsByCategory = (projects) => {
 
 export const getProject = (projectID) => {
   return async dispatch => {
-    const res = await fetch(`/api/projects/${projectID}`, {
+    const res = await fetch(`/api/projects/search_by_id?id=${projectID}`, {
       method: "get"
     })
-    body: JSON.stringify({projectID})
   
   res.data = await res.json();
   if (res.ok) {
-    console.log(res)
     dispatch(loadProject(res.data.project))
   }
     return res;
@@ -33,14 +31,12 @@ export const getProject = (projectID) => {
 
 export const getProjectsByCategory = (category) => {
   return async dispatch => {
-    const res = await fetch(`/api/projects/search_by_category`, {
-      method: "get"
+    const res = await fetch(`/api/projects/search_by_category?category=${category}`, {
+      method: "get",
     })
-    body: JSON.stringify({category})
-  
+    
   res.data = await res.json();
   if (res.ok) {
-    console.log(res)
     dispatch(loadProjectsByCategory(res.data.projects))
   }
     return res;

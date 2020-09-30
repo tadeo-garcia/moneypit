@@ -5,7 +5,7 @@ import Signup from '../components/Signup'
 
 
 
-export default function Pages() {
+export default function Auth() {
   return (
     <>
       <Switch>

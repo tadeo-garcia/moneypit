@@ -2,12 +2,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User
+from app.models import User, Category
 
 with app.app_context():
   db.drop_all()
   db.create_all()
 
+# USERS
   ian = User(username = 'Ian', email = 'ian@aa.io', password = 'password')
   javier = User(username = 'Javier', email = 'javier@aa.io', password = 'password')
   dean = User(username = 'Dean', email = 'dean@aa.io', password = 'password')
@@ -15,6 +16,8 @@ with app.app_context():
   soonmi = User(username = 'Soon-Mi', email = 'soonmi@aa.io', password = 'password')
   alissa = User(username = 'Alissa', email = 'alissa@aa.io', password = 'password')
   demo = User(username = 'Demo', email = 'demo@moneypit.com', password = 'password')
+
+  
 
   db.session.add(ian)
   db.session.add(javier)
@@ -25,5 +28,13 @@ with app.app_context():
 
 
 
+# CATEGORIES
+  scifi = Category(title = "Science Fiction")
+  games = Category(title = "Games")
+  books = Category(title = "Books")
+
+  db.session.add(scifi)
+  db.session.add(games)
+  db.session.add(books)
 
   db.session.commit()

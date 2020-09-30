@@ -62,11 +62,31 @@ class Project(db.Model):
   def increment(self):
     self.total_pledges += 1
 
+  # def to_dict(self):
+  #   return {
+  #     "id": self.id,
+  #     "owner_id": self.owner_id,
+  #     "description": self.description,
+  #     "organization": self.organization,
+  #     "location": self.location,
+  #     "category_id": self.category_id,
+  #     "funding_goal": self.funding_goal,
+  #     "launch_date": self.launch_date,
+  #     "end_date": self.end_date,
+  #     "total_pledges": self.total_pledges
+  #   }
+
 class Category(db.Model):
   __tablename__ = 'categories'
 
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(50), nullable=False)
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "title": self.title
+    }
 
 
 class Pledge(db.Model):
@@ -80,6 +100,14 @@ class Pledge(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
+  # def to_dict():
+  #   return {
+  #     "id": self.id,
+  #     "pledge_amount": self.pledge_amount,
+  #     "reward_id": self.reward_id,
+  #     "backer_id": self.backer_id,
+  #     "project_id": self.project_id
+  #   }
 
 class Reward(db.Model):
   __tablename__ = 'rewards'
@@ -96,7 +124,19 @@ class Reward(db.Model):
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
   def increment(self):
-      self.reward_count += 1
+    self.reward_count += 1
+
+  # def to_dict():
+  #   return {
+  #     "id": self.id,
+  #     "title": self.title,
+  #     "minimum_donation": self.minimum_donation,
+  #     "picture": self.picture,
+  #     "description": self.description,
+  #     "delivery_date": self.delivery_date,
+  #     "reward_count": self.reward_count,
+  #     "project_id": self.project_id
+  #   }
 
 
 # class User_Reward(db.Model):

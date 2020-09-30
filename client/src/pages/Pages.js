@@ -8,12 +8,12 @@ import HomePage from './HomePage'
 
 
 
-// <Navbar />
-// <Auth />
 
 export default function Pages() {
   return (
     <>
+    <Navbar />
+    <Auth />
     <Route path="/category" component={Category} />
     <Route exact path="/" component={HomePage} />
     <Route path="/project" component={Project} />

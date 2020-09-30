@@ -4,7 +4,7 @@
   display:flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  position: relative;
   background-color: #ffffff;
   border-bottom: solid 1px #D3D3D3;
   z-index: 100;
@@ -65,7 +65,7 @@
 }
 
 #category-div{
-  position: relative; 
+  position: relative;
   top: 40px;
 }
 

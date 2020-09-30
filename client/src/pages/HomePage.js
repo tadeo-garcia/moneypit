@@ -10,15 +10,15 @@ export default function HomePage() {
 
   function searchCategory(e) {
     e.preventDefault()
-    dispatch(getProjectsByCategory(e.target.innerHTML))
-    history.push(`/category/${e.target.innerHTML}`)
+    dispatch(getProjectsByCategory(e.target.innerHTML.trim()))
+    history.push(`/category/${e.target.innerHTML.trim()}`)
   }
 
   return (
     <div className='home'>
-      <a href={'/category/games'} key={1} onClick={searchCategory}> Games</a>
+      <a href={'/category/games'} key={1} onClick={searchCategory}> Games </a>
       <h1>Break</h1>
-      <a href={'/category/books'} key={2} onClick={searchCategory}> Books</a>
+      <a href={'/category/books'} key={2} onClick={searchCategory}>Books</a>
     </div>
   )
 }

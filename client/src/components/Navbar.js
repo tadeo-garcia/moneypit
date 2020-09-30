@@ -1,17 +1,23 @@
 import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import '../css/navbar.css';
 import Explorer from './Explorer'
 import SearchBar from './Search'
+import UserModal from './UserModal'
 
 function Navbar() {
   const [displayExplorer, setDisplayExplorer] = useState(null)
   const [displaySearch, setDisplaySearch] = useState(null)
+  const [displayUserModal, setDisplayUserModal] = useState(null)
+  const currentUserId = useSelector(state => state.auth.id);
   
   const hideModal = (e) => {
     e.stopPropagation();
+    console.log(e.target)
     setDisplayExplorer(null);
     setDisplaySearch(null)
+    setDisplayUserModal(null)
   }
 
   const showSearchModal = () => {
@@ -21,6 +27,14 @@ function Navbar() {
   const showExplorerModal = () => {
     setDisplayExplorer(<Explorer hideModal={hideModal} />);
   }
+
+  const showUserModal = () => {
+    setDisplayUserModal(<UserModal hideModal={hideModal} />)
+  }
+
+  
+  
+
 
   return (
     <div id='modal-navbar-div'>
@@ -45,10 +59,16 @@ function Navbar() {
         <div id='search-div' onClick={(e => showSearchModal())}>
           <span id="nav-links">Search</span>
           {displaySearch}
-        </div>
-        <div id='login-link'>
-          <NavLink exact to="/login" id="nav-links">Log in</NavLink>
-        </div>
+        </div> 
+        {!currentUserId ?
+          <div id='login-link'>
+            <NavLink exact to="/login" id="nav-links">Log in</NavLink>
+          </div>
+          : 
+          <div id='avatar-div' onClick={(e => showUserModal())}>
+          {displayUserModal}
+          </div>
+        }
       </div>
   
     </div>

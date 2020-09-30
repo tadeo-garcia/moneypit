@@ -18,7 +18,9 @@ export default function Pages() {
       <Route exact path="/" component={HomePage} />
       <Route path="/project" component={Project} />
       <Auth />
-      <Footer />
+     { 
+       // <Footer />
+    }
     </>
   )
 }

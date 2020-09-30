@@ -1,78 +1,63 @@
-import React, { Component } from 'react'
-import { login } from './UserFunctions'
-
-class Login extends Component {
-  constructor() {
-    super()
-    this.state = {
-      email: '',
-      password: '',
-      errors: {}
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/auth';
+import { Redirect, Link } from 'react-router-dom';
+import '../css/login.css'
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [noInfo, setNoInfo] = useState('');
+  const [noEmail, setNoEmail] = useState('');
+  const [noPassword, setNoPassword] = useState('');
+  const currentUserId = useSelector(state => state.auth.id);
+  const dispatch = useDispatch();
+  let emailDiv = "form-input";
+  let passwordDiv = "form-input";
+  const handleSubmit = e => {
+    e.preventDefault();
+    setNoEmail('');
+    setNoPassword('');
+    setNoInfo('');
+    if (email && password) {
+      dispatch(login(email.toLocaleLowerCase(), password));
+    } else if (!email && password) {
+      emailDiv = "bad-input";
+      setNoEmail("Oi! We're gonna need that email of yours!")
+    } else if (email && !password) {
+      passwordDiv = "bad-input";
+      setNoPassword("What's the password?");
     }
-
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
   }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-  onSubmit(e) {
-    e.preventDefault()
-
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    }
-    console.log(user)
-
-    login(user).then(res => {
-      if (!res.error) {
-        this.props.history.push(`/omgitworked`)
-      }
-    })
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-              <div className="form-group">
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Enter email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-lg btn-primary btn-block"
-              >
-                Sign in
-              </button>
-            </form>
+  const demo = e => {
+    e.preventDefault();
+    dispatch(login('demo@moneypit.com', 'password'))
+  };
+  if (currentUserId) return <Redirect to='/home' />
+  return (
+    <div className='loginWrapper'>
+      <div className="loginContainer">
+        <div id='loginLabel'>
+          Log in
+        </div>
+        <form className='loginContainer__form' onSubmit={handleSubmit}>
+          <div>
+            <span style={{ color: 'red' }}>{noEmail}</span>
+            <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
           </div>
+          <div>
+            <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
+          </div>
+          <span style={{ color: 'red' }}>{noPassword}</span>
+          <div>
+            <button type='submit' className='loginContainer__loginButton'>Log in</button>
+          </div>
+          <button className='loginContainer__loginButton' onClick={demo}>Demo Log in</button>
+        </form>
+        <div id='redirect'>
+          New to Kickstarter? <Link to="/signup" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Sign up </Link>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
-export default Login
+export default Login;

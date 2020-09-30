@@ -5,6 +5,8 @@ import Login from '../components/Login'
 import StartProject from './StartProject'
 // import LoginPage from './LoginPage';
 // import SignupPage from './SignupPage';
+// import { Route } from 'react-router-dom';
+import Auth from '../components/Auth'
 
 
 
@@ -16,6 +18,7 @@ export default function Pages() {
     {//   <Route exact path='/signup' component={SignupPage} />
     }
     <Navbar />
+      <Auth />
     </>
   )
 }

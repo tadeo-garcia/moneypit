@@ -1,4 +1,3 @@
-// import Cookies from 'js-cookie';
 const SET_USER = 'auth/SET_USER';
 const LOGOUT_USER = 'auth/LOGOUT_USER';
 
@@ -17,15 +16,14 @@ export const logoutUser = () => {
 
 export const login = (email, password) => {
   return async dispatch => {
-    const res = await fetch('api/session/login', {
+    const res = await fetch('/api/session/login', {
       method: 'post',
       headers: {
         "Content-Type": "application/json",
-        // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
       body: JSON.stringify({ email, password })
     })
-    res.data = await res.json(); // {user with the scope of currentUser}
+    res.data = await res.json();
     if (res.ok) {
       dispatch(setUser(res.data.user))
     }
@@ -33,15 +31,14 @@ export const login = (email, password) => {
   }
 }
 
-export const signup = (email, password, passwordConfirm) => {
+export const signup = (username, email, password) => {
   return async dispatch => {
-    const res = await fetch('api/session/signup', {
+    const res = await fetch('/api/session/signup', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
-        // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
-      body: JSON.stringify({ email, password, passwordConfirm })
+      body: JSON.stringify({ username, email, password })
     })
     res.data = await res.json();
     if (res.ok) {
@@ -55,9 +52,7 @@ export const logout = () => {
   return async dispatch => {
     const res = await fetch('api/session/logout', {
       method: 'delete',
-      headers: {
-        // 'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
-      },
+      headers: { },
     })
     if (res.ok) {
       dispatch(logoutUser());

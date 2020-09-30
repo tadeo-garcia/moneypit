@@ -45,10 +45,10 @@ function Signup() {
     <>
       <div className='signup_master'>
         <div className='signup_master-box'>
-          <div className='signup-redirect'>
-            Have and account? <Link to='/login' style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Log in </Link>
-          </div>
           <div className="signup-container">
+            <div className='signup-redirect'>
+              Have and account? <Link to='/login' style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Log in </Link>
+            </div>
             <div className="signup-container-box">
               <form className='form_container' onSubmit={handleSubmit}>
                 <div className='signup-label'>

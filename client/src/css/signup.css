@@ -17,6 +17,7 @@
   padding-left: 1.8em !important; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
   height: 100vh;
@@ -32,8 +33,7 @@
   background-color: #FCFCFB;
   color: #3D3D66;
   padding: 20px;
-  font-size: 14px;
-  text-align: center;
+  font-size: 16px;
   height: 62px;
   border-bottom: 1px solid #F1EEEA;
 }
@@ -58,14 +58,13 @@
   min-height: 500px;
   max-width: 398px;
   margin: auto;
-  padding: 20px 30px;
 }
 
 .signup-input {
   box-sizing: border-box;
   min-height: 42px;
   margin-bottom: 15px;
-  width: 100%;
+  width: 90%;
   color: #282828;
   background-color: #fff;
   border-color: #DCDEDD;
@@ -100,7 +99,7 @@
   box-sizing: border-box;
   min-height: 40px;
   height: 40px;
-  width: 100%;
+  width: 90%;
   text-align: center;
   cursor: pointer;
   background-color: #028858;
@@ -127,6 +126,7 @@
 .signup-label {
   margin-top: 6px;
   margin-bottom: 20px;
+  padding-left: 18px;
   text-align: left;
   font-size: 28px;
   font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

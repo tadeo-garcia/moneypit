@@ -10,8 +10,9 @@ export default function HomePage() {
 
   function searchCategory(e) {
     e.preventDefault()
-    dispatch(getProjectsByCategory(e.target.innerHTML.trim()))
-    history.push(`/category/${e.target.innerHTML.trim()}`)
+    let category = e.target.innerHTML.trim()
+    dispatch(getProjectsByCategory(category))
+    history.push(`/category/${category}`)
   }
 
   return (

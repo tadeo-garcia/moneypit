@@ -9,10 +9,8 @@ export default function Category() {
     const history = useHistory();
     const dispatch = useDispatch();
     const projects_list = useSelector(state => state.projects)
-
-    console.log(projects_list.projects)
     const notLoaded = projects_list.projects && projects_list.projects.length > 0;
-    console.log(notLoaded)
+    
     if(!notLoaded) return 'Loading...'
 
         return (

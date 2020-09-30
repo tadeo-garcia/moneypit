@@ -17,13 +17,12 @@ export const loadProjectsByCategory = (projects) => {
 
 export const getProject = (projectID) => {
   return async dispatch => {
-    const res = await fetch(`/api/projects/?id=${projectID}`, {
+    const res = await fetch(`/api/projects/search_by_id?id=${projectID}`, {
       method: "get"
     })
   
   res.data = await res.json();
   if (res.ok) {
-    console.log(res)
     dispatch(loadProject(res.data.project))
   }
     return res;
@@ -38,7 +37,6 @@ export const getProjectsByCategory = (category) => {
     
   res.data = await res.json();
   if (res.ok) {
-    console.log(res.data.projects)
     dispatch(loadProjectsByCategory(res.data.projects))
   }
     return res;

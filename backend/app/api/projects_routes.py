@@ -17,8 +17,8 @@ def get_by_category():
     data = [project.to_dict() for project in projects]
     return {"projects": data}
 
-@projects_routes.route('/:id')
+@projects_routes.route('/search_by_id')
 def get_project():
-    projectID = request.json.get('projectID', None)
+    projectID = request.args.get('id', None)
     project = Project.query.get(projectID)
     return {"project": project.to_dict()}, 200

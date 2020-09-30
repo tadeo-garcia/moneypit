@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, redirect, url_for, session, request
 from app.models import User, db
 from flask_jwt_extended import create_access_token, jwt_required
-from flask_login import logout_user
+from flask_login import current_user
 
 user_routes = Blueprint('users', __name__)
 
@@ -35,6 +35,11 @@ def signup_user():
   except:
     return jsonify({"msg": "Bad data for signup."}), 400
 
+# @login_manager.user_loader
+# def load_user(user_id):
+#   print(User.get(user_id))
+#   return User.get(user_id)
+
 @user_routes.route('/logout', methods= ['DELETE'])
 def logout():
-    logout_user()
+  session.pop('csrf_token', None)

@@ -1,30 +1,13 @@
 * {
   margin:0;
 }
-.signup {
-margin-right: 30px;
-background-color: #efefef;
-color: black;
-}
-.container-button:active {
-transform: scale(.9457)
-}
-.signup_master {
-  /* padding-top: 6em !important;
-  padding-bottom: 6em !important;
-  padding-right: 1.8em !important;
-  padding-left: 1.8em !important; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.signup_wrapper {
   background-color: #f0f0f0;
   height: 100vh;
+  margin-top: -60px;
 }
-.signup_master-box {
-  box-sizing: border-box;
-  max-width: 398px;
-}
+
 .signup-redirect {
   box-sizing: border-box;
   background-color: #FCFCFB;
@@ -34,26 +17,22 @@ transform: scale(.9457)
   height: 62px;
   border-bottom: 1px solid #F1EEEA;
 }
-.signup-container-box {
-  display: flex;
-  flex-direction: column;
-}
+
 .signup-container {
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
   background-color: rgb(255, 255, 255);
-  position: absolute;
+  position: relative;
   margin-top: 0;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 175px;
   bottom: 50%;
   text-align: center;
   min-height: 525px;
   max-width: 398px;
   margin: auto;
 }
+
 .signup-input {
   box-sizing: border-box;
   min-height: 42px;

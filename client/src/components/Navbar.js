@@ -44,10 +44,10 @@ function Navbar() {
       <div id='right-nav-div'>
         <div id='search-div' onClick={(e => showSearchModal())}>
           <span id="nav-links">Search</span>
-        {displaySearch}
+          {displaySearch}
         </div>
         <div id='login-link'>
-          <NavLink exact to="/login" id="nav-links">Log in </NavLink>
+          <NavLink exact to="/login" id="nav-links">Log in</NavLink>
         </div>
       </div>
   

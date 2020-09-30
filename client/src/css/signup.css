@@ -47,8 +47,8 @@ transform: scale(.9457)
   margin-top: 0;
   left: 0;
   right: 0;
-  top: 50%;
-  bottom: 50%;
+  margin-top: 150px;
+  bottom: 45%;
   text-align: center;
   min-height: 525px;
   max-width: 398px;
@@ -76,13 +76,12 @@ transform: scale(.9457)
   border-color: red;
   box-sizing: border-box;
   min-height: 48px;
-  width: 248px;
+  width: 90%;
   color: #111;
   background-color: #fff;
   padding: 8px 16px;
   margin: 4px;
   font-size: 16px;
-  border-radius: 16px;
   border-style: solid;
   border-width: 2px;
 }

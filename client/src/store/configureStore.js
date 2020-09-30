@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 
 import auth from './auth';
 import categories from './category'
+import projects from './project'
 
 const rootReducer = combineReducers({
-  auth, categories
+  auth, categories, projects
 });
 
 let storeEnhancer;

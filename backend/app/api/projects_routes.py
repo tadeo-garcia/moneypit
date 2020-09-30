@@ -12,7 +12,7 @@ def get_categories():
 @projects_routes.route('/search_by_category')
 def get_by_category():
     category_search = request.args.get('category', None)
-    category = Category.query.filter(Category.title.ilike(category_search)).one()
+    category = Category.query.filter(Category.title.ilike(category_search.strip())).one()
     projects = Project.query.filter(Project.category_id==category.id).all()
     data = [project.to_dict() for project in projects]
     return {"projects": data}

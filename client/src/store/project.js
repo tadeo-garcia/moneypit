@@ -35,10 +35,10 @@ export const getProjectsByCategory = (category) => {
     const res = await fetch(`/api/projects/search_by_category?category=${category}`, {
       method: "get",
     })
-  
+    
   res.data = await res.json();
   if (res.ok) {
-    console.log(res)
+    console.log(res.data.projects)
     dispatch(loadProjectsByCategory(res.data.projects))
   }
     return res;

@@ -44,38 +44,40 @@ function Signup() {
   return (
     <>
       <div className='signup_master'>
-        <div className="signup-container">
-          <div className="signup-container-box">
-            <div className='signup-redirect'>
-              Have and account? <Link to='/login' style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Log in </Link>
-            </div>
-            <form className='form_container' onSubmit={handleSubmit}>
-              <div className='signup-label'>
-                Sign up
+        <div className='signup_master-box'>
+          <div className='signup-redirect'>
+            Have and account? <Link to='/login' style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }} > Log in </Link>
+          </div>
+          <div className="signup-container">
+            <div className="signup-container-box">
+              <form className='form_container' onSubmit={handleSubmit}>
+                <div className='signup-label'>
+                  Sign up
                 </div>
-              <div>
-                <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
-              </div>
-              <div>
-                <span style={{ color: 'red' }}>{noInfo}</span>
-                <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
-              </div>
-              <div>
-                <span style={{ color: 'red' }}>{noInfo}</span>
-                <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
-              </div>
-              <span style={{ color: 'red' }}>{noEmail}</span>
-              <div>
-                <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
-              </div>
-              <span style={{ color: 'red' }}>{noPassword}</span>
-              <div>
-                <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
-              </div>
-              <div>
-                <button type='submit' className='signup-button'>Create account</button>
-              </div>
-            </form>
+                <div>
+                  <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
+                </div>
+                <div>
+                  <span style={{ color: 'red' }}>{noInfo}</span>
+                  <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
+                </div>
+                <div>
+                  <span style={{ color: 'red' }}>{noInfo}</span>
+                  <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
+                </div>
+                <span style={{ color: 'red' }}>{noEmail}</span>
+                <div>
+                  <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
+                </div>
+                <span style={{ color: 'red' }}>{noPassword}</span>
+                <div>
+                  <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
+                </div>
+                <div>
+                  <button type='submit' className='signup-button'>Create account</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

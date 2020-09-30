@@ -10,6 +10,23 @@
   transform: scale(.9457)
 }
 
+.signup_master {
+  /* padding-top: 6em !important;
+  padding-bottom: 6em !important;
+  padding-right: 1.8em !important;
+  padding-left: 1.8em !important; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  height: 100vh;
+}
+
+.signup_master-box {
+  box-sizing: border-box;
+  max-width: 398px;
+}
+
 .signup-redirect {
   box-sizing: border-box;
   background-color: #FCFCFB;
@@ -101,16 +118,7 @@
   outline: none;
 }
 
-.signup_master {
-  /* padding-top: 6em !important;
-  padding-bottom: 6em !important;
-  padding-right: 1.8em !important;
-  padding-left: 1.8em !important; */
-  display: flex;
-  flex-direction: column;
-  background-color: #f0f0f0;
-  height: 100vh;
-}
+
 
 #blue {
   color: blue

@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import '../css/searchbar.css'
 
 export default function SearchBar({hideModal}) {
-  const history = useHistory()
   const dispatch = useDispatch();
 
   const handleSubmit = async(e) => {
@@ -15,19 +14,20 @@ export default function SearchBar({hideModal}) {
   }
 
     return (
-      <div className="cover">
+      <div id='search-div'>
         <div className="flex-form" onSubmit={handleSubmit}>
           <input
             type="text"
+            id="search-input"
             // value={city}
             // onChange={e => setCity(e.target.value)}
             placeholder="Search for Projects or Categories"
           />
-          <button onClick={handleSubmit} className='submit_button'>search</button>
-        </div>
-        <div onClick={hideModal} id='hide-modal'>
-        X
-        </div>
+          
+          <button onClick={hideModal} id='close-search-button' >
+          X
+          </button>
+          </div>
       </div>
     );
 };

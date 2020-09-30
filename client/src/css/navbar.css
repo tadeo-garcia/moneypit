@@ -22,8 +22,7 @@
 }
 
 #explorer-div{
-  padding-left: 0px;
-  padding-right: 0px;
+  min-width: 60px;
 }
 
 #explorer-modal{
@@ -62,6 +61,14 @@
   font-size: 16px;
   font-weight: 350;
   color: #037362;
+}
+
+#close-button{
+  color: #037362;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 #category-div{

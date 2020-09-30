@@ -24,22 +24,24 @@ export default function Explorer({ hideModal }) {
   }
 
   return (
-    <>
-      <div id="explorer-modal">
-        <div id='categories-container'>
-          {category_list.map((category,index)=>{
-            let link = `/projects/${category.title}`
-            return (
-              <a href={link} key={index}> {category.title}</a>
-            )
-          })
-        }
-        </div>
-        <div onClick={hideModal} id='hide-modal'>
-        X
-        </div>
+    <div id="explorer-modal">
+    
+    <div id='categories-container'>
+      <div id='label-div'>
+        <span id='labels'>Categories</span>
+        <button onClick={hideModal}> X </button>
       </div>
-    </>
+      {category_list.map((category,index)=>{
+          let link = `/projects/${category.title}`
+          return (
+            <div id= 'category-div'>
+              <a href={link} key={index} id='category-link'> {category.title}</a>
+            </div>
+          )
+        })
+      }
+      </div>
+    </div>
   )
 }
 

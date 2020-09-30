@@ -7,6 +7,7 @@ import SearchBar from './Search'
 function Navbar() {
   const [displayExplorer, setDisplayExplorer] = useState(null)
   const [displaySearch, setDisplaySearch] = useState(null)
+  
   const hideModal = (e) => {
     e.stopPropagation();
     setDisplayExplorer(null);

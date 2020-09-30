@@ -1,0 +1,81 @@
+#modal-navbar-div{
+  width:100%;
+  height:60px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  border-bottom: solid 1px #D3D3D3;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#left-nav-div{
+  height: auto;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#explorer-div{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#explorer-modal{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #D3D3D3;
+}
+
+#start-project-div{
+  margin-left: -75px;
+}
+
+#nav-links{
+  color:black;
+  text-decoration: none;
+}
+
+#nav-links:hover{
+  color:green;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#mid-nav-div{
+  display: flex;
+  align-items: center;
+}
+
+#logo-div{
+  background-image:url('/money_pit_logo.png');
+  background-size: 200px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#right-nav-div{
+  height: auto;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+#hide-modal{
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+}

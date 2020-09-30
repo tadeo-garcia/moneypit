@@ -16,7 +16,6 @@ function Signup() {
   const [noPassword, setNoPassword] = useState('');
   const currentUserId = useSelector(state => state.auth.id);
   const dispatch = useDispatch();
-
   const handleSubmit = e => {
     e.preventDefault();
     emailDiv = "signup-input";
@@ -38,9 +37,7 @@ function Signup() {
       setNoInfo("You can't get in if you're not a member!")
     }
   }
-
   if (currentUserId) return <Redirect to='/home' />
-
   return (
     <>
       <div className='signup_master'>
@@ -84,5 +81,4 @@ function Signup() {
     </>
   )
 }
-
 export default Signup;

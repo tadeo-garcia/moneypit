@@ -1,13 +1,13 @@
 * {
-    margin:0;
+  margin:0;
 }
 .signup {
-  margin-right: 30px;
-  background-color: #efefef;
-  color: black;
+margin-right: 30px;
+background-color: #efefef;
+color: black;
 }
 .container-button:active {
-  transform: scale(.9457)
+transform: scale(.9457)
 }
 
 .signup_master {

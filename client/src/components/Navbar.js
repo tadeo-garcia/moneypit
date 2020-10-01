@@ -11,10 +11,10 @@ function Navbar() {
   const [displaySearch, setDisplaySearch] = useState(null)
   const [displayUserModal, setDisplayUserModal] = useState(null)
   const currentUserId = useSelector(state => state.auth.id);
+
   
   const hideModal = (e) => {
     e.stopPropagation();
-    console.log(e.target)
     setDisplayExplorer(null);
     setDisplaySearch(null)
     setDisplayUserModal(null)
@@ -33,9 +33,6 @@ function Navbar() {
   }
 
   
-  
-
-
   return (
     <div id='modal-navbar-div'>
       <div id='left-nav-div'>
@@ -56,7 +53,7 @@ function Navbar() {
       </div>
   
       <div id='right-nav-div'>
-        <div id='search-div' onClick={(e => showSearchModal())}>
+        <div id='search-div' onClick={e => showSearchModal()} >
           <span id="nav-links">Search</span>
           {displaySearch}
         </div> 
@@ -65,7 +62,8 @@ function Navbar() {
             <NavLink exact to="/login" id="nav-links">Log in</NavLink>
           </div>
           : 
-          <div id='avatar-div' onClick={(e => showUserModal())}>
+          <div id='avatar-div'
+          onClick={e => showUserModal()} >
           {displayUserModal}
           </div>
         }

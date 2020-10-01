@@ -6,6 +6,9 @@ import SearchModal from './SearchModal'
 export default function SearchBar({ hideModal }) {
   const [searchTerm, setSearchTerm] = useState('')
   const dispatch = useDispatch();
+import React from 'react';
+
+export default function SearchBar({hideModal}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();

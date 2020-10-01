@@ -5,7 +5,6 @@ import Auth from '../components/Auth'
 import Project from './Project'
 import { Route } from 'react-router-dom';
 import HomePage from './HomePage'
-import Footer from '../components/Footer'
 
 
 
@@ -18,9 +17,6 @@ export default function Pages() {
       <Route exact path="/" component={HomePage} />
       <Route path="/project" component={Project} />
       <Auth />
-     { 
-       // <Footer />
-    }
     </>
   )
 }

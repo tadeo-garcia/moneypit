@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, redirect, url_for, session, request
-from app.models import Category, Project
+from app.models import Category, Project, Pledge, Reward
 
 projects_routes = Blueprint('projects', __name__)
 
@@ -20,8 +20,15 @@ def get_by_category():
 @projects_routes.route('/projects_by_id')
 def get_by_id():
     user_id = request.args.get('id', None)
-    print(user_id)
     projects = Project.query.filter(Project.owner_id==user_id).all()
+    data = [project.to_dict() for project in projects]
+    return {"projects": data}
+
+@projects_routes.route('/projects_by_pledge')
+def get_projects_by_id():
+    user_id = request.args.get('id', None)
+    pledges = Pledge.query.filter(Pledge.backer_id==user_id).all()
+    projects = [Project.query.filter(Project.id==pledge.project_id).one() for pledge in pledges]
     data = [project.to_dict() for project in projects]
     return {"projects": data}
 

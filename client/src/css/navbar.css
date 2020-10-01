@@ -27,7 +27,7 @@
   width: 100%;
   height: 100vh;
   background-color: #ffffff;
-  z-index: 155;
+  z-index: 101;
 }
 
 #categories-container{
@@ -42,14 +42,14 @@
 
 #label-div{
   position: fixed;
-  width: 85%;
+  width: 90%;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #ffffff;
   border-bottom: 1px solid #D3D3D3;
   padding-bottom: 15px;
   margin-bottom: 15px;
-  background-color: #ffffff;
 }
 
 #labels{
@@ -157,6 +157,7 @@
   height: 50px;
   width:50px;
   border-radius:30px;
+  cursor:pointer;
 }
 
 #user-modal{

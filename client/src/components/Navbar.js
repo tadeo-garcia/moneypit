@@ -5,7 +5,6 @@ import '../css/navbar.css';
 import Explorer from './Explorer'
 import SearchBar from './Search'
 import UserModal from './UserModal'
-import { getProjectsByOwner } from '../store/project'
 
 function Navbar() {
   const [displayExplorer, setDisplayExplorer] = useState(null)
@@ -16,7 +15,6 @@ function Navbar() {
   
   const hideModal = (e) => {
     e.stopPropagation();
-    console.log(e.target)
     setDisplayExplorer(null);
     setDisplaySearch(null)
     setDisplayUserModal(null)
@@ -55,7 +53,7 @@ function Navbar() {
       </div>
   
       <div id='right-nav-div'>
-        <div id='search-div' onClick={(e => showSearchModal())}>
+        <div id='search-div' onClick={e => showSearchModal()} >
           <span id="nav-links">Search</span>
           {displaySearch}
         </div> 
@@ -64,7 +62,8 @@ function Navbar() {
             <NavLink exact to="/login" id="nav-links">Log in</NavLink>
           </div>
           : 
-          <div id='avatar-div' onClick={(e => showUserModal())}>
+          <div id='avatar-div'
+          onClick={e => showUserModal()} >
           {displayUserModal}
           </div>
         }

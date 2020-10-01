@@ -114,14 +114,15 @@ class Pledge(db.Model):
   
   backer = db.relationship("User", foreign_keys=[backer_id])
   project = db.relationship("Project", foreign_keys=[project_id])
-  # def to_dict():
-  #   return {
-  #     "id": self.id,
-  #     "pledge_amount": self.pledge_amount,
-  #     "reward_id": self.reward_id,
-  #     "backer_id": self.backer_id,
-  #     "project_id": self.project_id
-  #   }
+  
+  def to_dict():
+    return {
+      "id": self.id,
+      "pledge_amount": self.pledge_amount,
+      "reward_id": self.reward_id,
+      "backer_id": self.backer_id,
+      "project_id": self.project_id
+    }
 
 class Reward(db.Model):
   __tablename__ = 'rewards'
@@ -136,6 +137,8 @@ class Reward(db.Model):
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+
+  project = db.relationship("Project", foreign_keys=[project_id])
 
   def increment(self):
     self.reward_count += 1

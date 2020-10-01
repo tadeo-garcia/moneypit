@@ -3,24 +3,32 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/auth'
 import '../css/navbar.css';
-import { getProjectsByOwner, getProject } from '../store/project'
+import { getProjectsByOwner, getProject, getProjectsByPledge } from '../store/project'
 
 export default function UserModal({ hideModal }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.auth.id);
+
   
   useEffect(() =>{
+    dispatch(getProjectsByPledge(currentUserId))
     dispatch(getProjectsByOwner(currentUserId))
 }, [dispatch])
 
 const projects_owned = useSelector(state => state.projects.projectsOwner)
+const projects_pledged = useSelector(state => state.projects.projectsPledge)
+const state = useSelector(state => state)
+
+console.log(state)
+
+console.log(projects_pledged)
   const handleClick = e => {
     e.preventDefault();
     dispatch(logout())
     history.push('/')
   }
-  if(!projects_owned){
+  if(!projects_owned || !projects_pledged){
     return null
   }
 
@@ -45,6 +53,14 @@ const projects_owned = useSelector(state => state.projects.projectsOwner)
           <div id='user-column'>
             <h3>Backed Projects</h3>
             <div>backed project component</div>
+            {projects_pledged.map((project,index)=>{
+              let link = `/projects/${project.id}`
+              return (
+                <div id= 'category-div'>
+                  <a href={link} id={project.id} key={project.id} onClick={searchID}> {project.title}</a>
+                </div>
+              )
+            })}
           </div>
           <div id='user-column'>
             <h3>Created Projects</h3>

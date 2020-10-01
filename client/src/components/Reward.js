@@ -6,7 +6,6 @@ import '../css/reward.css'
 export default function ProjectCard(props) {
     // const history = useHistory();
     // const dispatch = useDispatch();
-    console.log(props.reward)
     return (
         <div className="pledge_info">
             <div className="pledge_amount">
@@ -22,6 +21,10 @@ export default function ProjectCard(props) {
             Estimated Delivery
             {props.reward.delivery_date}
             <span>{props.reward.reward_count} backers </span>
+            </div>
+
+            <div className="pledge-buttom">
+            <input type="text"></input>
             </div>
         </div>
     )

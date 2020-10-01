@@ -1,26 +1,74 @@
-# Flask React Project
+<img src=https://imgur.com/C2152HI style="display: flex; width: 50%; margin: auto" /> 
 
-This is the backend for the Flask React project.
+## Welcome to [MoneyPit](), a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 
-## Getting started
+### Get your wallet ready, and back your favorite projects!
+## If nothing catches your eye, create your own project!
 
-1. Clone this repository
-2. Create a **.env** file based on the example with proper settings for your development environment
-3. Follow instructions in the [`starter_app/README.md`](./starter_app/README.md) to setup your development Back-End.
-4. Follow instructions in the [`client/README.md`](./client/README.md) to set up your development Front-End.
+### This site was made using React, React-Redux, Flask .
 
-## Deploy to Heroku
+### Users can:
+* Create a project
+* Back a project
+* Choose how to back a project, depending on the reward level
 
-1. Create a new project
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run `$ heroku login`
-5. Login to the heroku container registry `$ heroku container:login`
-6. CD into `starter_app` and push your backend docker container to heroku (this will build the Flask dockerfile, and push) `$ heroku container:push web -a {NAME_OF_HEROKU_APP}`
-7. CD into `client` and push your backend docker container to heroku (this will build the Flask dockerfile, and push) `$ heroku container:push web -a {NAME_OF_HEROKU_APP}`
-8. Release your docker container to heroku `$ heroku container:release web -a {NAME_OF_HEROKU_APP}`
-9. set up your database:
-```bash
-    $ heroku run -a {NAME_OF_HEROKU_APP} python -m database
-```
-10. profit
+### Projects
+* Projects will belong to a certain category
+* Each project has a:
+    * Owner
+    * Title
+    * Description
+    * Organization
+    * Location
+    * Days Remaining (time left until you can no longer back this project)
+    * Category
+    * Funding Goal
+    * End Date
+    * Total Pledges
+* Users can create and customize projects.
+* Project cannot be backed once it has no more days remaining, because it has reached the end date.
+    
+### Categories
+* Each category has a:
+    * Title
+* All projects belong to a category
+
+### Pledge
+* Each pledge has :
+    * Amount
+    * Backer Id
+    * Project Id
+* Pledges are based on the owner of the project
+
+    
+### Rewards
+* Each Reward has a:
+    * Title
+    * Description
+    * Amount to Unlock
+    * Delivery Date
+    * Project Id
+    * Backer Id
+* Users can earn a reward if they pledge the amount necessary to unlock that reward
+* Total rewards will be kept track of, so the owner can see how many of each reward level he has accomplished
+
+---
+
+### Code Snippets:
+* [insert code snippets]
+
+---
+
+### Features to be added:
+* Users can search projects by category, keywords in the title, keywords in the description
+* Users can explore projects by category, with a modal in the navbar
+* Users can see their backed projects through a user modal in the navbar
+* Users can see their created projects through a user modal in the navbar
+
+### Bonus Features:
+* Users can create a project
+* Logged in user session will persist after the page refreshes
+
+
+### Credits:
+* [insert image sources]

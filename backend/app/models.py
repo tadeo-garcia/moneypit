@@ -150,7 +150,7 @@ class Reward(db.Model):
       "minimum_donation": self.minimum_donation,
       "picture": self.picture,
       "description": self.description,
-      "delivery_date": self.delivery_date,
+      "delivery_date": self.delivery_date.strftime("%B %Y"),
       "reward_count": self.reward_count,
       "project_id": self.project_id
     }

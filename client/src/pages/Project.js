@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Reward from '../components/Reward'
 
 export default function Project() {
     const project = useSelector(state => state.projects.project)

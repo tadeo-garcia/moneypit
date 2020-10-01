@@ -61,7 +61,7 @@ with app.app_context():
 # PROJECTS
   for project in data:
     random_id = random.randrange(1,6)
-    min_donation = random.randrange(1,19, 5)
+    min_donation = random.randrange(5, 20, 5)
     min_donation2 = random.randrange(min_donation + 10, 50, 5)
     min_donation3 = random.randrange(min_donation2 + 30, 150, 5)
 

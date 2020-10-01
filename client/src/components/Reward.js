@@ -23,8 +23,11 @@ export default function ProjectCard(props) {
             <span>{props.reward.reward_count} backers </span>
             </div>
 
-            <div className="pledge-buttom">
-            <input type="text"></input>
+            <div className="pledge-button">
+            <form>
+                <input type="text" name="pledge"></input>
+                <button type="submit">Continue</button>
+            </form>
             </div>
         </div>
     )

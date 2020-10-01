@@ -36,4 +36,7 @@ def get_projects_by_id():
 def get_project():
     projectID = request.args.get('id', None)
     project = Project.query.get(projectID)
-    return {"project": project.to_dict()}, 200
+    rewards = Reward.query.filter(Reward.project_id==project.id).all()
+    rewards = [reward.to_dict() for reward in rewards]
+    project = project.to_dict()
+    return {"project": project, "rewards": rewards}, 200

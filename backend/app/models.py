@@ -143,17 +143,17 @@ class Reward(db.Model):
   def increment(self):
     self.reward_count += 1
 
-  # def to_dict():
-  #   return {
-  #     "id": self.id,
-  #     "title": self.title,
-  #     "minimum_donation": self.minimum_donation,
-  #     "picture": self.picture,
-  #     "description": self.description,
-  #     "delivery_date": self.delivery_date,
-  #     "reward_count": self.reward_count,
-  #     "project_id": self.project_id
-  #   }
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "title": self.title,
+      "minimum_donation": self.minimum_donation,
+      "picture": self.picture,
+      "description": self.description,
+      "delivery_date": self.delivery_date.strftime("%B %Y"),
+      "reward_count": self.reward_count,
+      "project_id": self.project_id
+    }
 
 
 # class User_Reward(db.Model):

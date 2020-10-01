@@ -14,7 +14,6 @@ function App() {
       const res = await fetch("/api/session/current");
       if (res.ok) {
         res.data = await res.json(); // current user info - obj with key of user
-        console.log(res.data)
         dispatch(setUser(res.data.user));
       }
       setLoading(false);

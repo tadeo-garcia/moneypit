@@ -38,6 +38,9 @@ export const getProject = (projectID) => {
     })
   
   res.data = await res.json();
+  let project = res.data.project
+  let rewards = res.data.rewards
+  project.rewards = rewards
   if (res.ok) {
     dispatch(loadProject(res.data.project))
   }

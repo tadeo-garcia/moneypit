@@ -1,10 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Reward from '../components/Reward'
 
 export default function Project() {
-    const history = useHistory();
-    const dispatch = useDispatch();
     const project = useSelector(state => state.projects.project)
     if(!project) return 'Loading...'
 
@@ -16,6 +14,10 @@ export default function Project() {
         <h1>{project.id}</h1>
         <h1>{project.funding_goal}</h1>
         <h1>{project.total_funding}</h1>
+        
+            <div className="reward-container">
+                {project.rewards.map((reward) => <Reward reward={reward} key={reward.id} />)}
+            </div>
         </div>
     )
 }

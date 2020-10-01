@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import React from 'react';
 
 export default function SearchBar({hideModal}) {
-  const dispatch = useDispatch();
 
   const handleSubmit = async(e) => {
     e.preventDefault();

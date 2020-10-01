@@ -33,7 +33,7 @@ function Login() {
     e.preventDefault();
     dispatch(login('demo@moneypit.com', 'password'))
   };
-  if (currentUserId) return <Redirect to='/home' />
+  if (currentUserId) return <Redirect to='/' />
   return (
     <div className='loginWrapper'>
       <div className="loginContainer">

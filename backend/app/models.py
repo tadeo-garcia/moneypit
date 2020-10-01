@@ -113,6 +113,7 @@ class Pledge(db.Model):
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   
   backer = db.relationship("User", foreign_keys=[backer_id])
+  project = db.relationship("Project", foreign_keys=[project_id])
   # def to_dict():
   #   return {
   #     "id": self.id,

@@ -54,7 +54,11 @@ with app.app_context():
 # PROJECTS
   for project in data:
     random_days = random.randrange(5,25)
-    random_id = random.randrange(1,6)
+    if project["creatorId"] == 555:
+      random_id = 555
+    else:
+      random_id = random.randrange(1,6)
+    
     project_to_add = Project(id = project["id"], 
                               title = project["name"], 
                               owner_id = random_id, 

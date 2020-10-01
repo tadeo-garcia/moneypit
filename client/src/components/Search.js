@@ -7,8 +7,6 @@ export default function SearchBar({ hideModal }) {
   const [searchTerm, setSearchTerm] = useState('')
   const dispatch = useDispatch();
 
-  export default function SearchBar({ hideModal }) {
-
     const handleSubmit = async (e) => {
       e.preventDefault();
       // dispatch(searchCity(city,state))
@@ -30,4 +28,3 @@ export default function SearchBar({ hideModal }) {
     );
 
   };
-}

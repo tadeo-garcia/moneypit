@@ -1,7 +1,14 @@
 const SET_USER = 'auth/SET_USER';
 const LOGOUT_USER = 'auth/LOGOUT_USER';
+const LOAD_USER = 'auth/LOAD_USER';
 
 export const setUser = (user) => {
+  if(!user){
+    return {
+      type: SET_USER,
+      user: {}
+    }
+  }
   return {
     type: SET_USER,
     user
@@ -14,9 +21,11 @@ export const logoutUser = () => {
   }
 }
 
+
+
 export const login = (email, password) => {
   return async dispatch => {
-    const res = await fetch('/api/session/login', {
+    const res = await fetch('/api/session', {
       method: 'post',
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +33,7 @@ export const login = (email, password) => {
       body: JSON.stringify({ email, password })
     })
     res.data = await res.json();
-    if (res.ok) {
+    if (res.ok) { 
       dispatch(setUser(res.data.user))
     }
     return res;
@@ -33,7 +42,7 @@ export const login = (email, password) => {
 
 export const signup = (username, email, password) => {
   return async dispatch => {
-    const res = await fetch('/api/session/signup', {
+    const res = await fetch('/api/users/signup', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +59,7 @@ export const signup = (username, email, password) => {
 
 export const logout = () => {
   return async dispatch => {
-    const res = await fetch('api/session/logout', {
+    const res = await fetch('/api/session', {
       method: 'delete',
       headers: { },
     })
@@ -62,7 +71,7 @@ export const logout = () => {
 }
 
 export default function authReducer(state = {}, action) {
-  Object.freeze(state)
+  // Object.freeze(state)
   switch (action.type) {
     case SET_USER:
       return action.user;

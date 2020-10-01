@@ -11,9 +11,10 @@ function App() {
   useEffect(() => {
     const loadUser = async () => {
       // enter your back end route to get the current user
-      const res = await fetch("/api/session");
+      const res = await fetch("/api/session/current");
       if (res.ok) {
         res.data = await res.json(); // current user info - obj with key of user
+        console.log(res.data)
         dispatch(setUser(res.data.user));
       }
       setLoading(false);

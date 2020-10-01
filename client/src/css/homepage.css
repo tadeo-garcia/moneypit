@@ -1,0 +1,24 @@
+.subbar__categories {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    max-width: 1246px;
+    
+}
+.subbarWrapper {
+    width: 100%;
+    border-bottom: solid 1px #D3D3D3;
+}
+.navlink {
+    text-decoration: none;
+    color: #034752;
+    font-size: 16px;
+    margin-left: 30px;
+}
+.navlink:hover {
+    text-decoration: underline;
+}
+.homeHeader__imgLg {
+    max-width: 625px;
+    max-height: 350px;
+}

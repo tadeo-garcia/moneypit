@@ -7,10 +7,10 @@ import '../css/login.css'
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [noInfo, setNoInfo] = useState('');
   const [noEmail, setNoEmail] = useState('');
   const [noPassword, setNoPassword] = useState('');
   const currentUserId = useSelector(state => state.auth.id);
+  
   const dispatch = useDispatch();
   let emailDiv = "form-input";
   let passwordDiv = "form-input";
@@ -18,7 +18,6 @@ function Login() {
     e.preventDefault();
     setNoEmail('');
     setNoPassword('');
-    setNoInfo('');
     if (email && password) {
       dispatch(login(email.toLocaleLowerCase(), password));
     } else if (!email && password) {
@@ -29,6 +28,7 @@ function Login() {
       setNoPassword("What's the password?");
     }
   }
+  
   const demo = e => {
     e.preventDefault();
     dispatch(login('demo@moneypit.com', 'password'))

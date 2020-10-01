@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/reward.css'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { Link, useHistory } from 'react-router-dom';
 
@@ -7,16 +8,20 @@ export default function ProjectCard(props) {
     // const dispatch = useDispatch();
     console.log(props.reward)
     return (
-        <div className="reward-outer">
-            <div className="info-card">
-                Pledge ${props.reward.minimum_donation} or more
+        <div className="pledge_info">
+            <div className="pledge_amount">
+                <h2>Pledge ${props.reward.minimum_donation} or more</h2>
+            </div>
+            <div className="pledge_title">
                 {props.reward.title}
-                {props.reward.description}
+                </div>
+            <div className="pledge_reward">
+                <p>{props.reward.description} </p>
             </div>
             <div className="delivery-card">
             Estimated Delivery
             {props.reward.delivery_date}
-            {props.reward.reward_count} backers
+            <span>{props.reward.reward_count} backers </span>
             </div>
         </div>
     )

@@ -14,15 +14,12 @@ export default function UserModal({ hideModal }) {
   useEffect(() =>{
     dispatch(getProjectsByPledge(currentUserId))
     dispatch(getProjectsByOwner(currentUserId))
-}, [dispatch])
+},)
 
 const projects_owned = useSelector(state => state.projects.projectsOwner)
 const projects_pledged = useSelector(state => state.projects.projectsPledge)
-const state = useSelector(state => state)
 
-console.log(state)
 
-console.log(projects_pledged)
   const handleClick = e => {
     e.preventDefault();
     dispatch(logout())

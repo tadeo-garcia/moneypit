@@ -1,6 +1,5 @@
 const SET_USER = 'auth/SET_USER';
 const LOGOUT_USER = 'auth/LOGOUT_USER';
-const LOAD_USER = 'auth/LOAD_USER';
 
 export const setUser = (user) => {
   if(!user){

@@ -1,14 +1,11 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import '../css/projectcard.css';
 
 
 
 export default function Category() {
-  const history = useHistory();
-  const dispatch = useDispatch();
   const projects_list = useSelector(state => state.projects)
 
   const notLoaded = projects_list.projects && projects_list.projects.length > 0;

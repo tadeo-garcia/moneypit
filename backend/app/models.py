@@ -59,6 +59,7 @@ class Project(db.Model):
   launch_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   end_date = db.Column(db.DateTime, nullable=False, default= "2030-10-28 23:06:16.227442")
   total_pledges = db.Column(db.Integer, default=0)
+  days_remaining = db.Column(db.Integer, default=20)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
@@ -77,6 +78,7 @@ class Project(db.Model):
       "organization": self.organization,
       "avatar": self.avatar,
       "location": self.location,
+      "days_remaining": self.days_remaining,
       "category_id": self.category_id,
       "pic": self.pic,
       "funding_goal": self.funding_goal,
@@ -109,7 +111,8 @@ class Pledge(db.Model):
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-
+  
+  backer = db.relationship("User", foreign_keys=[backer_id])
   # def to_dict():
   #   return {
   #     "id": self.id,
@@ -127,7 +130,7 @@ class Reward(db.Model):
   minimum_donation = db.Column(db.Integer, nullable=False)
   picture = db.Column(db.String)
   description = db.Column(db.Text, nullable=False)
-  delivery_date = db.Column(db.DateTime, nullable=False)
+  delivery_date = db.Column(db.DateTime)
   reward_count = db.Column(db.Integer, default=0)
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)

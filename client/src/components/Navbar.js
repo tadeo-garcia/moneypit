@@ -5,12 +5,14 @@ import '../css/navbar.css';
 import Explorer from './Explorer'
 import SearchBar from './Search'
 import UserModal from './UserModal'
+import { getProjectsByOwner } from '../store/project'
 
 function Navbar() {
   const [displayExplorer, setDisplayExplorer] = useState(null)
   const [displaySearch, setDisplaySearch] = useState(null)
   const [displayUserModal, setDisplayUserModal] = useState(null)
   const currentUserId = useSelector(state => state.auth.id);
+
   
   const hideModal = (e) => {
     e.stopPropagation();
@@ -33,9 +35,6 @@ function Navbar() {
   }
 
   
-  
-
-
   return (
     <div id='modal-navbar-div'>
       <div id='left-nav-div'>

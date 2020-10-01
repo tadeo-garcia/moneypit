@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/auth'
 import '../css/navbar.css';
+import { getProjectsByOwner } from '../store/project'
 
 export default function UserModal({ hideModal }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.auth.id);
   
+  useEffect(() =>{
+    dispatch(getProjectsByOwner(currentUserId))
+}, [dispatch])
+
+const projects_owned = useSelector(state => state.projects.projectsOwner)
+
   const handleClick = e => {
     e.preventDefault();
     dispatch(logout())

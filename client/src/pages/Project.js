@@ -13,8 +13,8 @@ export default function Project() {
         <h1>{project.description}</h1>
         <h1>{project.location}</h1>
         <h1>{project.organization}</h1>
-        <h1>{project.funding_goal}</h1>
         <h1>{project.id}</h1>
+        <h1>{project.funding_goal}</h1>
         <h1>{project.total_funding}</h1>
         </div>
     )

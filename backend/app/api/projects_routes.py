@@ -17,6 +17,16 @@ def get_by_category():
     data = [project.to_dict() for project in projects]
     return {"projects": data}
 
+@projects_routes.route('/projects_by_id')
+def get_by_id():
+    user_id = request.args.get('id', None)
+    print("~~~")
+    print(user_id)
+    projects = Project.query.filter(Project.owner_id==user_id).all()
+    data = [project.to_dict() for project in projects]
+    print(data)
+    return {"projects": data}
+
 @projects_routes.route('/search_by_id')
 def get_project():
     projectID = request.args.get('id', None)

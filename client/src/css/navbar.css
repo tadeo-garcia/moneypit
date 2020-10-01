@@ -151,71 +151,12 @@
 
 #avatar-div{
   background-image: url('/user_avatar.png');
-  position: absolute;
-  top: 5px;
-  right: 35px;
+  position: relative;
+  bottom: 15px;
   height: 50px;
   width:50px;
   border-radius:30px;
   cursor:pointer;
 }
 
-#user-modal{
-  position: absolute;
-  top: 75px;
-  right: 15px;
-  height: 355px;
-  width: 600px;
-  z-index: 50;
-  border: 2px solid black;
-  background-color: #ffffff;
-}
 
-#user-modal-top{
-  display:flex;
-  height:80%;
-  
-}
-
-#user-column{
-  display:flex;
-  flex-direction: column;
-  padding: 15px;
-}
-
-#new-project-button{
-  background-color: #ffffff;
-  border: 0;
-}
-
-#user-modal-logout{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-top: 1px solid #bdbdbd;
-  margin-left: 45px;
-  margin-right: 45px;
-  z-index: 51;
-}
-
-#close-modal-button{
-  z-index: 100;
-  background-color: #ffffff;
-  font-weight: 600;
-  font-size: 24px;
-  border: 0px;
-}
-
-#logout-span{
-  font-size: 18px;
-  padding-top: 20px;
-}
-
-
-#hide-modal{
-  position:fixed;
-  top:0;
-  right:0;
-  left:0;
-  bottom:0;
-}

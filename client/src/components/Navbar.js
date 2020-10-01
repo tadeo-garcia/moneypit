@@ -57,14 +57,14 @@ function Navbar() {
           <span id="nav-links">Search</span>
           {displaySearch}
         </div> 
-        {!currentUserId ?
-          <div id='login-link'>
-            <NavLink exact to="/login" id="nav-links">Log in</NavLink>
+        {currentUserId ?
+          <div id='avatar-div'
+            onClick={e=>showUserModal()} >
+            {displayUserModal}
           </div>
           : 
-          <div id='avatar-div'
-          onClick={e => showUserModal()} >
-          {displayUserModal}
+          <div id='login-link'>
+            <NavLink exact to="/login" id="nav-links">Log in</NavLink>
           </div>
         }
       </div>

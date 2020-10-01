@@ -5,19 +5,6 @@ from flask_login import current_user
 
 user_routes = Blueprint('users', __name__)
 
-@user_routes.route('/login', methods=['POST'])
-def login_user():
-
-  email = request.json.get('email', None)
-  password = request.json.get('password', None)
-
-  user = User.query.filter(User.email==email).first()
-
-  if(user.check_password(password)):
-    access_token = create_access_token(identity=email)
-    return {"token": access_token, "user": user.to_dict()}, 200
-  else:
-    return jsonify({"msg": "Incorrect email or password."}), 400
 
 @user_routes.route('/signup', methods=['POST'])
 def signup_user():
@@ -30,16 +17,7 @@ def signup_user():
     db.session.add(user)
     db.session.commit()
     email= user.email
-    access_token = create_access_token(identity=email)
-    return {"token": access_token, "user": user.to_dict()}, 200
+    session["user"]= user.to_dict()
+    return {"user": user.to_dict()}, 200
   except:
     return jsonify({"msg": "Bad data for signup."}), 400
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#   print(User.get(user_id))
-#   return User.get(user_id)
-
-@user_routes.route('/logout', methods= ['DELETE'])
-def logout():
-  session.pop('csrf_token', None)

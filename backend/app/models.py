@@ -143,7 +143,7 @@ class Reward(db.Model):
   def increment(self):
     self.reward_count += 1
 
-  def to_dict():
+  def to_dict(self):
     return {
       "id": self.id,
       "title": self.title,

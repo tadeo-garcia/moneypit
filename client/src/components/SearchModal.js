@@ -7,7 +7,7 @@ function SearchModal({ searchTerm }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(getProjectsByTitle(searchTerm))
+    dispatch(getProjectsByTitle(searchTerm))
   }, [searchTerm])
 
   const projects_title = useSelector(state => state.projects.projectsTitle)

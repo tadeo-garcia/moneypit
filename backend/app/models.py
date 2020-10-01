@@ -47,13 +47,15 @@ class Project(db.Model):
 
   id = db.Column(db.Integer, primary_key=True, nullable=False)
   owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-  title = db.Column(db.String(100), nullable=False)
+  title = db.Column(db.String(1000), nullable=False)
   description = db.Column(db.String(1000), nullable=False)
   organization = db.Column(db.String(50))
-  location = db.Column(db.String(100), nullable=False)
+  avatar = db.Column(db.String(1000))
+  location = db.Column(db.String(1000), nullable=False)
   pic = db.Column(db.String(300), nullable=False)
   category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
   funding_goal = db.Column(db.Integer, nullable=False, default=0)
+  total_funding = db.Column(db.Integer, nullable=False, default=0)
   launch_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   end_date = db.Column(db.DateTime, nullable=False, default= "2030-10-28 23:06:16.227442")
   total_pledges = db.Column(db.Integer, default=0)
@@ -73,10 +75,12 @@ class Project(db.Model):
       "owner_id": self.owner_id,
       "description": self.description,
       "organization": self.organization,
+      "avatar": self.avatar,
       "location": self.location,
       "category_id": self.category_id,
       "pic": self.pic,
       "funding_goal": self.funding_goal,
+      "total_funding": self.total_funding,
       "launch_date": self.launch_date,
       "end_date": self.end_date,
       "total_pledges": self.total_pledges

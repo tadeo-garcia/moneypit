@@ -16,6 +16,7 @@ export default function Explorer({ hideModal }) {
     e.preventDefault()
     let category = e.target.innerHTML.trim()
     dispatch(getProjectsByCategory(category))
+    hideModal(e)
     history.push(`/category/${category}`)
   }
   

@@ -26,7 +26,7 @@ export default function ProjectSmall (props) {
                         <h2>{props.project.name}</h2>
                     </div>
                     <div className="spacer-div"></div>
-                        <h3>{1500000 / props.project.funding_goal}% funded</h3>
+                        <h3>{props.project.total_funding > 0 ? Math.floor(props.project.funding_goal / props.project.total_funding) : 0.00}% funded</h3>
                     <div className="listing-information-body">
                     <h3>By {props.project.organization}</h3>
                     </div>

@@ -62,6 +62,7 @@ export const logout = () => {
 }
 
 export default function authReducer(state = {}, action) {
+  Object.freeze(state)
   switch (action.type) {
     case SET_USER:
       return action.user;

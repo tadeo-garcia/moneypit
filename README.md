@@ -1,9 +1,10 @@
-<img src=https://imgur.com/HmQtgf3 style="display: flex; width: 50%; margin: auto" /> 
+
+<img src="https://i.imgur.com/HmQtgf3.jpg" align=center alt=MoneyPitLogo/>
 
 ## Welcome to [MoneyPit](), a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 
 ### Get your wallet ready, and back your favorite projects!
-## If nothing catches your eye, create your own project!
+#### If nothing catches your eye, create your own project!
 
 ### This site was made using React, React-Redux, Flask .
 

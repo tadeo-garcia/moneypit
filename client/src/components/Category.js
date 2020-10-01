@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectSmall from './ProjectSmall';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import '../css/projectcard.css';
 
 
 

@@ -45,10 +45,13 @@ export const getProject = (projectID) => {
       method: "get"
     })
 
-    res.data = await res.json();
-    if (res.ok) {
-      dispatch(loadProject(res.data.project))
-    }
+  res.data = await res.json();
+  let project = res.data.project
+  let rewards = res.data.rewards
+  project.rewards = rewards
+  if (res.ok) {
+    dispatch(loadProject(res.data.project))
+  }
     return res;
   }
 }

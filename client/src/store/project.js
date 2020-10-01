@@ -71,7 +71,7 @@ export default function projectsReducer(state={}, action) {
           return {...state, project: action.project};
       case GET_PROJECTS_BY_CATEGORY:
         return {...state, projects: action.projects};
-      case GET_PROJECTS_BY_CATEGORY:
+      case GET_PROJECTS_BY_OWNER:
         return {...state, projectsOwner: action.projects}
       default:
           return state;

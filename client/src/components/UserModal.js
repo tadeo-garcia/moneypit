@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/auth'
 import '../css/navbar.css';
-import { getProjectsByOwner } from '../store/project'
+import { getProjectsByOwner, getProject } from '../store/project'
 
 export default function UserModal({ hideModal }) {
   const history = useHistory();
@@ -15,12 +15,22 @@ export default function UserModal({ hideModal }) {
 }, [dispatch])
 
 const projects_owned = useSelector(state => state.projects.projectsOwner)
-
   const handleClick = e => {
     e.preventDefault();
     dispatch(logout())
     history.push('/')
   }
+  if(!projects_owned){
+    return null
+  }
+
+  function searchID(e) {
+    e.preventDefault()
+    let id = e.target.id.trim()
+    dispatch(getProject(id))
+    history.push(`/project/${id}`)
+  }
+
 
   return (
     <div>
@@ -38,6 +48,14 @@ const projects_owned = useSelector(state => state.projects.projectsOwner)
           </div>
           <div id='user-column'>
             <h3>Created Projects</h3>
+            {projects_owned.map((project,index)=>{
+              let link = `/projects/${project.id}`
+              return (
+                <div id= 'category-div'>
+                  <a href={link} id={project.id} key={project.id} onClick={searchID}> {project.title}</a>
+                </div>
+              )
+            })}
             <div>backed project component</div>
             <button id="new-project-button">+ New</button>
           </div>

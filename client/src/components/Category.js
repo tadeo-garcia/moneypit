@@ -17,7 +17,7 @@ export default function Category() {
 
   return (
     <div className="container-wrapper">
-      <div className="card-container">
+      <div className="card-container flex-wrap">
           {projects_list.projects.map((project) => <ProjectCard project={project} key={project.id} />)}
         </div>
     </div>

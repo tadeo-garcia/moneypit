@@ -32,37 +32,31 @@ with app.app_context():
 
 
 # CATEGORIES
-  scifi = Category(title = "Science Fiction")
-  games = Category(id = 34, title = "Games")
-  books = Category(title = "Books")
-  comics = Category(id = 250, title = "Comic Books")
-  gadget = Category(id = 337, title = "Gadgets")
+  hardware = Category(id = 52, title = "Hardware")
+  apps = Category(id = 332, title = "Apps")
+  printing = Category(id= 331, title = "3D Printing")
+  software = Category(id = 51, title = "Software")
+  robots = Category(id = 338, title = "Robots")
+  gadgets = Category(id = 337, title = "Gadgets")
+  web = Category(id = 342, title = "Web")
+  wearables = Category(id = 341, title = "Wearables")
 
-  db.session.add(scifi)
-  db.session.add(games)
-  db.session.add(books)
-  db.session.add(comics)
+  db.session.add(hardware)
+  db.session.add(apps)
+  db.session.add(printing)
+  db.session.add(software)
+  db.session.add(robots)
   db.session.add(gadgets)
+  db.session.add(web)
+  db.session.add(wearables)
 
-photo description, goal = funding, pledged = current funding, 
-backers_count, creatorId,
-creatorName, creatorAvatar, locationName, categoryName, 
 
 # PROJECTS
-for project in random:
-  random_id = random.randrang(1,6)
-  project_to_add = Project(title = project["name"], owner_id = random_id, pic = project["photo"], description = project[""], funding_goal = project[] )
-  # project1 = Project(title = "Project 1", owner_id = 1, location = "Seattle", category_id = 1, funding_goal = 50000, organization = "Awesome Group", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  # project2 = Project(title = "Project 2", owner_id = 2, location = "Dallas", category_id = 2, funding_goal = 250000, organization = "Cool team", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  # project3 = Project(title = "Project 3", owner_id = 3, location = "Paris", category_id = 3, funding_goal = 10, organization = "Sweet Design", description = "Projects are so fun", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  # project4 = Project(title = "Project 4", owner_id = 2, location = "Albuquerque", category_id = 2, funding_goal = 10000, organization = "Making Stuff", description = "This is project 4", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
-  # project5 = Project(title = "Project 5", owner_id = 2, location = "Tampa", category_id = 2, funding_goal = 1250000, organization = "Rennie Harris", description = "This is project 5", pic = 'https://i.imgur.com/oXRDWIZ.jpg')
+  for project in data:
+    random_id = random.randrange(1,6)
+    project_to_add = Project(id = project["id"], title = project["name"], owner_id = random_id, pic = project["photo"], description = project["description"], funding_goal = project["goal"], category_id = project["categoryId"], total_funding = project["pledged"], total_pledges = project["backers_count"], organization = project["creatorName"], avatar = project["creatorAvatar"], location = project["locationName"] )
 
-  
-  # db.session.add(project1)
-  # db.session.add(project2)
-  # db.session.add(project3)
-  # db.session.add(project4)
-  # db.session.add(project5)
+    db.session.add(project_to_add)
+
   
   db.session.commit()

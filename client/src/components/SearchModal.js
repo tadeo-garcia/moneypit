@@ -13,9 +13,9 @@ function SearchModal({ searchTerm }) {
   const projects_title = useSelector(state => state.projects.projectsTitle)
   const stateNow = useSelector(state => state)
 
-  console.log(projects_title)
-  console.log("~~~~~~~~~~")
-  console.log(stateNow)
+  // console.log(projects_title)
+  // console.log("~~~~~~~~~~")
+  // console.log(stateNow)
 
   return (
     <div id='search_modal'>

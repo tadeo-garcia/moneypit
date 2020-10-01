@@ -19,8 +19,8 @@ def get_by_category():
 
 @projects_routes.route('/projects_by_title')
 def get_by_title():
-    title = request.args.get('title', None)
-    projects = Project.query.filter(Project.title.contains(title)).all()
+    title = f"%{request.args.get('title', 'Robot')}%"
+    projects = Project.query.filter(Project.title.ilike(title)).all()
     # print(projects)
     # data = projects
     data = [project.to_dict() for project in projects]

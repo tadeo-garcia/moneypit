@@ -38,7 +38,7 @@ function Signup() {
       setNoInfo("You can't get in if you're not a member!")
     }
   }
-  if (currentUserId) return <Redirect to='/home' />
+  if (currentUserId) return <Redirect to='/' />
   return (
     <>
       <div className='signup_master'>

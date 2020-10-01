@@ -1,4 +1,4 @@
-<img src=https://imgur.com/C2152HI style="display: flex; width: 50%; margin: auto" /> 
+<img src=https://imgur.com/HmQtgf3 style="display: flex; width: 50%; margin: auto" /> 
 
 ## Welcome to [MoneyPit](), a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 

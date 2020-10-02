@@ -6,6 +6,9 @@ import '../css/reward.css'
 export default function ProjectCard(props) {
     // const history = useHistory();
     // const dispatch = useDispatch();
+    const handleSubmit = e => {
+        e.preventDefault();
+      }
     return (
         <div className="pledge_info">
             <div className="pledge_amount">
@@ -23,9 +26,9 @@ export default function ProjectCard(props) {
             <span>{props.reward.reward_count} backers </span>
             </div>
 
-            <div className="pledge-button">
+            <div className="pledge-button" onSubmit={handleSubmit}>
             <form>
-                <input type="text" name="pledge"></input>
+                <input type="text" name="pledge" value={props.reward.minimum_donation}></input>
                 <button type="submit">Continue</button>
             </form>
             </div>

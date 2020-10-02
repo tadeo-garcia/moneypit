@@ -42,9 +42,9 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
         <div id='user-modal-top'>
           <div className='user-column1'>
             <div id='usermodal__header'>YOUR ACCOUNT</div>
-            <Link to='/profile' id='user-modal__link'>Profile</Link>
-            <Link to='/settings' id='user-modal__link'>Settings</Link>
-            <Link to='/messages' id='user-modal__link'>Messages</Link>
+            <Link to='/profile' className='user-modal__link'>Profile</Link>
+            <Link to='/settings' className='user-modal__link'>Settings</Link>
+            <Link to='/messages' className='user-modal__link'>Messages</Link>
           </div>
           <div className='user-column2'>
             <div id='usermodal__header'>BACKED PROJECTS</div>
@@ -60,7 +60,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
                       <div>
                         <a href={link} id={project.id}
                           key={project.id} onClick={searchID}
-                          id="usermodal__project-link">
+                          className="usermodal__project-link">
                           {project.title}
                         </a>
                       </div>
@@ -84,7 +84,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
                       <div>
                         <a href={link} id={project.id}
                           key={project.id} onClick={searchID}
-                          id='user-modal__link'>
+                          className='user-modal__link'>
                           {project.title}
                         </a>
                       </div>

@@ -29,7 +29,7 @@
   z-index: 50;
 }
 
-#user-modal__link{
+.user-modal__link{
   color: #464646;
   font-size: 12px;
   text-decoration: none;
@@ -37,7 +37,7 @@
   padding: 10px 0px;
 }
 
-#user-modal__link:hover{
+.user-modal__link:hover{
   color: #037362;
   text-decoration: underline;
 }

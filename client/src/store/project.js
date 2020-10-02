@@ -35,7 +35,7 @@ export const loadProjectsByCategory = (projects) => {
 export const loadProjectsByTitle = (projects) => {
   return {
     type: GET_PROJECTS_BY_TITLE,
-    proejcts: projects
+    projects: projects
   }
 }
 

@@ -82,11 +82,11 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
                         <img src={project.pic} id='backed-modal-pic' alt='project' />
                       </div>
                       <div>
-                        <a href={link} id={project.id}
+                        <Link to={link} id={project.id}
                           key={project.id} onClick={searchID}
                           className='user-modal__link'>
                           {project.title}
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   )

@@ -1,8 +1,8 @@
 #user-modal{
   position: absolute;
-  top: 75px;
+  top: 65px;
   right: 15px;
-  height: 355px;
+  height: 400px;
   width: 800px;
   z-index: 50;
   border: 1px solid #a5a5a5;
@@ -13,23 +13,16 @@
 #user-modal-top{
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
-  height:80%;
+  height:82%;
   padding-top: 35px;
   padding-left: 35px;
   padding-right: 35px;
-  
 }
 
 #user-modal-top h3{
   font-size: 12px;
   font-weight: 500;
   width:100%;
-}
-
-.user-column{
-  display:flex;
-  flex-direction: column;
-  padding-right:10px;
 }
 
 #user-modal__link{
@@ -44,12 +37,35 @@
   text-decoration: underline;
 }
 
-.user-column h3{
-  padding-bottom: 25px;
+.user-column1 {
+  display:flex;
+  flex-direction: column;
+  padding-right:10px;
+}
+
+.scroll{
+  position: relative;
+  margin-top: 50px;
 }
 
 .user-column2{
+  display: grid;
+  grid-template-rows: .5fr 3fr .5fr;
   margin-right: 30px;
+  height: 230px;
+}
+
+#usermodal__header{
+  padding-bottom: 25px;
+  position:fixed;
+  background-color: #ffffff;
+  z-index: 50;
+}
+
+.user-column3{
+  grid-template-rows: .5fr 3fr .5fr;
+  height: 230px;
+  overflow-y: scroll;
 }
 
 #usermodal__project{
@@ -68,7 +84,6 @@
   margin-right: 10px;
 }
 
-
 #user-modal-bottom{
   display:flex;
   flex-direction: row;
@@ -83,21 +98,24 @@
   background-color: #ffffff;
   border: 0px;
   cursor:pointer;
-
+  transition: all ease 1s;
+  width: 100%;
+  height:25px;
+  text-align: left;
 }
 
 #new-project-button:hover {
-  color: #037362;
+  box-shadow: inset 500px 0 0 0 #4C6CF8;
+  color: #fff;
 }
 
-
 #user-modal__button{
+  position: fixed;
   display:flex;
   align-content: center;
   border-top: 1px solid #bdbdbd;
   margin-top: 40px;
   padding-top: 10px;
-
 }
 
 #close-modal-button{

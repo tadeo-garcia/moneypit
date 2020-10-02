@@ -13,7 +13,7 @@ export default function UserModal({ hideModal }) {
   useEffect(() =>{
     dispatch(getProjectsByPledge(currentUserId))
     dispatch(getProjectsByOwner(currentUserId))
-},[dispatch])
+},[dispatch, currentUserId])
 
 const projects_owned = useSelector(state => state.projects.projectsOwner)
 const projects_pledged = useSelector(state => state.projects.projectsPledge)
@@ -49,12 +49,12 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
           </div>
           <div className='user-column2'>
             <div id='usermodal__header'>BACKED PROJECTS</div>
-            <div className='backed-projects-div'>
+            <div className='backed-projects-div' >
               {
                 projects_pledged.map((project, index) => {
                   let link = `/projects/${project.id}`
                   return (
-                    <div className='usermodal__project' id={project.id}>
+                    <div className='usermodal__project' id={project.id} key={project.id}>
                       <div>
                         <img src={project.pic} id='backed-modal-pic' alt='project' />
                       </div>
@@ -78,7 +78,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
                 projects_owned.map((project, index) => {
                   let link = `/projects/${project.id}`
                   return (
-                    <div className='usermodal__project' id={project.id}>
+                    <div className='usermodal__project' id={project.id} key={project.id}>
                       <div>
                         <img src={project.pic} id='backed-modal-pic' alt='project' />
                       </div>

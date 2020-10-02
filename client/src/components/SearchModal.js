@@ -18,7 +18,6 @@ function SearchModal({ searchTerm, hideModal }) {
 
   const handleSubmit = async (e) => {
     dispatch(getProject(e))
-    hideModal(e)
     useHistory.push(`/project/${e}`)
   }
 

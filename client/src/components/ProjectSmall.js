@@ -1,6 +1,6 @@
 import React from 'react';
 import { getProject } from '../store/project';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/projectsmall.css';
 
@@ -19,7 +19,7 @@ export default function ProjectSmall (props) {
         <div id={props.project.id} class="listing-size" onClick={searchID}>
         <Link id={props.project.id} style={{textDecoration: "none", color: "black"}} onClick={searchID} to={`project/${props.project.id}`}>
             <div class="listing">
-                <img id={props.project.id} src={props.project.pic} onClick={searchID}/>
+                <img alt='Project' id={props.project.id} src={props.project.pic} onClick={searchID}/>
                 <div class="listing-information">
                     <div class="listing-information-header">
                         <h3>{props.project.title}</h3>

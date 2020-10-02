@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
-import { getProject } from '../store/project';
 import SearchModal from './SearchModal'
 
 export default function SearchBar({ hideModal }) {
   const [searchTerm, setSearchTerm] = useState('')
-  const dispatch = useDispatch();
+
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();

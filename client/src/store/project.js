@@ -66,11 +66,14 @@ export const getProject = (projectID) => {
 
 export const getFeaturedProjects = () => {
   return async dispatch => {
-    const res = await fetch('/search_by_featured', {
+    console.log("~~~~~")
+    const res = await fetch('/api/projects/search_by_featured', {
       method: "get"
     })
-
-    res.data = res.json();
+    console.log("before")
+    res.data = await res.json();
+    console.log(res.data)
+    console.log("after")
     if(res.ok) {
       dispatch(loadFeaturedProjects(res.data.projects))
     }

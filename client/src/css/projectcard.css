@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .card-container{
   margin-top:10px;
   display:grid;
@@ -13,10 +14,12 @@
   min-width:900px;
   padding: 60px 60px;
 }
+
 .card-wrapper{
   margin:0;
   padding: 0;
 }
+
 .card {
   display: flex;
   flex-direction: column;
@@ -25,6 +28,7 @@
   margin-bottom: 25px;
   border: 1px solid #dbdbdb;
 }
+
 .card img {
     height: 150px;
     width: 275;
@@ -32,9 +36,12 @@
     flex-direction: row;
     border-bottom: 1px solid #dbdbdb;
 }
+
 .card-header{
   height: 150px;
 }
+
+
 .card h3 {
   font-size: 14px;
   font-weight: 400;
@@ -42,6 +49,7 @@
   margin-right: 15px;
   margin-left: 15px;
 }
+
 .card h2 {
   font-size: 14px;
   font-weight: 300;
@@ -50,11 +58,14 @@
   margin-right: 15px;
   margin-left: 15px;
 }
+
+
 .card-footer{
   display:flex;
   flex-direction: column;
   height: 20%;
 }
+
 .card h4 {
     font-size: 12px;
     font-weight: 400;
@@ -62,6 +73,7 @@
     margin-right: 15px;
     margin-left: 15px;
 }
+
 #pledged{
   color: #037362;
 }

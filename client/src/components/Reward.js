@@ -3,7 +3,7 @@ import '../css/reward.css'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { Link, useHistory } from 'react-router-dom';
 
-export default function ProjectCard(props) {
+export default function Reward(props) {
     // const history = useHistory();
     // const dispatch = useDispatch();
     return (

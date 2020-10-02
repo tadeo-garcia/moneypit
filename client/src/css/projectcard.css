@@ -30,11 +30,11 @@
 }
 
 .card img {
-    height: 150px;
-    width: 275;
-    object-fit: cover;
-    flex-direction: row;
-    border-bottom: 1px solid #dbdbdb;
+  height: 150px;
+  width: 275;
+  object-fit: cover;
+  flex-direction: row;
+  border-bottom: 1px solid #dbdbdb;
 }
 
 .card-header{

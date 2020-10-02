@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjectsByTitle } from '../store/project';
-
+import '../css/searchmodal.css'
+import ProjectSmall from './ProjectSmall';
 
 function SearchModal({ searchTerm }) {
   const dispatch = useDispatch();
@@ -10,26 +11,30 @@ function SearchModal({ searchTerm }) {
     dispatch(getProjectsByTitle(searchTerm))
   }, [searchTerm])
 
-  const projects_title = useSelector(state => state.projects.projectsTitle)
+  const projects = useSelector(state => state.projects)
   const stateNow = useSelector(state => state)
 
-  // console.log(projects_title)
-  // console.log("~~~~~~~~~~")
+  // const notLoaded = projects.projectsTitle && projects.projectsTitle.length > 0;
+  const notLoaded = projects.projectsTitle && searchTerm.length > 0;
+
+  if (!notLoaded) return null;
+
+
+  console.log(projects)
+  console.log("~~~~~~~~~~")
   // console.log(stateNow)
 
   return (
-    <div id='search_modal'>
+    <div className='search_modal'>
       <div className="search_modal__container">
-        {/* {projects_title.map((project) => {
-        return (
-          <div id='projects-div'>
-            `${project.title}`
-            </div>
-        )
-      })} */}
-        <button id='close-search-button' >
+        {/* { (!notLoaded) ? <div id='no-search-results'>No results matching your search.</div> : projects.projectsTitle.map((project) => <ProjectSmall project={project} key={project.id} />) */}
+        <div className='projects-label'>Projects</div>
+        {
+          projects.projectsTitle.map((project) => <ProjectSmall project={project} key={project.id} />)
+        }
+        {/* <button id='close-search-button' >
           X
-        </button>
+        </button> */}
       </div>
     </div>
   );

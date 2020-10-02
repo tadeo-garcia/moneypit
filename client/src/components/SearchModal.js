@@ -10,7 +10,7 @@ function SearchModal({ searchTerm, hideModal }) {
 
   useEffect(() => {
     dispatch(getProjectsByTitle(searchTerm))
-  }, [searchTerm])
+  }, [dispatch, searchTerm])
 
   const projects = useSelector(state => state.projects)
 

@@ -101,9 +101,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
         </div>
         <div id='user-modal-bottom'>
           <span id='logout-span' onClick={handleClick}>Log out</span>
-          <button onClick={hideModal} id='close-modal-button' >
-            X
-          </button>
+          <i onClick={hideModal} class='fa fa-times close-modal-button'></i>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ export default function SearchBar({ hideModal }) {
         {(searchTerm ? <i onClick={closeSearch} className='fa fa-times close_query' id='close-query-button' /> : null)}
         <SearchModal searchTerm={searchTerm} />
         {/* <button onClick={hideModal} id='close-search-button' > */}
-        <i onClick={hideModal} class='fa fa-times close_search' id='close-search-button' >
+        <i onClick={hideModal} className='fa fa-times close_search' id='close-search-button' >
         </i>
       </div >
     </div >

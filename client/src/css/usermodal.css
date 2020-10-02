@@ -116,12 +116,8 @@
   color: #fff;
 }
 
-<<<<<<< HEAD
-#user-modal__button{
-=======
 #user-modal__new-button{
   position: fixed;
->>>>>>> bdac74b857af3edd1eea1a8fe70c049279a6d91b
   display:flex;
   align-content: center;
   border-top: 1px solid #bdbdbd;

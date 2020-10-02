@@ -19,15 +19,12 @@ def get_by_category():
 
 @projects_routes.route('/projects_by_title')
 def get_by_title():
-    title = f"%{request.args.get('title', 'Robot')}%"
-    projects = Project.query.filter(Project.title.ilike(title)).all()
-    # print(projects)
-    # data = projects
+    title = f"%{request.args.get('title')}%"
+    projects = Project.query.filter(Project.title.ilike(title)).limit(4)
     data = [project.to_dict() for project in projects]
     titles = [project["title"] for project in data]
     print(titles)
     return {"projects": data}
-    # return {"projects": data}
 
 @projects_routes.route('/projects_by_id')
 def get_by_id():

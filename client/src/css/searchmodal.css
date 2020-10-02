@@ -13,6 +13,7 @@
   top: 60px;
 }
 
+
 .projects-label {
   font-size: 14px;
   color: #656969;
@@ -22,7 +23,9 @@
 }
 
 .search_modal__container {
+  box-sizing: border-box;
   margin-top: 60px;
+  height: 10px;
 }
 
 .listing-size {
@@ -67,4 +70,33 @@
   border-radius: 0;
   margin: 0;
   margin-right: 12px;
+}
+
+#no-search-results {
+  margin: 0;
+  margin-left: 24px;
+  font-size: 16px;
+  color: #656969;
+}
+
+.close_search {
+  padding-top: 16px;
+}
+
+.close_search:hover {
+  color: #009E74;
+  cursor: pointer;
+}
+
+.close_query {
+  color: darkgreen;
+  padding-top: 11.25px;
+  /* margin-right: 75px; */
+}
+
+#close-query-button {
+  position: relative;
+  top: -33px;
+  left: 50px;
+  z-index: 105;
 }

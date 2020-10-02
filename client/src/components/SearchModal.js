@@ -12,29 +12,21 @@ function SearchModal({ searchTerm }) {
   }, [searchTerm])
 
   const projects = useSelector(state => state.projects)
-  const stateNow = useSelector(state => state)
 
-  // const notLoaded = projects.projectsTitle && projects.projectsTitle.length > 0;
   const notLoaded = projects.projectsTitle && searchTerm.length > 0;
 
   if (!notLoaded) return null;
 
-
-  console.log(projects)
-  console.log("~~~~~~~~~~")
-  // console.log(stateNow)
+  console.log(projects.projectsTitle.length)
 
   return (
     <div className='search_modal'>
       <div className="search_modal__container">
-        {/* { (!notLoaded) ? <div id='no-search-results'>No results matching your search.</div> : projects.projectsTitle.map((project) => <ProjectSmall project={project} key={project.id} />) */}
         <div className='projects-label'>Projects</div>
+        {/* { (!notLoaded) ? <div id='no-search-results'>No results matching your search.</div> : projects.projectsTitle.map((project) => <ProjectSmall project={project} key={project.id} />) */}
         {
-          projects.projectsTitle.map((project) => <ProjectSmall project={project} key={project.id} />)
+          (projects.projectsTitle.length > 0) ? projects.projectsTitle.map((project) => <ProjectSmall project={project} key={project.id} />) : <div id='no-search-results'>Oi! We couldn't find any results.</div>
         }
-        {/* <button id='close-search-button' >
-          X
-        </button> */}
       </div>
     </div>
   );

@@ -30,6 +30,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
 
   function searchID(e) {
     e.preventDefault()
+    hideModal(e)
     let id = e.target.id.trim()
     dispatch(getProject(id))
     history.push(`/project/${id}`)

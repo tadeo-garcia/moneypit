@@ -52,9 +52,6 @@ def get_project():
 
 @projects_routes.route('/search_by_featured')
 def get_featured_projects():
-    print("~~~")
     projects = Project.query.filter(Project.staff_pick==True).all()
     data = [project.to_dict() for project in projects]
-    print(data)
-    print("~~~")
     return {"projects": data}

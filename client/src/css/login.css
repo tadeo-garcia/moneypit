@@ -1,13 +1,14 @@
 .loginWrapper {
   height: 100vh;
+  margin-top: -180px;
   background-color:#f0f0f0;
-  border: 1px solid #f0f0f0;
-  position: relative;
 }
 .loginContainer {
+  position: relative;
   background-color: rgb(255, 255, 255);
   margin-left: auto;
   margin-right: auto;
+  top: 275px;
   max-width: 398px;
 }
 .loginContainer__form {

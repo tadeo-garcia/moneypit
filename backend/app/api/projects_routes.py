@@ -17,6 +17,15 @@ def get_by_category():
     data = [project.to_dict() for project in projects]
     return {"projects": data}
 
+@projects_routes.route('/projects_by_title')
+def get_by_title():
+    title = f"%{request.args.get('title')}%"
+    projects = Project.query.filter(Project.title.ilike(title)).limit(4)
+    data = [project.to_dict() for project in projects]
+    titles = [project["title"] for project in data]
+    print(titles)
+    return {"projects": data}
+
 @projects_routes.route('/projects_by_id')
 def get_by_id():
     user_id = request.args.get('id', None)
@@ -36,4 +45,7 @@ def get_projects_by_id():
 def get_project():
     projectID = request.args.get('id', None)
     project = Project.query.get(projectID)
-    return {"project": project.to_dict()}, 200
+    rewards = Reward.query.filter(Reward.project_id==project.id).all()
+    rewards = [reward.to_dict() for reward in rewards]
+    project = project.to_dict()
+    return {"project": project, "rewards": rewards}, 200

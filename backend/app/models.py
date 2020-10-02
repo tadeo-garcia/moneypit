@@ -59,6 +59,7 @@ class Project(db.Model):
   launch_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   end_date = db.Column(db.DateTime, nullable=False, default= "2030-10-28 23:06:16.227442")
   total_pledges = db.Column(db.Integer, default=0)
+  staff_pick = db.Column(db.Boolean, default=False)
   days_remaining = db.Column(db.Integer, default=20)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)

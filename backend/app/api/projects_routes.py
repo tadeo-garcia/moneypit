@@ -49,3 +49,9 @@ def get_project():
     rewards = [reward.to_dict() for reward in rewards]
     project = project.to_dict()
     return {"project": project, "rewards": rewards}, 200
+
+@projects_routes.route('/search_by_featured')
+def get_featured_projects():
+    projects = Project.query.filter(Project.staff_pick==True).all()
+    data = [project.to_dict() for project in projects]
+    return {"featured_project": data}

@@ -33,7 +33,6 @@
 }
 
 .listing {
-  /* height: 50px; */
   border: none;
   padding: 12px 24px;
 }
@@ -91,7 +90,6 @@
 .close_query {
   color: darkgreen;
   padding-top: 11.25px;
-  /* margin-right: 75px; */
 }
 
 #close-query-button {

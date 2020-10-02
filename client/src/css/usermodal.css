@@ -72,14 +72,14 @@
   height: 200px;
 }
 
-#usermodal__project{
+.usermodal__project{
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: 30px;
   margin-bottom: 20px;
 }
 
-#usermodal__project-link{
+.usermodal__project-link{
   color: #464646;
   font-size: 12px;
   text-decoration: none;

@@ -53,7 +53,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
                 projects_pledged.map((project, index) => {
                   let link = `/projects/${project.id}`
                   return (
-                    <div id='usermodal__project'>
+                    <div className='usermodal__project' id={project.id}>
                       <div>
                         <img src={project.pic} id='backed-modal-pic' alt='project' />
                       </div>
@@ -72,12 +72,12 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
           </div>
           <div className='user-column3'>
             <div id='usermodal__header'>CREATED PROJECTS</div>
-            <div class='created-projects-div'>
+            <div className='created-projects-div'>
               {
                 projects_owned.map((project, index) => {
                   let link = `/projects/${project.id}`
                   return (
-                    <div id='usermodal__project'>
+                    <div className='usermodal__project' id={project.id}>
                       <div>
                         <img src={project.pic} id='backed-modal-pic' alt='project' />
                       </div>

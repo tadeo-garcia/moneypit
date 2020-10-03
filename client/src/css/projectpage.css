@@ -1,15 +1,19 @@
 #projectpage-container{
   width:100%;
-  height: 85vh;
-  display: grid;
-  grid-template-rows: 2fr 5fr 1.5fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #projectpage-top{
-  width:100%;
-  height: 585px;
+  /* width:100%;
+   */
+  min-width: 840px;
+  max-width: 1030px;
+  height: 500px;
   display:flex;
   flex-direction: column;
+  border-bottom: 1px #cbcbcb solid;
 }
 
 #projectpage-title{
@@ -17,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 150px;
+  height: 125px;
 }
 
 #pp-title{
@@ -36,7 +40,7 @@
   display:flex;
   justify-content: center;
   flex-direction: row;
-  height: 400px;
+  height: 350px;
 }
 
 #projectpage-detail-left{
@@ -106,30 +110,50 @@
   padding-top: 15px;
 }
 
-
 #projectpage-middle{
-  width:100%;
-  height: 700px;
+  min-width: 840px;
+  max-width: 1030px;
+  min-height: 1000px;
   display:grid;
   grid-template-columns: 2fr 1fr;
+  padding-top: 25px;
+  padding-bottom: 35px;
+  padding-left: 45px;
+  padding-right: 45px;
+  position: relative;
+  line-height: 1.75;
+  border-bottom: 1px #cbcbcb solid;
+
   }
+
+#pp-middle-title{
+  font-size: 22px;
+  font-weight: 300;
+  padding-bottom: 30px;
+}
 
 #projectpage-info{
   display:flex;
   flex-direction: column;
+  padding-right: 20px;
+  font-weight: 400;
 }
 
 #projectpage-pledges{
   display: flex;
   flex-direction: column;
+  padding-left: 20px;
 }
 
 #projectpage-bottom{
   display:flex;
   flex-direction: column;
-  width:inherit;
+  min-width: 840px;
+  max-width: 1030px;
   height: 550px;
-  padding: 35px 25px;
+  padding: 35px 45px;
+  position: relative;
+
 }
 
 #projectpage-recommended{
@@ -137,6 +161,13 @@
   display:flex;
   flex-direction: row;
   overflow-x: scroll;
+}
+
+#projectpage-recommended-title{
+  font-size: 12px;
+  font-weight: 500;
+  color: #555555;
+  padding-bottom: 20px;
 }
 
 #projectpage-recommendedcard{

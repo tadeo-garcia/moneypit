@@ -4,6 +4,8 @@ import Footer from '../components/Footer'
 import Reward from '../components/Reward'
 import ProjectCard from '../components/ProjectCard'
 import '../css/projectpage.css'
+import '../css/reward.css'
+
 
 export default function Project() {
     const project = useSelector(state => state.projects.project);
@@ -64,23 +66,30 @@ export default function Project() {
           </div>
           <div id='projectpage-middle'>
             <div id='projectpage-info'>
-              <h2>Story</h2>
-              <span>
-                Officia fashion axe flexitarian non, normcore consequat live-edge offal aliqua taxidermy. Bitters bicycle rights kogi, pabst ut brooklyn skateboard thundercats activated charcoal drinking vinegar. Voluptate pitchfork labore gastropub. Cronut skateboard vaporware, pork belly humblebrag retro duis ipsum chambray vexillologist.
-                <br/>
-                <br />
-                Dolore literally roof party +1 iceland qui quis 90's. Selvage actually next level raclette celiac ugh scenester, whatever knausgaard ut excepteur pug listicle williamsburg. Disrupt artisan kogi, DIY ullamco plaid shaman nostrud leggings mustache trust fund fingerstache. Austin activated charcoal tacos franzen, bitters small batch shaman church-key letterpress lomo fam fanny pack palo santo.
-                <br />
-                <br />
-                Paleo cold-pressed locavore pour-over drinking vinegar cliche succulents sint church-key pop-up kinfolk ethical. Small batch leggings DIY selvage. Roof party meggings chillwave kinfolk +1 vape culpa do. Deep v freegan neutra messenger bag, synth before they sold out skateboard subway tile fam retro gastropub schlitz incididunt aesthetic. La croix jean shorts PBR&B, anim sed yuccie master cleanse tbh whatever.
-                <br />
-                <br />
-                Retro la croix intelligentsia sustainable eiusmod in pitchfork asymmetrical. Pitchfork fugiat small batch jean shorts, organic deserunt shaman intelligentsia aliqua taxidermy cray man braid officia activated charcoal. Copper mug PBR&B mixtape cillum, church-key everyday carry bespoke selfies readymade bushwick ut street art unicorn. Lumbersexual edison bulb cliche art party sustainable. Selfies helvetica everyday carry, incididunt crucifix vice kogi ad authentic poutine swag eiusmod fanny pack. Pour-over stumptown kogi taiyaki bushwick. Bitters freegan proident in, meditation shoreditch put a bird on it kombucha aliquip.
-                <br />
-                <br />
-              </span>
+              <div id='pp-middle-title'>
+                <span>Story</span>
+              </div>
+              <div>
+                <span>
+                  Officia fashion axe flexitarian non, normcore consequat live-edge offal aliqua taxidermy. Bitters bicycle rights kogi, pabst ut brooklyn skateboard thundercats activated charcoal drinking vinegar. Voluptate pitchfork labore gastropub. Cronut skateboard vaporware, pork belly humblebrag retro duis ipsum chambray vexillologist.
+                  <br/>
+                  <br />
+                  Dolore literally roof party +1 iceland qui quis 90's. Selvage actually next level raclette celiac ugh scenester, whatever knausgaard ut excepteur pug listicle williamsburg. Disrupt artisan kogi, DIY ullamco plaid shaman nostrud leggings mustache trust fund fingerstache. Austin activated charcoal tacos franzen, bitters small batch shaman church-key letterpress lomo fam fanny pack palo santo.
+                  <br />
+                  <br />
+                  Paleo cold-pressed locavore pour-over drinking vinegar cliche succulents sint church-key pop-up kinfolk ethical. Small batch leggings DIY selvage. Roof party meggings chillwave kinfolk +1 vape culpa do. Deep v freegan neutra messenger bag, synth before they sold out skateboard subway tile fam retro gastropub schlitz incididunt aesthetic. La croix jean shorts PBR&B, anim sed yuccie master cleanse tbh whatever.
+                  <br />
+                  <br />
+                  Retro la croix intelligentsia sustainable eiusmod in pitchfork asymmetrical. Pitchfork fugiat small batch jean shorts, organic deserunt shaman intelligentsia aliqua taxidermy cray man braid officia activated charcoal. Copper mug PBR&B mixtape cillum, church-key everyday carry bespoke selfies readymade bushwick ut street art unicorn. Lumbersexual edison bulb cliche art party sustainable. Selfies helvetica everyday carry, incididunt crucifix vice kogi ad authentic poutine swag eiusmod fanny pack. Pour-over stumptown kogi taiyaki bushwick. Bitters freegan proident in, meditation shoreditch put a bird on it kombucha aliquip.
+                  <br />
+                  <br />
+                </span>
+              </div>
             </div>
             <div id='projectpage-pledges'>
+              <div id='pp-middle-title'>
+                <span>Support</span>
+              </div>
               <div>
                 {project.rewards.map((reward) => <Reward reward={reward} key={reward.id} />)}
               </div>
@@ -88,7 +97,7 @@ export default function Project() {
           </div>
           <div id='projectpage-bottom'>
             <div id='projectpage-recommended-title'>
-              <h4>Recommended for you</h4>
+              <span>WE ALSO RECOMMEND</span>
             </div>
             <div id='projectpage-recommended'>
               { projects_list.map((project) => 

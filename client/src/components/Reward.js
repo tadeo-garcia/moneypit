@@ -11,27 +11,32 @@ export default function Reward(props) {
       }
     return (
         <div className="pledge_info">
-            <div className="pledge_amount">
-                <h2>Pledge ${props.reward.minimum_donation} or more</h2>
-            </div>
-            <div className="pledge_title">
-                {props.reward.title}
-                </div>
-            <div className="pledge_reward">
-                <p>{props.reward.description} </p>
-            </div>
-            <div className="delivery-card">
-            Estimated Delivery
+          <div className="pledge_amount">
+            <span id='pledge_amount-title'>
+            Pledge ${props.reward.minimum_donation} or more
+            </span>
+          </div>
+          <div className="pledge_title">
+              {props.reward.title}
+          </div>
+          <div className="pledge_reward">
+              <p>{props.reward.description}</p>
+          </div>
+          <div className="delivery-card">
+          <span id='reward-gray' className="pledge_title"> ESTIMATED DELIVERY</span>
+            <br/>
             {props.reward.delivery_date}
-            <span>{props.reward.reward_count} backers </span>
-            </div>
-
-            <div className="pledge-button" onSubmit={handleSubmit}>
-            <form>
-                <input type="text" name="pledge" value={props.reward.minimum_donation}></input>
-                <button type="submit">Continue</button>
-            </form>
-            </div>
+            <br/>
+          <span id='reward-gray'> {props.reward.reward_count} backers </span>
+          </div>
+         { // <div className="pledge-button" onSubmit={handleSubmit}>
+          //   <form>
+          //       <input type="text" name="pledge" value={props.reward.minimum_donation}>
+          //       </input>
+          //       <button type="submit">Continue</button>
+          //   </form>
+          // </div>
+        }
         </div>
     )
 }

@@ -31,7 +31,8 @@ export default function Explorer({ hideModal }) {
       <div id='categories-container'>
         <div id='label-div'>
           <span id='labels'>Categories</span>
-          <button onClick={hideModal} id='close-button'> X </button>
+          <i onClick={hideModal} class='fa fa-times' id='close-search-button' >
+          </i>
         </div>
         {category_list.map((category,index)=>{
             let link = `/projects/${category.title}`

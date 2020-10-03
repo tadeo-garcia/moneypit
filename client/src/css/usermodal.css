@@ -125,14 +125,11 @@
   width: 290px
 }
 
-#close-modal-button{
+.close-modal-button{
   z-index: 100;
-  background-color: #ffffff;
-  font-weight: 600;
   font-size: 14px;
-  border: 0px;
-  cursor: pointer;
   padding-top: 20px;
+  cursor: pointer;
 }
 
 #logout-span{

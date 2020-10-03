@@ -20,8 +20,6 @@ export const logoutUser = () => {
   }
 }
 
-
-
 export const login = (email, password) => {
   return async dispatch => {
     const res = await fetch('/api/session', {

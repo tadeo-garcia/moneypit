@@ -5,11 +5,11 @@ export default function SearchBar({ hideModal }) {
   const [searchTerm, setSearchTerm] = useState('')
 
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   dispatch(getProject(id))
-  //   history.push(`/listings/${id}`)
-  // }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // dispatch(searchCity(city,state))
+    // history.push(`/listings/${city}`)
+  }
 
   const closeSearch = () => {
     setSearchTerm('')
@@ -17,12 +17,12 @@ export default function SearchBar({ hideModal }) {
 
   return (
     <div id='search-div'>
-      <div className="flex-form" onChange={e => setSearchTerm(e.target.value)}>
-        <input type="text" id="search-input" placeholder="Search for Projects or Categories" />
+      <div className="flex-form" onSubmit={handleSubmit} onChange={e => setSearchTerm(e.target.value)}>
+        <input type="text" id="search-input" autoComplete='off' placeholder="Search for Projects or Categories" />
         {(searchTerm ? <i onClick={closeSearch} className='fa fa-times close_query' id='close-query-button' /> : null)}
-        <SearchModal searchTerm={searchTerm} hideModal={hideModal} />
+        <SearchModal searchTerm={searchTerm} />
         {/* <button onClick={hideModal} id='close-search-button' > */}
-        <i onClick={hideModal} class='fa fa-times close_search' id='close-search-button' >
+        <i onClick={hideModal} className='fa fa-times close_search' id='close-search-button' >
         </i>
       </div >
     </div >

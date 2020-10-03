@@ -6,11 +6,28 @@ import ProjectCard from '../components/ProjectCard'
 import '../css/projectpage.css'
 
 export default function Project() {
-    const project = useSelector(state => state.projects.project)
-    const projects_list = useSelector(state => state.projects)
+    const project = useSelector(state => state.projects.project);
+    const recommended = useSelector(state => state.projects.projects);
+    let projects_list = [];
     
-    if(!project) return 'Loading...'
+    if(!project || !recommended) return 'Loading...'
+    
+    if(!recommended){
+      return
+    } else {
+      let i = 0;
+      while (projects_list.length < 4 && i < recommended.length - 1){
+        if(recommended[i].id !== project.id){
+          projects_list.push(recommended[i])
+          console.log(projects_list)
+        }
+        i++
+      }
+    }
+    
+    // if (!project) return 'Loading...'
 
+    
     return (
       <>
         <div id='projectpage-container'>
@@ -76,7 +93,7 @@ export default function Project() {
               <h4>Recommended for you</h4>
             </div>
             <div id='projectpage-recommended'>
-              {projects_list.projects.map((project) => 
+              { projects_list.map((project) => 
                 <ProjectCard project={project} key={project.id} id='projectpage-recommendedcard'/>)}
             </div>
           </div>

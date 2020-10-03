@@ -23,6 +23,7 @@
 #pp-title{
   font-weight: 500;
   font-size: 18px;
+  line-height: 3;
 }
 
 #pp-description{
@@ -34,8 +35,7 @@
 #projectpage-detail{
   display:flex;
   flex-direction: row;
-  height: 435px;
-  
+  height: 400px;
 }
 
 #projectpage-detail-left{
@@ -43,7 +43,6 @@
   flex-direction: row;
   padding-left: 45px;
   padding-right: 15px;
-
 }
 
 #pp-image{

@@ -1,0 +1,129 @@
+#projectpage-container{
+  width:100%;
+  height: 85vh;
+  display: grid;
+  grid-template-rows: 2fr 5fr 1.5fr;
+}
+
+#projectpage-top{
+  width:100%;
+  height: 585px;
+  display:flex;
+  flex-direction: column;
+}
+
+#projectpage-title{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+#pp-title{
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#pp-description{
+  font-weight: 300;
+  width:75%;
+  text-align: center;
+}
+
+#projectpage-detail{
+  display:flex;
+  flex-direction: row;
+  height: 435px;
+  
+}
+
+#projectpage-detail-left{
+  display:flex;
+  flex-direction: row;
+  padding-left: 45px;
+  padding-right: 15px;
+
+}
+
+#pp-image{
+  height: 300px;
+}
+
+#projectpage-detail-right{
+  display:flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 45px;
+}
+
+#projectpage-detail-pledge{
+  padding-top: 25px;
+}
+
+.pp-detail-pledge-title{
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#projectpage-detail-backers{
+  padding-top: 25px;
+}
+
+#projectpage-detail-days{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+#projectpage-detail-button{
+  background-color: #028858;
+  border: 0px;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#projectpage-detail-end-date{
+  font-size: 10px;
+  font-weight: 300;
+  padding-top: 15px;
+}
+
+
+#projectpage-middle{
+  width:100%;
+  height: 700px;
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  }
+
+#projectpage-info{
+  display:flex;
+  flex-direction: column;
+}
+
+#projectpage-pledges{
+  display: flex;
+  flex-direction: column;
+}
+
+#projectpage-bottom{
+  display:flex;
+  flex-direction: column;
+  width:inherit;
+  height: 550px;
+  padding: 35px 25px;
+}
+
+#projectpage-recommended{
+  width: 80vh;
+  display:flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+#projectpage-recommendedcard{
+  height: 100px;
+}

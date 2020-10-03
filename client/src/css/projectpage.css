@@ -34,19 +34,27 @@
 
 #projectpage-detail{
   display:flex;
+  justify-content: center;
   flex-direction: row;
   height: 400px;
 }
 
 #projectpage-detail-left{
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-left: 45px;
   padding-right: 15px;
 }
 
 #pp-image{
   height: 300px;
+}
+
+#pp-location{
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 #projectpage-detail-right{
@@ -62,7 +70,15 @@
 
 .pp-detail-pledge-title{
   font-weight: 500;
-  font-size: 18px;
+  font-size: 24px;
+}
+
+.green-text{
+  color: #028858;
+}
+
+.pp-detail-text{
+  font-weight: 300;
 }
 
 #projectpage-detail-backers{

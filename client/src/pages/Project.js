@@ -24,10 +24,7 @@ export default function Project() {
         i++
       }
     }
-    
-    // if (!project) return 'Loading...'
-
-    
+        
     return (
       <>
         <div id='projectpage-container'>
@@ -39,22 +36,23 @@ export default function Project() {
             <div id='projectpage-detail'>
               <div id='projectpage-detail-left'>
                 <img id='pp-image' src={project.pic} alt='Project Video'/>
+                <div id='pp-location'><i class="fa fa-map-marker" aria-hidden="true"></i> {project.location}</div>
               </div>
               <div id='projectpage-detail-right'>
                 <div id="projectpage-detail-pledge">
-                  <span className='pp-detail-pledge-title'>{project.total_funding}</span>
+                  <span className='pp-detail-pledge-title green-text'>{project.total_funding}</span>
                   <br/>
-                  <span>pledged of {project.funding_goal} goal</span>
+                  <span className='pp-detail-text'>pledged of {project.funding_goal} goal</span>
                 </div>
                 <div id="projectpage-detail-backers">
                   <span className='pp-detail-pledge-title'>{project.total_pledges}</span>
                   <br/>
-                  <span>Backers</span>
+                  <span className='pp-detail-text'>Backers</span>
                 </div>
                 <div id="projectpage-detail-days">
                   <span className='pp-detail-pledge-title'>{project.days_remaining}</span>
                   <br/>
-                  <span>days to go</span>
+                  <span className='pp-detail-text'>days to go</span>
                 </div>
                 <div id="projectpage-detail-bp">
                   <button id='projectpage-detail-button'>Back this project</button>

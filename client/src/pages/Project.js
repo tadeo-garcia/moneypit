@@ -37,7 +37,7 @@ export default function Project() {
             <div id='projectpage-detail'>
               <div id='projectpage-detail-left'>
                 <img id='pp-image' src={project.pic} alt='Project Video'/>
-                <div id='pp-location'><i class="fa fa-map-marker" aria-hidden="true"></i> {project.location}</div>
+                <div id='pp-location'><i className="fa fa-map-marker" aria-hidden="true"></i> {project.location}</div>
               </div>
               <div id='projectpage-detail-right'>
                 <div id="projectpage-detail-pledge">

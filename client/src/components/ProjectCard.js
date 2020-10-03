@@ -20,10 +20,10 @@ let percentage = Math.floor(props.project.total_funding / props.project.funding_
   return (
     <div id={props.project.id} className="card-wrapper" onClick={searchID}>
       <Link id={props.project.id} style={{ textDecoration: "none", color: "black" }} onClick={searchID} to={`project/${props.project.id}`}>
-        <div class="card">
+        <div className="card">
           <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
-          <div class="card-information">
-            <div class="card-header">
+          <div className="card-information">
+            <div className="card-header">
               <h3>{props.project.title}</h3>
               <h2>{props.project.description}</h2>
               <h3>By {props.project.organization}</h3>

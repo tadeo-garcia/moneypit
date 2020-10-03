@@ -31,13 +31,13 @@ export default function Explorer({ hideModal }) {
       <div id='categories-container'>
         <div id='label-div'>
           <span id='labels'>Categories</span>
-          <i onClick={hideModal} class='fa fa-times' id='close-search-button' >
+          <i onClick={hideModal} className='fa fa-times' id='close-search-button' >
           </i>
         </div>
         {category_list.map((category,index)=>{
             let link = `/projects/${category.title}`
             return (
-              <div id= 'category-div'>
+              <div id= 'category-div' key={category.title}>
                 <a href={link} key={index} id='category-link' onClick={searchCategory}> {category.title} </a>
                 <span>{category.length}</span>
               </div>

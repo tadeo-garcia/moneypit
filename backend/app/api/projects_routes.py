@@ -7,6 +7,8 @@ projects_routes = Blueprint('projects', __name__)
 def get_categories():
     categories = Category.query.all()
     data = [category.to_dict() for category in categories]
+    for category in data:
+      category["length"] = len(Project.query.filter(Project.category_id==category["id"]).all())
     return {"categories": data}
 
 @projects_routes.route('/search_by_category')

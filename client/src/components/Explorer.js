@@ -38,7 +38,8 @@ export default function Explorer({ hideModal }) {
             let link = `/projects/${category.title}`
             return (
               <div id= 'category-div'>
-                <a href={link} key={index} id='category-link' onClick={searchCategory}> {category.title}</a>
+                <a href={link} key={index} id='category-link' onClick={searchCategory}> {category.title} </a>
+                <span>{category.length}</span>
               </div>
             )
           })

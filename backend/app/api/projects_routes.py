@@ -75,15 +75,15 @@ def submit_pledge():
       reward = Reward.query.get(reward_id)
       project = Project.query.get(project_id)
       project.increment(pledge_amount)
-      reward.increment
+      reward.increment()
       db.session.add(pledge)
       db.session.add(project)
       db.session.add(reward)
       db.session.commit()
-      rewards = Reward.query.filter(Reward.project_id==project_id).all()
+      rewards = Reward.query.filter(Reward.project_id==project_id).order_by("id").all()
       rewards = [reward.to_dict() for reward in rewards]
       project = project.to_dict()
       return {"project": project, "rewards": rewards}, 200
   except:
-      print(traceback.format_exc())
+      # print(traceback.format_exc())
       return jsonify({"msg": "Bad data for pledge."}), 400

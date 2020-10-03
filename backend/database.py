@@ -60,7 +60,10 @@ with app.app_context():
 #   project.backers_count
 # PROJECTS
   for project in data:
-    random_id = random.randrange(1,6)
+    if project["id"] == 555:
+      random_id = 555
+    else:
+      random_id = random.randrange(1,6)
     min_donation = random.randrange(5, 20, 5)
     min_donation2 = random.randrange(min_donation + 10, 50, 5)
     min_donation3 = random.randrange(min_donation2 + 30, 150, 5)

@@ -42,6 +42,7 @@ export default function HomePage() {
   let num3 = Math.floor(Math.random() * len) + 1 
   while(num1 === num2 || num2 === num3) num2 = Math.floor(Math.random() * len) + 1 
   while(num1 === num3 || num2 === num3) num3 = Math.floor(Math.random() * len) + 1 
+
   return (
     <>
       <div className='homeBody'>
@@ -77,7 +78,7 @@ export default function HomePage() {
                 <img className='homeHeader__imgSmall' id={projects[num1].id} onClick={searchID} src={projects[num1].pic} alt='Recommended Project 1'></img>
                 <div>
                   <p className='homeHeader__tittle'>{projects[num1].title}</p>
-                  <p className='homeHeader__funded'>{projects[num1].total_funding}% funded</p>
+                  <p className='homeHeader__funded'>{Math.floor(projects[num1].total_funding / projects[num1].funding_goal * 100)}% funded</p>
                   <p className='homeHeader__madeBy'>By {projects[num1].organization}</p>
                 </div>
               </div>
@@ -85,7 +86,7 @@ export default function HomePage() {
                 <img className='homeHeader__imgSmall' id={projects[num2].id} onClick={searchID} src={projects[num2].pic} alt='Recommended Project 2'></img>
                 <div>
                   <p className='homeHeader__tittle'>{projects[num2].title}</p>
-                  <p className='homeHeader__funded'>{projects[num2].total_funding}% funded</p>
+                  <p className='homeHeader__funded'>{Math.floor(projects[num2].total_funding / projects[num2].funding_goal * 100)}% funded</p>
                   <p className='homeHeader__madeBy'>By {projects[num2].organization}</p>
                 </div>
               </div>
@@ -93,7 +94,7 @@ export default function HomePage() {
                 <img className='homeHeader__imgSmall' id={projects[num3].id} onClick={searchID} src={projects[num3].pic} alt='Recommended Project 3'></img>
                 <div>
                   <p className='homeHeader__tittle'>{projects[num3].title}</p>
-                  <p className='homeHeader__funded'>{projects[num3].total_funding}% funded</p>
+                  <p className='homeHeader__funded'>{Math.floor(projects[num3].total_funding / projects[num3].total_funding * 100)}% funded</p>
                   <p className='homeHeader__madeBy'>By {projects[num3].organization}</p>
                 </div>
               </div>           

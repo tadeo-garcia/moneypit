@@ -21,7 +21,6 @@ export default function Project() {
       while (projects_list.length < 4 && i < recommended.length - 1){
         if(recommended[i].id !== project.id){
           projects_list.push(recommended[i])
-          console.log(projects_list)
         }
         i++
       }

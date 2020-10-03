@@ -14,6 +14,8 @@ export default function ProjectCard(props) {
     dispatch(getProject(id))
     history.push(`/project/${id}`)
   }
+if(!props.project) return null
+let percentage = Math.floor(props.project.total_funding / props.project.funding_goal * 100)
 
   return (
     <div id={props.project.id} className="card-wrapper" onClick={searchID}>
@@ -28,7 +30,7 @@ export default function ProjectCard(props) {
             </div>
             <div className="card-footer">
               <h4 id='pledged'>${props.project.total_funding} pledged</h4>
-              <h4>{props.project.total_funding > 0 ? Math.floor(props.project.funding_goal / props.project.total_funding) : 0.00}% funded</h4>
+              <h4>{percentage}% funded</h4>
               <h4>{props.project.days_remaining} days to go</h4>
             </div>
           </div>

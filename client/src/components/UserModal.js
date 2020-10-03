@@ -9,12 +9,11 @@ export default function UserModal({ hideModal }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.auth.id);
-
   useEffect(() =>{
     dispatch(getProjectsByPledge(currentUserId))
     dispatch(getProjectsByOwner(currentUserId))
-},[dispatch, currentUserId])
-
+  },[dispatch, currentUserId])
+  
 const projects_owned = useSelector(state => state.projects.projectsOwner)
 const projects_pledged = useSelector(state => state.projects.projectsPledge)
 

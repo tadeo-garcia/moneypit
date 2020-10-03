@@ -78,7 +78,6 @@ export const sendPledge = (pledgeAmount, userId, projectId, rewardId) => {
   let project = res.data.project
   let rewards = res.data.rewards
   project.rewards = rewards
-  console.log(res.data)
   if (res.ok) {
     dispatch(loadProject(res.data.project))
   }
@@ -119,7 +118,6 @@ export const getProjectsByOwner = (id) => {
     const res = await fetch(`/api/projects/projects_by_id?id=${id}`, {
       method: "get",
     })
-
     res.data = await res.json();
     if (res.ok) {
       dispatch(loadProjectsByOwner(res.data.projects))

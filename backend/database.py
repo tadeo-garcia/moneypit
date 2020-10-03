@@ -60,7 +60,7 @@ with app.app_context():
 #   project.backers_count
 # PROJECTS
   for project in data:
-    if project["id"] == 555:
+    if project["creatorId"] == 555:
       random_id = 555
     else:
       random_id = random.randrange(1,6)

@@ -60,30 +60,30 @@ def get_featured_projects():
 
 @projects_routes.route('/submit_pledge', methods=['POST'])
 def submit_pledge():
+  print(request.json.get('userId', None))
+  print("@@@")
+  project_id = int(request.json.get('projectId', None))
+  reward_id = reward_id=int(request.json.get('rewardId', None))
+  pledge_amount = int(request.json.get('pledgeAmount', None))
   try:
       pledge = Pledge(
-        pledge_amount=int(request.json.get('pledgeAmount', None)),
+        pledge_amount=pledge_amount,
         reward_id=int(request.json.get('rewardId', None)),
         backer_id=int(request.json.get('userId', None)),
-        project_id=int(request.json.get('projectId', None))
+        project_id=project_id
       )
-      print(pledge.user_id)
-      print("###")
-      print(pledge.project_id)
-      reward = Reward.query.get(pledge.reward_id)
-      project = Project.query.get(pledge.project_id)
-      project.increment(pledge.pledge_amount)
+      reward = Reward.query.get(reward_id)
+      project = Project.query.get(project_id)
+      project.increment(pledge_amount)
       reward.increment
       db.session.add(pledge)
       db.session.add(project)
       db.session.add(reward)
       db.session.commit()
-      rewards = Reward.query.filter(Reward.project_id==pledge.user_id).all()
+      rewards = Reward.query.filter(Reward.project_id==project_id).all()
       rewards = [reward.to_dict() for reward in rewards]
       project = project.to_dict()
-      print(project)
-      print("~~~~~~~")
-      print(rewards)
       return {"project": project, "rewards": rewards}, 200
   except:
+      print(traceback.format_exc())
       return jsonify({"msg": "Bad data for pledge."}), 400

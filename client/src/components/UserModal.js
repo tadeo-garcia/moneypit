@@ -14,8 +14,8 @@ export default function UserModal({ hideModal }) {
     dispatch(getProjectsByOwner(currentUserId))
   },[dispatch, currentUserId])
   
-const projects_owned = useSelector(state => state.projects.projectsOwner)
-const projects_pledged = useSelector(state => state.projects.projectsPledge)
+const projects_owned_data = useSelector(state => state.projects.projectsOwner)
+const projects_pledged_data = useSelector(state => state.projects.projectsPledge)
 
   const handleClick = e => {
     e.preventDefault();
@@ -23,10 +23,13 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
     history.push('/')
   }
 
-  if(!projects_owned || !projects_pledged){
+
+  if(!projects_owned_data || !projects_pledged_data){
     return null
   }
 
+ let projects_pledged = Object.entries(projects_pledged_data).slice(0, 4).map(project => project[1])
+  let projects_owned = Object.entries(projects_owned_data).slice(0, 4).map(project => project[1])
   function searchID(e) {
     e.preventDefault()
     hideModal(e)

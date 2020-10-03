@@ -147,7 +147,7 @@ export default function projectsReducer(state = {}, action) {
     case GET_PROJECTS_BY_TITLE:
       return { ...state, projectsTitle: action.projects }
     case GET_FEATURED_PROJECTS:
-      return { ...state, projects: action.projects}
+      return { ...state, featuredProjects: action.projects}
     default:
       return state;
   }

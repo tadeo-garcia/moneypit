@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category'
-import { getProject, getProjectsByCategory } from '../store/project';
+import { getProject, getProjectsByCategory, getFeaturedProjects } from '../store/project';
 import '../css/homepage.css'
 import Footer from '../components/Footer'
 import { useHistory } from 'react-router-dom';
@@ -12,7 +12,8 @@ export default function HomePage() {
 
 
   useEffect(() => {
-    dispatch(getProjectsByCategory("Robots"))
+    dispatch(getProjectsByCategory('Apps'))
+    dispatch(getFeaturedProjects())
     dispatch(getCategories())
   }, [dispatch])
 
@@ -30,16 +31,18 @@ export default function HomePage() {
     history.push(`/project/${id}`)
   }
   
-  const projects = useSelector(state => state.projects.projects)
+  const projects = useSelector(state => state.projects.featuredProjects)
+  const testing = useSelector(state => state.projects.projects)
   const category_list = useSelector(state => state.categories.list)
-  const notLoaded = projects && category_list
+  const notLoaded = projects && category_list && testing
   if (!notLoaded) return null;
-  let len = projects.length
-  let num1 = Math.floor(Math.random() * len)
-  let num2 = Math.floor(Math.random() * len)
-  let num3 = Math.floor(Math.random() * len)
-  while(num1 === num2 || num2 === num3) num2 = Math.floor(Math.random() * len)
-  while(num1 === num3 || num2 === num3) num3 = Math.floor(Math.random() * len)
+  let len = projects.length - 1
+  let num1 = Math.floor(Math.random() * len) + 1 
+  let num2 = Math.floor(Math.random() * len) + 1 
+  let num3 = Math.floor(Math.random() * len) + 1 
+  while(num1 === num2 || num2 === num3) num2 = Math.floor(Math.random() * len) + 1 
+  while(num1 === num3 || num2 === num3) num3 = Math.floor(Math.random() * len) + 1 
+  console.log(testing)
   return (
     <>
       <div className='homeBody'>
@@ -60,13 +63,14 @@ export default function HomePage() {
           <div className='homeHeader'>
             <div className='homeHeader__leftside'>
                 <p id='featuredLabel'>FEATURED PROJECT</p>
-                <img className='homeHeader__imgLg' id={projects[4].id} onClick={searchID} src={projects[4].pic} alt='Featured Project'></img>
+                <img className='homeHeader__imgLg' id={projects[0].id} onClick={searchID} src={projects[0].pic} alt='Featured Project'></img>
                 <p id='featuredTitle'>
-                {projects[4].title}
+                {projects[0].title}
                 </p>
                 <p id='featuredDes'>
-                  {projects[4].description}
+                  {projects[0].description}
                 </p>
+                <p id='featuredBy'>By {projects[0].organization}</p>
             </div>
             <div className='homeHeader__rightside'>
               <p id='featuredLabel'>RECOMMENDED FOR YOU</p>
@@ -96,8 +100,25 @@ export default function HomePage() {
               </div>           
             </div>
           </div>
+          <div id='listLabel'>Apps</div>
+          <div className='body'>
+            {testing.map((projectBody,index)=>{
+                return (
+                    <div key={index} className='body__list'>
+                      <img className='body__img' id={projectBody.id} onClick={searchID} src={projectBody.pic} alt='Featured Project'></img>
+                      <p id='bodyTitle'>
+                      {projectBody.title}
+                      </p>
+                      <p id='bodyDes'>
+                        {projectBody.description}
+                      </p>
+                      <p id='bodyBy'>By {projectBody.organization}</p>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
-        
       </div>
       <Footer />
     </>

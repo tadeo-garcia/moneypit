@@ -13,6 +13,8 @@ export default function Reward(props) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     setState((prevState) => ({ ...prevState, [inputName]: inputValue }));
+
+
   }
 
     const dispatch = useDispatch();
@@ -43,7 +45,7 @@ export default function Reward(props) {
           <div className="pledge-button" onSubmit={handleSubmit}>
             <form>
                 <label for='pledge' id='pledge-amount'>Pledge Amount</label>
-                <input type="text" id='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange}>
+                <input min={props.reward.minimum_donation} type="number" id='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange} required>
                 </input>
                 <button type="submit" id='reward-pledge-button'>Continue</button>
             </form>

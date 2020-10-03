@@ -41,7 +41,7 @@ export default function Project() {
               </div>
               <div id='projectpage-detail-right'>
                 <div id="projectpage-detail-pledge">
-                  <span className='pp-detail-pledge-title green-text'>{project.total_funding}</span>
+                  <span className='pp-detail-pledge-title green-text'>${project.total_funding}</span>
                   <br/>
                   <span className='pp-detail-text'>pledged of {project.funding_goal} goal</span>
                 </div>
@@ -84,6 +84,17 @@ export default function Project() {
                   <br />
                 </span>
               </div>
+              <div>
+                <div id='pp-middle-title'>
+                  <span>Risks and Challenges</span>
+                </div>
+                <span>
+                  Eiusmod poutine etsy semiotics everyday carry swag voluptate microdosing. Nulla bitters shoreditch semiotics mlkshk artisan quis reprehenderit godard cornhole. Incididunt aliqua tbh, distillery swag tofu artisan palo santo. Godard poke craft beer pop-up crucifix brooklyn esse, actually ennui hella raw denim celiac.
+                  <br />
+                  <br />
+                  Dummy text? More like dummy thicc text, amirite?
+                </span>
+              </div>
             </div>
             <div id='projectpage-pledges'>
               <div id='pp-middle-title'>
@@ -104,7 +115,7 @@ export default function Project() {
             </div>
           </div>
         </div>
-        {/* <Footer> </Footer> */}
+        <Footer> </Footer>
       </>
     )
 }

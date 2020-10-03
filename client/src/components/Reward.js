@@ -42,12 +42,12 @@ export default function Reward(props) {
           </div>
           <div className="pledge-button" onSubmit={handleSubmit}>
             <form>
-                <input type="text" name="pledge" value={state.pledge} onChange={handleChange}>
+                <label for='pledge' id='pledge-amount'>Pledge Amount</label>
+                <input type="text" id='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange}>
                 </input>
-                <button type="submit">Continue</button>
+                <button type="submit" id='reward-pledge-button'>Continue</button>
             </form>
           </div>
-        
         </div>
     )
 }

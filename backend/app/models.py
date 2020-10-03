@@ -67,8 +67,9 @@ class Project(db.Model):
   owner = db.relationship("User", foreign_keys=[owner_id])
   project_rewards = db.relationship("Reward", lazy='subquery')
 
-  def increment(self):
+  def increment(self, amount):
     self.total_pledges += 1
+    self.total_funding += amount
 
   def to_dict(self):
     return {
@@ -102,28 +103,6 @@ class Category(db.Model):
     }
 
 
-class Pledge(db.Model):
-  __tablename__ = 'pledges'
-
-  id = db.Column(db.Integer, primary_key=True)
-  pledge_amount = db.Column(db.Integer, nullable=False)
-  reward_id = db.Column(db.Integer)
-  backer_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  
-  backer = db.relationship("User", foreign_keys=[backer_id])
-  project = db.relationship("Project", foreign_keys=[project_id])
-  
-  def to_dict():
-    return {
-      "id": self.id,
-      "pledge_amount": self.pledge_amount,
-      "reward_id": self.reward_id,
-      "backer_id": self.backer_id,
-      "project_id": self.project_id
-    }
 
 class Reward(db.Model):
   __tablename__ = 'rewards'
@@ -156,10 +135,26 @@ class Reward(db.Model):
       "project_id": self.project_id
     }
 
+class Pledge(db.Model):
+  __tablename__ = 'pledges'
 
-# class User_Reward(db.Model):
-#   __tablename__ = 'user_rewards'
-
-#   id = db.Column(db.Integer, primary_key=True)
-#   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
-#   reward_id = db.Column(db.Integer, db.ForeignKey("rewards.id"), nullable=False)
+  id = db.Column(db.Integer, primary_key=True)
+  pledge_amount = db.Column(db.Integer, nullable=False)
+  reward_id = db.Column(db.Integer, db.ForeignKey("rewards.id"))
+  backer_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+  
+  backer = db.relationship("User", foreign_keys=[backer_id])
+  project = db.relationship("Project", foreign_keys=[project_id])
+  reward = db.relationship("Reward", foreign_keys=[reward_id])
+  
+  def to_dict():
+    return {
+      "id": self.id,
+      "pledge_amount": self.pledge_amount,
+      "reward_id": self.reward_id,
+      "backer_id": self.backer_id,
+      "project_id": self.project_id
+    }

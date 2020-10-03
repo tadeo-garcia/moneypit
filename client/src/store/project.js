@@ -64,11 +64,16 @@ export const getProject = (projectID) => {
   }
 }
 
-export const sendPledge = () => {
+export const sendPledge = (pledgeAmount, userId, projectId, rewardId) => {
   return async dispatch => {
     const res = await fetch('/api/projects/submit_pledge', {
-      method: "post"
-    })
+      method: "post",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ pledgeAmount, userId, projectId, rewardId })
+    },
+    )
   res.data = await res.json();
   let project = res.data.project
   let rewards = res.data.rewards

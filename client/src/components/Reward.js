@@ -18,7 +18,7 @@ export default function Reward(props) {
     const dispatch = useDispatch();
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(sendPledge())
+        dispatch(sendPledge(state.pledge, user.id, project.id, props.reward.id))
       }
     return (
         <div className="pledge_info">

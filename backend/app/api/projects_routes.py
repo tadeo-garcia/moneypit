@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, redirect, url_for, session, request
-from app.models import Category, Project, Pledge, Reward
+from app.models import Category, Project, Pledge, Reward, db
 
 projects_routes = Blueprint('projects', __name__)
 
@@ -55,3 +55,21 @@ def get_featured_projects():
     projects = Project.query.filter(Project.staff_pick==True).all()
     data = [project.to_dict() for project in projects]
     return {"projects": data}
+
+# filter where reward id matches project
+
+@projects_routes.route('/submit_pledge', methods=['POST'])
+def submit_pledge():
+    project = Project.query.get(556305802)
+    print(project.total_pledges)
+    project.total_pledges = 2500555
+    print(project.total_pledges)
+    db.session.commit()
+    # project.increment(255)
+    # project.commit
+    # get single reward from pledge.reward_id
+    # add it to db
+    rewards = Reward.query.filter(Reward.project_id==556305802).all()
+    rewards = [reward.to_dict() for reward in rewards]
+    project = project.to_dict()
+    return {"project": project, "rewards": rewards}, 200

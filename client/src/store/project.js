@@ -64,9 +64,26 @@ export const getProject = (projectID) => {
   }
 }
 
+export const sendPledge = () => {
+  return async dispatch => {
+    const res = await fetch('/api/projects/submit_pledge', {
+      method: "post"
+    })
+  res.data = await res.json();
+  let project = res.data.project
+  let rewards = res.data.rewards
+  project.rewards = rewards
+  console.log(res.data)
+  if (res.ok) {
+    dispatch(loadProject(res.data.project))
+  }
+    return res;
+  }
+}
+
+
 export const getFeaturedProjects = () => {
   return async dispatch => {
-    console.log("~~~~~")
     const res = await fetch('/api/projects/search_by_featured', {
       method: "get"
     })

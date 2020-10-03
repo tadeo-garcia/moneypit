@@ -42,7 +42,6 @@ export default function HomePage() {
   let num3 = Math.floor(Math.random() * len) + 1 
   while(num1 === num2 || num2 === num3) num2 = Math.floor(Math.random() * len) + 1 
   while(num1 === num3 || num2 === num3) num3 = Math.floor(Math.random() * len) + 1 
-  console.log(testing)
   return (
     <>
       <div className='homeBody'>

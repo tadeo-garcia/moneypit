@@ -54,6 +54,8 @@ export const signup = (username, email, password) => {
   }
 }
 
+
+
 export const logout = () => {
   return async dispatch => {
     const res = await fetch('/api/session', {

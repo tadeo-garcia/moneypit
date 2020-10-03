@@ -61,23 +61,30 @@ def get_featured_projects():
 
 @projects_routes.route('/submit_pledge', methods=['POST'])
 def submit_pledge():
-  print(request.json.get('userId', None))
-  print("@@@")
   project_id = int(request.json.get('projectId', None))
-  reward_id = reward_id=int(request.json.get('rewardId', None))
+  reward_id = int(request.json.get('rewardId', None))
   pledge_amount = int(request.json.get('pledgeAmount', None))
+  backer_id = int(request.json.get('userId', None))
   try:
       pledge = Pledge(
         pledge_amount=pledge_amount,
-        reward_id=int(request.json.get('rewardId', None)),
-        backer_id=int(request.json.get('userId', None)),
+        reward_id=reward_id,
+        backer_id=backer_id,
         project_id=project_id
       )
-      reward = Reward.query.get(reward_id)
-      project = Project.query.get(project_id)
-      project.increment(pledge_amount)
-      reward.increment()
       db.session.add(pledge)
+      db.session.commit()
+      print("~~~~")
+      pledges = Pledge.query.filter(Pledge.backer_id==backer_id, Pledge.project_id==project_id).all()
+      project = Project.query.get(project_id)
+      print(pledges)
+      if len(pledges) < 2:
+        project.increase_pledge()
+      reward = Reward.query.get(reward_id)
+      pledgeRewards = Pledge.query.filter(Pledge.backer_id==backer_id, Pledge.reward_id==reward_id).all()
+      if len(pledgeRewards)==1:
+        reward.increment()
+      project.increment(pledge_amount)
       db.session.add(project)
       db.session.add(reward)
       db.session.commit()
@@ -86,5 +93,5 @@ def submit_pledge():
       project = project.to_dict()
       return {"project": project, "rewards": rewards}, 200
   except:
-      # print(traceback.format_exc())
+      print(traceback.format_exc())
       return jsonify({"msg": "Bad data for pledge."}), 400

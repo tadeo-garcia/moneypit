@@ -68,8 +68,10 @@ class Project(db.Model):
   project_rewards = db.relationship("Reward", lazy='subquery')
 
   def increment(self, amount):
-    self.total_pledges += 1
     self.total_funding += amount
+  
+  def increase_pledge(self):
+    self.total_pledges += 1
 
   def to_dict(self):
     return {

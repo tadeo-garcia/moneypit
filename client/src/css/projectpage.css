@@ -68,6 +68,17 @@
   padding-right: 45px;
 }
 
+#progress-container{
+  width:100%;
+  height: 7.5px;
+  background-color: #e6e6e6;
+}
+
+#progress-container-fill{
+  height: 7.5px;
+  background-color: #028858
+}
+
 #projectpage-detail-pledge{
   padding-top: 25px;
 }
@@ -157,7 +168,7 @@
 }
 
 #projectpage-recommended{
-  width: 80vh;
+  width: 100%;
   display:flex;
   flex-direction: row;
   overflow-x: scroll;

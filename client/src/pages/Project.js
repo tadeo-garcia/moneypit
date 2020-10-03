@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Footer from '../components/Footer'
 import Reward from '../components/Reward'
-import ProjectCard from '../components/ProjectCard'
+import ProjectCardSmall from '../components/ProjectCardSmall'
 import '../css/projectpage.css'
 import '../css/reward.css'
 
@@ -25,7 +25,13 @@ export default function Project() {
         i++
       }
     }
-        
+
+  let progressPercent = Math.floor(project.total_funding / project.funding_goal * 100);
+  if(progressPercent> 100){
+    progressPercent = 100;
+  }
+  const progStyle = {width: `${progressPercent}%`};
+ 
     return (
       <>
         <div id='projectpage-container'>
@@ -40,10 +46,15 @@ export default function Project() {
                 <div id='pp-location'><i className="fa fa-map-marker" aria-hidden="true"></i> {project.location}</div>
               </div>
               <div id='projectpage-detail-right'>
+                <div id='projectpage-detail-progress'>
+                  <div id='progress-container'>
+                    <div id='progress-container-fill' style={progStyle}/>
+                  </div>
+                </div>
                 <div id="projectpage-detail-pledge">
                   <span className='pp-detail-pledge-title green-text'>${project.total_funding}</span>
                   <br/>
-                  <span className='pp-detail-text'>pledged of {project.funding_goal} goal</span>
+                  <span className='pp-detail-text'>pledged of ${project.funding_goal} goal</span>
                 </div>
                 <div id="projectpage-detail-backers">
                   <span className='pp-detail-pledge-title'>{project.total_pledges}</span>
@@ -111,7 +122,7 @@ export default function Project() {
             </div>
             <div id='projectpage-recommended'>
               { projects_list.map((project) => 
-                <ProjectCard project={project} key={project.id} id='projectpage-recommendedcard'/>)}
+                <ProjectCardSmall project={project} key={project.id} id='projectpage-recommendedcard'/>)}
             </div>
           </div>
         </div>
@@ -119,15 +130,3 @@ export default function Project() {
       </>
     )
 }
-
-
-// <h1>{project.description}</h1>
-//         <h1>{project.location}</h1>
-//         <h1>{project.organization}</h1>
-//         <h1>{project.id}</h1>
-//         <h1>{project.funding_goal}</h1>
-//         <h1>{project.total_funding}</h1>
-        
-//             <div className="reward-container">
-//                 {project.rewards.map((reward) => <Reward reward={reward} key={reward.id} />)}
-//             </div>

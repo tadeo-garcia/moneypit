@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/projectsmall.css';
 
-export default function ProjectCard(props) {
+export default function ProjectCardSmall(props) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -14,19 +14,13 @@ export default function ProjectCard(props) {
     dispatch(getProject(id))
     history.push(`/project/${id}`)
   }
-if(!props.project) return null
-let percentage = Math.floor(props.project.total_funding / props.project.funding_goal * 100)
-if (percentage > 100) {
-    percentage = 100;
-  }
-
-const progStyle = { width: `${percentage}%` };
-
+  if (!props.project) return null
+  let percentage = Math.floor(props.project.total_funding / props.project.funding_goal * 100)
 
   return (
-    <div id={props.project.id} className="card-wrapper" onClick={searchID}>
+    <div id={props.project.id} className="card-wrapper-small" onClick={searchID}>
       <Link id={props.project.id} style={{ textDecoration: "none", color: "black" }} onClick={searchID} to={`project/${props.project.id}`}>
-        <div className="card">
+        <div className="card-small">
           <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
           <div className="card-information">
             <div className="card-header">
@@ -35,11 +29,6 @@ const progStyle = { width: `${percentage}%` };
               <h3>By {props.project.organization}</h3>
             </div>
             <div className="card-footer">
-              <div id='projectpage-detail-progress'>
-                <div id='progress-container'>
-                  <div id='progress-container-fill' style={progStyle} />
-                </div>
-              </div>
               <h4 id='pledged'>${props.project.total_funding} pledged</h4>
               <h4>{percentage}% funded</h4>
               <h4>{props.project.days_remaining} days to go</h4>

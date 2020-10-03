@@ -11,6 +11,11 @@ def get_categories():
       category["length"] = len(Project.query.filter(Project.category_id==category["id"]).all())
     return {"categories": data}
 
+# @projects_routes.route('category_by_id')
+# def load_user():
+# 
+# 
+# 
 @projects_routes.route('/search_by_category')
 def get_by_category():
     category_search = request.args.get('category', None)
@@ -25,7 +30,6 @@ def get_by_title():
     projects = Project.query.filter(Project.title.ilike(title)).limit(4)
     data = [project.to_dict() for project in projects]
     titles = [project["title"] for project in data]
-    print(titles)
     return {"projects": data}
 
 @projects_routes.route('/projects_by_id')
@@ -33,7 +37,6 @@ def get_by_id():
     user_id = request.args.get('id', None)
     projects = Project.query.filter(Project.owner_id==user_id).all()
     data = [project.to_dict() for project in projects]
-    print(data)
     return {"projects": data}, 200
 
 @projects_routes.route('/projects_by_pledge')
@@ -42,8 +45,6 @@ def get_projects_by_id():
     pledges = Pledge.query.filter(Pledge.backer_id==user_id).with_entities(Pledge.project_id).distinct()
     projects = [Project.query.filter(Project.id==pledge.project_id).one() for pledge in pledges]
     data = [project.to_dict() for project in projects]
-    print(pledges)
-    print("&&&")
     return {"projects": data}, 200
 
 @projects_routes.route('/search_by_id')

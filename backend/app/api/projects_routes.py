@@ -11,11 +11,22 @@ def get_categories():
       category["length"] = len(Project.query.filter(Project.category_id==category["id"]).all())
     return {"categories": data}
 
-# @projects_routes.route('category_by_id')
-# def load_user():
-# 
-# 
-# 
+@projects_routes.route('category_by_id')
+def load_user():
+  user_id = request.args.get('id', None)
+  categories = Category.query.all()
+  pledges = Pledge.query.filter(Pledge.backer_id==user_id).with_entities(Pledge.project_id).distinct()
+  projects = [Project.query.filter(Project.id==pledge.project_id).one() for pledge in pledges]
+  data = [category.to_dict() for category in categories]
+  data2 = [project.to_dict() for project in projects]
+  
+  for category in data:
+    category["length"] = 0
+    for project in data2:
+      if project["category_id"] == category["id"]:
+        category["length"] += 1
+  return {"categories": data}
+
 @projects_routes.route('/search_by_category')
 def get_by_category():
     category_search = request.args.get('category', None)

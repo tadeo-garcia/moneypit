@@ -4,18 +4,10 @@ const GET_PROJECTS_BY_OWNER = 'project/get_by_owner';
 const GET_PROJECTS_BY_PLEDGE = 'project/get_by_pledge';
 const GET_PROJECTS_BY_TITLE = '/project/get_by_title';
 const GET_FEATURED_PROJECTS = 'project/get_featured';
-const GET_CATEGORIES_BY_ID = 'project/category/get_by_id';
 
 export const loadProjectsByOwner = (projects) => {
   return {
     type: GET_PROJECTS_BY_OWNER,
-    projects: projects
-  }
-}
-
-export const loadCategoriesById = (projects) => {
-  return {
-    type: GET_CATEGORIES_BY_ID,
     projects: projects
   }
 }
@@ -107,19 +99,6 @@ export const getFeaturedProjects = () => {
   }
 }
 
-export const getCategoriesById = (id) => {
-  return async dispatch => {
-    const res = await fetch(`/api/projects/category_by_id?id=${id}`,{
-    method: "get"
-  })
-
-  res.data = await res.json();
-  if (res.ok) {
-    dispatch(loadCategoriesById(res.data.projects))
-  }
-  return res
-}
-}
 
 export const getProjectsByCategory = (category) => {
   return async dispatch => {
@@ -190,8 +169,6 @@ export default function projectsReducer(state = {}, action) {
       return { ...state, projectsTitle: action.projects }
     case GET_FEATURED_PROJECTS:
       return { ...state, featuredProjects: action.projects}
-    case GET_CATEGORIES_BY_ID:
-      return {...state, categoriesById: action.projects}
     default:
       return state;
   }

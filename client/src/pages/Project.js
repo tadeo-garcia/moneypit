@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer'
 import Reward from '../components/Reward'
 import ProjectCardSmall from '../components/ProjectCardSmall'
 import '../css/projectpage.css'
 import '../css/reward.css'
+// import 
 
 
 export default function Project() {
@@ -12,7 +13,14 @@ export default function Project() {
     const recommended = useSelector(state => state.projects.projects);
     let projects_list = [];
     
-    if(!project || !recommended) return 'Loading...'
+    if(!project || !recommended){
+    //   useEffect(() =>{
+    //     dispatch(getCategoriesById(user.id))
+    // }, [dispatch])
+      
+      return 'Loading...'
+    }
+    
     
     if(!recommended){
       return

@@ -37,9 +37,11 @@ def get_by_id():
 @projects_routes.route('/projects_by_pledge')
 def get_projects_by_id():
     user_id = request.args.get('id', None)
-    pledges = Pledge.query.filter(Pledge.backer_id==user_id).all()
+    pledges = Pledge.query.filter(Pledge.backer_id==user_id).with_entities(Pledge.project_id).distinct()
     projects = [Project.query.filter(Project.id==pledge.project_id).one() for pledge in pledges]
     data = [project.to_dict() for project in projects]
+    print(pledges)
+    print("&&&")
     return {"projects": data}, 200
 
 @projects_routes.route('/search_by_id')
@@ -57,8 +59,6 @@ def get_featured_projects():
     data = [project.to_dict() for project in projects]
     return {"projects": data}
 
-# filter where reward id matches project
-
 @projects_routes.route('/submit_pledge', methods=['POST'])
 def submit_pledge():
   project_id = int(request.json.get('projectId', None))
@@ -74,10 +74,8 @@ def submit_pledge():
       )
       db.session.add(pledge)
       db.session.commit()
-      print("~~~~")
       pledges = Pledge.query.filter(Pledge.backer_id==backer_id, Pledge.project_id==project_id).all()
       project = Project.query.get(project_id)
-      print(pledges)
       if len(pledges) < 2:
         project.increase_pledge()
       reward = Reward.query.get(reward_id)
@@ -93,5 +91,5 @@ def submit_pledge():
       project = project.to_dict()
       return {"project": project, "rewards": rewards}, 200
   except:
-      print(traceback.format_exc())
+      # print(traceback.format_exc())
       return jsonify({"msg": "Bad data for pledge."}), 400

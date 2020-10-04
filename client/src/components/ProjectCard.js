@@ -16,11 +16,12 @@ export default function ProjectCard(props) {
   }
 if(!props.project) return null
 let percentage = Math.floor(props.project.total_funding / props.project.funding_goal * 100)
+let percentage2 = percentage
 if (percentage > 100) {
-    percentage = 100;
+    percentage2 = 100;
   }
 
-const progStyle = { width: `${percentage}%` };
+const progStyle = { width: `${percentage2}%` };
 
 
   return (

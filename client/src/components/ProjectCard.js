@@ -15,6 +15,7 @@ export default function ProjectCard(props) {
     history.push(`/project/${id}`)
   }
 if(!props.project) return null
+
 let percentage = Math.floor(props.project.total_funding / props.project.funding_goal * 100)
 if (percentage > 100) {
     percentage = 100;

@@ -25,10 +25,16 @@ const progStyle = { width: `${percentage}%` };
 
 
   return (
-    <div id={props.project.id} className="card-wrapper" onClick={searchID}>
-      <Link id={props.project.id} style={{ textDecoration: "none", color: "black" }} onClick={searchID} to={`project/${props.project.id}`}>
-        <div className="card">
-          <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
+    <div id={props.project.id} className="card-wrapper">
+      <div className="card">
+        <Link id={props.project.id} 
+        style={{ textDecoration: "none", color: "black" }} 
+        onClick={searchID} 
+        to={`project/${props.project.id}`}>
+          <img id={props.project.id} 
+          src={props.project.pic} 
+          alt='Project' onClick={searchID} />
+        </Link>
           <div className="card-information">
             <div className="card-header">
               <h3>{props.project.title}</h3>
@@ -47,7 +53,7 @@ const progStyle = { width: `${percentage}%` };
             </div>
           </div>
         </div>
-      </Link>
+     
     </div>
   )
 }

@@ -48,7 +48,6 @@ export default function ProjectCardSmall(props) {
               <span id='card-small-description'>${props.project.description}</span>
             </div>
           </div>
-      
     </div>
   )
 }

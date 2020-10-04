@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../css/reward.css';
 import { sendPledge } from '../store/project';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-scroll'
 
 export default function Reward(props) {
   const [state, setState] = useState({pledge: props.reward.minimum_donation});
@@ -19,15 +19,16 @@ export default function Reward(props) {
 
   const dispatch = useDispatch();
   const handleSubmit = e => {
-      e.preventDefault();
+    e.preventDefault();
+    setTimeout(()=>{
       dispatch(sendPledge(state.pledge, user.id, project.id, props.reward.id))
-      alert('Thank you so much for your pledge!')
-    }
+    },1500)
+  }
 
 
 
     return (
-        <div className="pledge_info">
+        <div id="pledge_info">
           <div className="pledge_amount">
             <span id='pledge_amount-title'>
             Pledge ${props.reward.minimum_donation} or more
@@ -46,12 +47,16 @@ export default function Reward(props) {
             <br/>
           <span id='reward-gray'> {props.reward.reward_count} backers </span>
           </div>
-          <div className="pledge-button" onSubmit={handleSubmit}>
+          <div className="pledge-button">
             <form >
                 <label htmlFor='pledge' id='pledge-amount'>Pledge Amount</label>
                 <input min={props.reward.minimum_donation} type="number" className='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange} required>
                 </input>
-                <button type="submit" id='reward-pledge-button'>Continue</button>
+                <div id='reward-pledge-button'>
+                  <Link to='projectpage-top' id='reward-pledge-button' onClick={handleSubmit} smooth={true} duration={500}>
+                  Pledge
+                  </Link>
+                </div>
             </form>
           </div>
         </div>

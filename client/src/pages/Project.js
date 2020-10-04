@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {Link} from 'react-scroll'
 import Footer from '../components/Footer'
 import Reward from '../components/Reward'
 import ProjectCardSmall from '../components/ProjectCardSmall'
@@ -74,7 +75,9 @@ export default function Project() {
                   <span className='pp-detail-text'>days to go</span>
                 </div>
                 <div id="projectpage-detail-bp">
-                  <button id='projectpage-detail-button'>Back this project</button>
+                  <Link to='pledge_info' smooth={true} duration={500} >
+                    <button id='projectpage-detail-button'>Back this project</button>
+                  </Link>
                   <div id='projectpage-detail-socialmedia'></div>
                   <div id='projectpage-detail-end-date'> This project will only be funded if it reaches its goal by {project.end_date}</div>
                 </div>

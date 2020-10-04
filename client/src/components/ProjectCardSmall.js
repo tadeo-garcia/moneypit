@@ -2,6 +2,7 @@ import React from 'react';
 import { getProject } from '../store/project';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { Link as Scroll } from 'react-scroll'
 import '../css/projectcardsmall.css';
 
 export default function ProjectCardSmall(props) {
@@ -24,30 +25,32 @@ export default function ProjectCardSmall(props) {
 
   return (
     <div id={props.project.id} className="card-wrapper-small">
-      <Link id={props.project.id} 
+    <Link id={props.project.id} 
       style={{ textDecoration: "none", 
       color: "black" }} 
       onClick={searchID} 
       to={`project/${props.project.id}`}>
-        <div className="card-small-image">
-          <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
-          <div id='projectpage-detail-progress'>
-            <div id='progress-container'>
-              <div id='progress-container-fill' style={progStyle} />
+        <Scroll to='modal-navbar-div' smooth={true} duration={750}>
+            <div className="card-small-image">
+              <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
+              <div id='projectpage-detail-progress'>
+                <div id='progress-container'>
+                  <div id='progress-container-fill' style={progStyle} />
+                </div>
+              </div>
             </div>
-          </div>
+            </Scroll>
+            </Link>
+      <div className="card-small-information">
+        <div className="card-small-header">
+          <span>{props.project.title}</span>
+          <br/>
+          <span>By {props.project.organization}</span>
         </div>
-      </Link>
-          <div className="card-small-information">
-            <div className="card-small-header">
-              <span>{props.project.title}</span>
-              <br/>
-              <span>By {props.project.organization}</span>
-            </div>
-            <div className="card-small-footer">
-              <span id='card-small-description'>${props.project.description}</span>
-            </div>
-          </div>
+        <div className="card-small-footer">
+          <span id='card-small-description'>${props.project.description}</span>
+        </div>
+      </div>
     </div>
   )
 }

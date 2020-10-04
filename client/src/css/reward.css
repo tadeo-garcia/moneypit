@@ -1,4 +1,4 @@
-.pledge_info {
+#pledge_info {
     border:0.5px solid #d3d3d3;
     padding: 20px 15px;
     margin-bottom: 25px;
@@ -65,6 +65,10 @@
 }
 
 #reward-pledge-button{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #028858;
   border: 0px;
   width: 100%;
@@ -72,6 +76,7 @@
   color: white;
   font-size: 15px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 #reward-pledge-button:active{

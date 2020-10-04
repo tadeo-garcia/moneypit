@@ -83,16 +83,22 @@
 
 #pie-chart-div{
   display:flex;
-  flex-direction: reverse;
+  flex-direction: column;
   height: 150px;
   width: 200px;
-  /* align-items: flex-end; */
-  /* justify-content: flex-end; */
   position:absolute;
   top: 225px;
   right:50px;
-  /* left: 5px; */
   background-color: white;
   border-radius: 15px;
   
+}
+
+#pie-chart-title{
+  text-align: right;
+  padding-top: 7px;
+  font-size: 12px;
+  font-weight: 300;
+  padding-right: 20px;
+  text-decoration: underline;
 }

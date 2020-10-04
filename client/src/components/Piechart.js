@@ -34,8 +34,8 @@ export default function Piechart({categories}) {
   useEffect(()=>{
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d')
-    canvas.width=300;
-    canvas.height=300;
+    canvas.width=175;
+    canvas.height=175;
     let total = 8;
     let startAngle = 0;
     let radius = (100/3);
@@ -45,7 +45,7 @@ export default function Piechart({categories}) {
     categories.forEach(category => {
       context.fillStyle = category.color
       context.lineWidth = 4;
-      context.strokeStyle = '#d3d3d3';
+      context.strokeStyle = '#eeeeee';
       context.beginPath();
       let endAngle = ((1/8) * Math.PI * 2 ) + startAngle;
       context.moveTo(cx,cy);
@@ -59,7 +59,7 @@ export default function Piechart({categories}) {
   })
 
   return(
-    <>
+    <div id='pie-chart-popup'> 
       <div id='category-links'>
         {categories.map(category => {
           console.log(`${category.color}`)
@@ -75,7 +75,7 @@ export default function Piechart({categories}) {
         }
       </div> 
      <canvas ref={canvasRef} id='pie-chart-canvas' categories={categories}/>
-    </>
+    </div>
   ) 
 }
 

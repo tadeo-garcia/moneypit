@@ -63,6 +63,7 @@ export default function Profile() {
         </div>
         <div id='profile-page-middle'>
           <div id='pie-chart-div'>
+            <div id='pie-chart-title'>Backed Categories</div>
             <Piechart categories={categories} id='piechart'></Piechart>
           </div>
           <div id='profile-navbar'>

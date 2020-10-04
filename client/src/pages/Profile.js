@@ -35,7 +35,6 @@ export default function Profile() {
     return array.map((project) => <ProjectCard project={project} key={project.id}/>)
   }
 
-
   const showCreated = (e) => {
       e.stopPropagation()
       setDisplayUserPledged(null)
@@ -83,3 +82,4 @@ export default function Profile() {
     </>
   )
 }
+

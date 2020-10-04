@@ -20,8 +20,6 @@ export const logoutUser = () => {
   }
 }
 
-
-
 export const login = (email, password) => {
   return async dispatch => {
     const res = await fetch('/api/session', {
@@ -55,6 +53,8 @@ export const signup = (username, email, password) => {
     return res;
   }
 }
+
+
 
 export const logout = () => {
   return async dispatch => {

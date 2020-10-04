@@ -3,10 +3,18 @@ const GET_PROJECTS_BY_CATEGORY = 'project/get_by_category';
 const GET_PROJECTS_BY_OWNER = 'project/get_by_owner';
 const GET_PROJECTS_BY_PLEDGE = 'project/get_by_pledge';
 const GET_PROJECTS_BY_TITLE = '/project/get_by_title';
+const GET_FEATURED_PROJECTS = 'project/get_featured';
 
 export const loadProjectsByOwner = (projects) => {
   return {
     type: GET_PROJECTS_BY_OWNER,
+    projects: projects
+  }
+}
+
+export const loadFeaturedProjects = (projects) => {
+  return {
+    type: GET_FEATURED_PROJECTS,
     projects: projects
   }
 }
@@ -56,10 +64,46 @@ export const getProject = (projectID) => {
   }
 }
 
+export const sendPledge = (pledgeAmount, userId, projectId, rewardId) => {
+  return async dispatch => {
+    const res = await fetch('/api/projects/submit_pledge', {
+      method: "post",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ pledgeAmount, userId, projectId, rewardId })
+    },
+    )
+  res.data = await res.json();
+  let project = res.data.project
+  let rewards = res.data.rewards
+  project.rewards = rewards
+  if (res.ok) {
+    dispatch(loadProject(res.data.project))
+  }
+    return res;
+  }
+}
+
+
+export const getFeaturedProjects = () => {
+  return async dispatch => {
+    const res = await fetch('/api/projects/search_by_featured', {
+      method: "get"
+    })
+    res.data = await res.json();
+    if(res.ok) {
+      dispatch(loadFeaturedProjects(res.data.projects))
+    }
+    return res;
+  }
+}
+
+
 export const getProjectsByCategory = (category) => {
   return async dispatch => {
     const res = await fetch(`/api/projects/search_by_category?category=${category}`, {
-      method: "get",
+      method: "get"
     })
 
     res.data = await res.json();
@@ -75,7 +119,6 @@ export const getProjectsByOwner = (id) => {
     const res = await fetch(`/api/projects/projects_by_id?id=${id}`, {
       method: "get",
     })
-
     res.data = await res.json();
     if (res.ok) {
       dispatch(loadProjectsByOwner(res.data.projects))
@@ -105,7 +148,6 @@ export const getProjectsByTitle = (title) => {
     })
 
     res.data = await res.json();
-    console.log(res.data.projects)
     if (res.ok) {
       dispatch(loadProjectsByTitle(res.data.projects))
     }
@@ -125,6 +167,8 @@ export default function projectsReducer(state = {}, action) {
       return { ...state, projectsPledge: action.projects }
     case GET_PROJECTS_BY_TITLE:
       return { ...state, projectsTitle: action.projects }
+    case GET_FEATURED_PROJECTS:
+      return { ...state, featuredProjects: action.projects}
     default:
       return state;
   }

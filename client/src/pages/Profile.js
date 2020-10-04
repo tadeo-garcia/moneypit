@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesById } from '../store/category';
 import { getProjectsByOwner, getProjectsByPledge} from '../store/project';
 import Footer from '../components/Footer'
-import ProjectCardSmall from '../components/ProjectCardSmall'
 import ProjectCard from '../components/ProjectCardSmall'
 import '../css/profile.css';
 
@@ -11,30 +10,53 @@ import '../css/profile.css';
 export default function Profile() {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [displayUserDisplay, setDisplayUserDisplay] = useState(null)
+  const [displayUserOwned, setDisplayUserOwned] = useState(null)
+  const [displayUserPledged, setDisplayUserPledged] = useState(null)
+  const projectsOwned = useSelector((state) => state.projects.projectsOwner)
+  const projectsPledged = useSelector((state) => state.projects.projectsPledge)
+  const categories = useSelector((state) => state.categories.categoriesById)
+  let displayModal = []
   
   useEffect(() =>{
     dispatch(getCategoriesById(user.id))
     dispatch(getProjectsByOwner(user.id))
     dispatch(getProjectsByPledge(user.id))
+    if(!projectsPledged){
+      return
+    }
+    let displayModal = mapProps(projectsPledged)
+    setDisplayUserPledged(displayModal)
   }, [dispatch])
-  const projectsOwned = useSelector((state) => state.projects.projectsOwner)
-  const projectsPledged = useSelector((state) => state.projects.projectsPledge)
-  const categories = useSelector((state) => state.categories.categoriesById)
+  
+  
+  
+
+ 
+
+  
+  if(!projectsPledged || !categories || !projectsOwned || 
+    displayModal===[]) return null
+  
+  // displayModal = mapProps(projectsPledged)
+  // setDisplayUserPledged(displayModal)
+
   function mapProps(array) {
     return array.map((project) => <ProjectCard project={project} key={project.id}/>)
   }
-  
-  if(!projectsPledged || !categories || !projectsOwned) return null
-  const showCreated = () => {
-    setDisplayUserDisplay(mapProps(projectsOwned))
+
+
+  const showCreated = (e) => {
+      e.stopPropagation()
+      setDisplayUserPledged(null)
+      setDisplayUserOwned(mapProps(projectsOwned))
+    }
+    
+  const showBacked = (e) => {
+      e.stopPropagation()
+      setDisplayUserOwned(null)
+      setDisplayUserPledged(mapProps(projectsPledged))
   }
 
-  const showBacked = () => {
-      setDisplayUserDisplay(mapProps(projectsPledged))
-  }
-
-  console.log("RENDERING")
 
   return (
     <>
@@ -45,7 +67,7 @@ export default function Profile() {
           <div id='profile-details'>
             <span id='user-name'>{user.username}</span>
             <br/>
-            <span id='user-details'>Backed {projectsOwned.length} projects • Joined {user.created_at}</span>
+            <span id='user-details'>Backed {projectsPledged.length} projects • Joined {user.created_at}</span>
           </div>
         </div>
         <div id='profile-page-middle'>
@@ -60,8 +82,9 @@ export default function Profile() {
               </div>
           </div>
           <div id='profile-display'>
-            <div className="card-container flex-wrap">
-              {displayUserDisplay}
+            <div className="card-container-profile flex-wrap">
+              {displayUserOwned} 
+              {displayUserPledged}
             </div>
           </div>
         </div>

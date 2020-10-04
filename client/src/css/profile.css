@@ -62,3 +62,20 @@
   margin-bottom: 7px;
   margin-left: 2px;
 }
+
+#profile-display{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container-profile{
+  margin-top:10px;
+  display:grid;
+  grid-template-columns: repeat( auto-fill, minmax(300px, 1fr) );
+  grid-column-gap: 15px;
+  grid-template-rows: auto;
+  min-width:900px;
+  padding: 30px 60px;
+}

@@ -50,6 +50,19 @@ def get_by_id():
     data = [project.to_dict() for project in projects]
     return {"projects": data}, 200
 
+@projects_routes.route('/projects_by_category_and_id')
+def get_by_id_and_category():
+    user_id = request.args.get('id', None)
+    category_id = request.args.get('category', None)
+    pledges = Pledge.query.filter(Pledge.backer_id==user_id).with_entities(Pledge.project_id).distinct()
+    projects_data = [Project.query.filter(Project.id==pledge.project_id, Project.category_id==338).first() for pledge in pledges]
+    projects = [] 
+    for val in projects_data: 
+      if val != None : 
+        projects.append(val) 
+    data = [project.to_dict() for project in projects]
+    return {"projects": data}, 200
+
 @projects_routes.route('/projects_by_pledge')
 def get_projects_by_id():
     user_id = request.args.get('id', None)

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesById } from '../store/category';
-import { getProjectsByOwner, getProjectsByPledge} from '../store/project';
+import { getProjectsByOwner, getProjectsByPledge, getProjectsByOwnerAndCategory} from '../store/project';
 import Footer from '../components/Footer'
 import ProjectCard from '../components/ProjectCardSmall'
 import '../css/profile.css';
@@ -21,6 +21,7 @@ export default function Profile() {
     dispatch(getCategoriesById(user.id))
     dispatch(getProjectsByOwner(user.id))
     dispatch(getProjectsByPledge(user.id))
+    // dispatch(getProjectsByOwnerAndCategory(user.id, 338))
     if(!projectsPledged){
       return
     }

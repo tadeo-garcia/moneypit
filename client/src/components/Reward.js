@@ -22,7 +22,7 @@ export default function Reward(props) {
     e.preventDefault();
     setTimeout(()=>{
       dispatch(sendPledge(state.pledge, user.id, project.id, props.reward.id))
-    },1500)
+    },1000)
   }
 
 

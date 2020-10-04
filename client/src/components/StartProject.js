@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories } from '../store/category';
 import '../css/startproject.css'
 
 
@@ -6,16 +8,45 @@ export default function StartProject() {
   const [displayCatModal, setDisplayCatModal] = useState(null)
   const [categoryChoice, setCategoryChoice] = useState('Select your category')
 
-  const showCatModal = () => {
-    displayCatModal(true)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [dispatch])
+
+  const categories = useSelector(state => state.categories.list)
+  console.log(categories)
+  console.log(categoryChoice)
+
+
+  const hideCatModal = e => {
+    setDisplayCatModal(null)
   }
 
-  const hideModal = e => {
-    e.stopPropagation();
-    displayCatModal(null)
+  const handleCategory = title => {
+    hideCatModal();
+    setCategoryChoice(title)
   }
 
 
+  const showCatModal = e => {
+    setDisplayCatModal(true);
+    if (displayCatModal) {
+      setDisplayCatModal(null)
+    } else {
+      setDisplayCatModal(
+        categories.map((category, index) => {
+          return (
+            <div className='sp_box-one-modal' key={index} onClick={e => handleCategory(category.title)}>
+              <div className='sp_box-one-modal__category'>
+                <div>{category.title}</div>
+              </div>
+            </div>
+          )
+        })
+      )
+    }
+  }
 
   return (
     <>
@@ -29,17 +60,17 @@ export default function StartProject() {
             <div className='sp_box-one-select' onClick={e => showCatModal()}>
               <div id='sp_box-one-select-phrase'>
                 {categoryChoice}
-            </div>
+              </div>
               <i className='fa fa-caret-down' />
             </div>
+            {(displayCatModal) ?
+              <div className='sp_box_one-modal-container'>
+                {displayCatModal}
+              </div>
+              :
+              null
+            }
           </div>
-          {(showCatModal) ?
-          <div className='sp_select-category' onClick={setCategoryChoice}>
-
-          </div>
-          :
-          null
-          }
           <div>
             <div className='sp_lower-box'>
               <div className='sp_first_proj'>

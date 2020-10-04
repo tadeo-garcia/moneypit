@@ -28,7 +28,7 @@ export default function Reward(props) {
 
 
     return (
-        <div className="pledge_info">
+        <div id="pledge_info">
           <div className="pledge_amount">
             <span id='pledge_amount-title'>
             Pledge ${props.reward.minimum_donation} or more
@@ -52,9 +52,11 @@ export default function Reward(props) {
                 <label htmlFor='pledge' id='pledge-amount'>Pledge Amount</label>
                 <input min={props.reward.minimum_donation} type="number" className='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange} required>
                 </input>
-                <Link to='projectpage-top' id='reward-plede-button' onClick={handleSubmit} smooth={true} duration={500}>
-                Continue
-                </Link>
+                <div id='reward-pledge-button'>
+                  <Link to='projectpage-top' id='reward-pledge-button' onClick={handleSubmit} smooth={true} duration={500}>
+                  Pledge
+                  </Link>
+                </div>
             </form>
           </div>
         </div>

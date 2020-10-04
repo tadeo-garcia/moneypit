@@ -28,18 +28,9 @@ export default function Profile() {
     setDisplayUserPledged(displayModal)
   }, [dispatch])
   
-  
-  
-
- 
-
-  
   if(!projectsPledged || !categories || !projectsOwned || 
     displayModal===[]) return null
   
-  // displayModal = mapProps(projectsPledged)
-  // setDisplayUserPledged(displayModal)
-
   function mapProps(array) {
     return array.map((project) => <ProjectCard project={project} key={project.id}/>)
   }
@@ -56,7 +47,6 @@ export default function Profile() {
       setDisplayUserOwned(null)
       setDisplayUserPledged(mapProps(projectsPledged))
   }
-
 
   return (
     <>

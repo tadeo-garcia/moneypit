@@ -55,7 +55,7 @@ def get_by_id_and_category():
     user_id = request.args.get('id', None)
     category_id = request.args.get('category', None)
     pledges = Pledge.query.filter(Pledge.backer_id==user_id).with_entities(Pledge.project_id).distinct()
-    projects_data = [Project.query.filter(Project.id==pledge.project_id, Project.category_id==338).first() for pledge in pledges]
+    projects_data = [Project.query.filter(Project.id==pledge.project_id, Project.category_id==category_id).first() for pledge in pledges]
     projects = [] 
     for val in projects_data: 
       if val != None : 

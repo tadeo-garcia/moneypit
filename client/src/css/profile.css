@@ -79,3 +79,19 @@
   min-width:900px;
   padding: 30px 60px;
 }
+
+#pie-chart-div{
+  display:flex;
+  flex-direction: reverse;
+  height: 150px;
+  width: 200px;
+  /* align-items: flex-end; */
+  /* justify-content: flex-end; */
+  position:absolute;
+  top: 225px;
+  right:50px;
+  /* left: 5px; */
+  background-color: white;
+  border-radius: 15px;
+  
+}

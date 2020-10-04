@@ -1,33 +1,19 @@
-.pie-chart {
-	background:
-		radial-gradient(
-			circle closest-side,
-			transparent 66%,
-			white 0
-    ),
-    
-		conic-gradient(
-		  #4e79a7 0,
-			#4e79a7 12.5%,
-			#f28e2c 0,
-			#f28e2c 25%,
-			#e15759 0,
-			#e15759 37.5%,
-			#828888 0,
-			#76b7b2 50%,
-			#59a14f 0,
-			#59a14f 62.5%,
-      #092754 0,
-      #092754 75%,
-      #f8ff95 0,
-      #f8ff95 87.5%,
-			#edc949 0,
-			#edc949 100%
-  );
-  
-	position: relative;
-	width: 500px;
-	min-height: 350px;
-	margin: 0;
-	/* outline: 3px solid #ccc; */
+#category-links{
+  display:flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.category-link{
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 15px;
+}
+
+#pie-chart-canvas{
+  min-height: 250px;
+  width: 250px;
+  position: relative;
+  right: 100px;
+  bottom: 60px
 }

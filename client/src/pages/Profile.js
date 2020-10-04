@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesById } from '../store/category';
-import { getProjectsByOwner, getProjectsByPledge, getProjectsByOwnerAndCategory} from '../store/project';
+import { getProjectsByOwner, getProjectsByPledge } from '../store/project';
 import Footer from '../components/Footer'
 import ProjectCard from '../components/ProjectCardSmall'
 import Piechart from '../components/Piechart';
@@ -62,7 +62,9 @@ export default function Profile() {
           </div>
         </div>
         <div id='profile-page-middle'>
-          <Piechart categories={categories} id='piechart'></Piechart>
+          <div id='pie-chart-div'>
+            <Piechart categories={categories} id='piechart'></Piechart>
+          </div>
           <div id='profile-navbar'>
                 <div className="active-display">
                   <span id='profile-navbar-link' onClick={showBacked}> Backed</span>

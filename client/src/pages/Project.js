@@ -5,14 +5,14 @@ import Reward from '../components/Reward'
 import ProjectCardSmall from '../components/ProjectCardSmall'
 import '../css/projectpage.css'
 import '../css/reward.css'
-// import 
+// import { Route, Router, browserHistory } from 'react-router-dom';
 
 
 export default function Project() {
     const project = useSelector(state => state.projects.project);
     const recommended = useSelector(state => state.projects.projects);
     let projects_list = [];
-    
+    // console.log(browserHistory)
     if(!project || !recommended){
     //   useEffect(() =>{
     //     dispatch(getCategoriesById(user.id))

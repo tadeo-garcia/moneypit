@@ -23,6 +23,9 @@ const projects_pledged_data = useSelector(state => state.projects.projectsPledge
     history.push('/')
   }
 
+  const handleModal = e => {
+    hideModal(e)
+  }
 
   if(!projects_owned_data || !projects_pledged_data){
     return null
@@ -45,9 +48,9 @@ const projects_pledged_data = useSelector(state => state.projects.projectsPledge
         <div id='user-modal-top'>
           <div className='user-column1'>
             <div id='usermodal__header'>YOUR ACCOUNT</div>
-            <Link to='/profile' className='user-modal__link'>Profile</Link>
-            <Link to='/settings' className='user-modal__link'>Settings</Link>
-            <Link to='/messages' className='user-modal__link'>Messages</Link>
+            <Link to='/profile' className='user-modal__link' onClick={handleModal}>Profile</Link>
+            <Link to='/settings' className='user-modal__link' onClick={handleModal}>Settings</Link>
+            <Link to='/messages' className='user-modal__link' onClick={handleModal}>Messages</Link>
           </div>
           <div className='user-column2'>
             <div id='usermodal__header'>BACKED PROJECTS</div>

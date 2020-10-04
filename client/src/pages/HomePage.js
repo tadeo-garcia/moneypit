@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category'
-import { getProject, getProjectsByCategory, getFeaturedProjects } from '../store/project';
+import { getProject, getProjectsByCategory, getFeaturedProjects, getProjectsByCategory2 } from '../store/project';
 import '../css/homepage.css'
 import Footer from '../components/Footer'
 import { useHistory } from 'react-router-dom';
@@ -13,6 +13,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getProjectsByCategory('Apps'))
+    dispatch(getProjectsByCategory2('Hardware'))
     dispatch(getFeaturedProjects())
     dispatch(getCategories())
   }, [dispatch])
@@ -32,9 +33,10 @@ export default function HomePage() {
   }
   
   const projects = useSelector(state => state.projects.featuredProjects)
-  const testing = useSelector(state => state.projects.projects)
+  const catList = useSelector(state => state.projects.projects)
+  const catList2 = useSelector(state => state.projects.projects2)
   const category_list = useSelector(state => state.categories.list)
-  const notLoaded = projects && category_list && testing
+  const notLoaded = projects && category_list && catList
   if (!notLoaded) return null;
   let len = projects.length - 1
   let num1 = Math.floor(Math.random() * len) + 1 
@@ -42,6 +44,15 @@ export default function HomePage() {
   let num3 = Math.floor(Math.random() * len) + 1 
   while(num1 === num2 || num2 === num3) num2 = Math.floor(Math.random() * len) + 1 
   while(num1 === num3 || num2 === num3) num3 = Math.floor(Math.random() * len) + 1 
+
+  let percentage = Math.floor(projects[0].total_funding / projects[0].funding_goal * 100)
+  if (percentage > 100) {
+    percentage = 100;
+  }
+
+  const progStyle = { width: `${percentage}%` };
+
+
 
   return (
     <>
@@ -62,15 +73,20 @@ export default function HomePage() {
           </div>
           <div className='homeHeader'>
             <div className='homeHeader__leftside'>
-                <p id='featuredLabel'>FEATURED PROJECT</p>
-                <img className='homeHeader__imgLg' id={projects[0].id} onClick={searchID} src={projects[0].pic} alt='Featured Project'></img>
-                <p id='featuredTitle'>
-                {projects[0].title}
-                </p>
-                <p id='featuredDes'>
-                  {projects[0].description}
-                </p>
-                <p id='featuredBy'>By {projects[0].organization}</p>
+              <p id='featuredLabel'>FEATURED PROJECT</p>
+              <img className='homeHeader__imgLg' id={projects[0].id} onClick={searchID} src={projects[0].pic} alt='Featured Project'></img>
+              <div id='homePageProgess'>
+                <div id='progress-container'>
+                  <div id='progress-container-fill' style={progStyle} />
+                </div>
+              </div>
+              <p id='featuredTitle'>
+              {projects[0].title}
+              </p>
+              <p id='featuredDes'>
+                {projects[0].description}
+              </p>
+              <p id='featuredBy'>By {projects[0].organization}</p>
             </div>
             <div className='homeHeader__rightside'>
               <p id='featuredLabel'>RECOMMENDED FOR YOU</p>
@@ -101,24 +117,64 @@ export default function HomePage() {
             </div>
           </div>
           <div id='listLabel'>Apps</div>
-          <div className='body'>
-            {testing.map((projectBody,index)=>{
+            <div className='body'>
+              {catList.map((projectBody,index)=>{
+                let percentage2 = Math.floor(projectBody.total_funding / projectBody.funding_goal * 100)
+                if (percentage2 > 100) {
+                  percentage2 = 100;
+                }
+              
+                const progStyle2 = { width: `${percentage2}%` };
                 return (
-                    <div key={index} className='body__list'>
-                      <img className='body__img' id={projectBody.id} onClick={searchID} src={projectBody.pic} alt='Featured Project'></img>
-                      <p id='bodyTitle'>
-                      {projectBody.title}
-                      </p>
-                      <p id='bodyDes'>
-                        {projectBody.description}
-                      </p>
-                      <p id='bodyBy'>By {projectBody.organization}</p>
-                  </div>
-                )
-              })
-            }
+                  <div key={index} className='body__list'>
+                        <img className='body__img' id={projectBody.id} onClick={searchID} src={projectBody.pic} alt='Featured Project'></img>
+                        <div id='projectpage-detail-progress'>
+                        <div id='progress-container'>
+                          <div id='progress-container-fill'  style={progStyle2} />
+                          </div>
+                        </div>
+                        <p id='bodyTitle'>
+                        {projectBody.title}
+                        </p>
+                        <p id='bodyDes'>
+                          {projectBody.description}
+                        </p>
+                        <p id='bodyBy'>By {projectBody.organization}</p>
+                    </div>
+                  )
+                })
+              }
+            </div>
+            <div id='listLabel'>Hardware</div>
+            <div className='body'>
+              {catList2.map((projectBody2,index)=>{
+                let percentage2 = Math.floor(projectBody2.total_funding / projectBody2.funding_goal * 100)
+                if (percentage2 > 100) {
+                  percentage2 = 100;
+                }
+              
+                const progStyle2 = { width: `${percentage2}%` };
+                return (
+                  <div key={index} className='body__list'>
+                        <img className='body__img' id={projectBody2.id} onClick={searchID} src={projectBody2.pic} alt='Featured Project'></img>
+                        <div id='projectpage-detail-progress'>
+                        <div id='progress-container'>
+                          <div id='progress-container-fill'  style={progStyle2} />
+                          </div>
+                        </div>
+                        <p id='bodyTitle'>
+                        {projectBody2.title}
+                        </p>
+                        <p id='bodyDes'>
+                          {projectBody2.description}
+                        </p>
+                        <p id='bodyBy'>By {projectBody2.organization}</p>
+                    </div>
+                  )
+                })
+              }
+            </div>
           </div>
-        </div>
       </div>
       <Footer />
     </>

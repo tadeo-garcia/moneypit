@@ -23,8 +23,12 @@ export default function ProjectCardSmall(props) {
   const progStyle = { width: `${percentage}%` };
 
   return (
-    <div id={props.project.id} className="card-wrapper-small" onClick={searchID}>
-      <Link id={props.project.id} style={{ textDecoration: "none", color: "black" }} onClick={searchID} to={`project/${props.project.id}`}>
+    <div id={props.project.id} className="card-wrapper-small">
+      <Link id={props.project.id} 
+      style={{ textDecoration: "none", 
+      color: "black" }} 
+      onClick={searchID} 
+      to={`project/${props.project.id}`}>
         <div className="card-small-image">
           <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
           <div id='projectpage-detail-progress'>
@@ -32,6 +36,8 @@ export default function ProjectCardSmall(props) {
               <div id='progress-container-fill' style={progStyle} />
             </div>
           </div>
+        </div>
+      </Link>
           <div className="card-small-information">
             <div className="card-small-header">
               <span>{props.project.title}</span>
@@ -42,8 +48,6 @@ export default function ProjectCardSmall(props) {
               <span id='card-small-description'>${props.project.description}</span>
             </div>
           </div>
-        </div>
-      </Link>
     </div>
   )
 }

@@ -17,11 +17,15 @@ export default function Reward(props) {
 
   }
 
-    const dispatch = useDispatch();
-    const handleSubmit = e => {
-        e.preventDefault();
-        dispatch(sendPledge(state.pledge, user.id, project.id, props.reward.id))
-      }
+  const dispatch = useDispatch();
+  const handleSubmit = e => {
+      e.preventDefault();
+      dispatch(sendPledge(state.pledge, user.id, project.id, props.reward.id))
+      alert('Thank you so much for your pledge!')
+    }
+
+
+
     return (
         <div className="pledge_info">
           <div className="pledge_amount">
@@ -43,7 +47,7 @@ export default function Reward(props) {
           <span id='reward-gray'> {props.reward.reward_count} backers </span>
           </div>
           <div className="pledge-button" onSubmit={handleSubmit}>
-            <form>
+            <form >
                 <label htmlFor='pledge' id='pledge-amount'>Pledge Amount</label>
                 <input min={props.reward.minimum_donation} type="number" className='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange} required>
                 </input>

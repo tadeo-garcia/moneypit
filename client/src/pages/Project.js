@@ -12,7 +12,6 @@ export default function Project() {
     const project = useSelector(state => state.projects.project);
     const recommended = useSelector(state => state.projects.projects);
     let projects_list = [];
-    // console.log(browserHistory)
     if(!project || !recommended){
     //   useEffect(() =>{
     //     dispatch(getCategoriesById(user.id))

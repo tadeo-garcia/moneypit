@@ -45,13 +45,13 @@ export const getProject = (projectID) => {
       method: "get"
     })
 
-  res.data = await res.json();
-  let project = res.data.project
-  let rewards = res.data.rewards
-  project.rewards = rewards
-  if (res.ok) {
-    dispatch(loadProject(res.data.project))
-  }
+    res.data = await res.json();
+    let project = res.data.project
+    let rewards = res.data.rewards
+    project.rewards = rewards
+    if (res.ok) {
+      dispatch(loadProject(res.data.project))
+    }
     return res;
   }
 }
@@ -110,6 +110,24 @@ export const getProjectsByTitle = (title) => {
       dispatch(loadProjectsByTitle(res.data.projects))
     }
     return res;
+  }
+}
+
+export const createProject = (userId, category, title, description, fundingGoal, categoryId) => {
+  return async dispatch => {
+    console.log("HIT THAT")
+    const res = await fetch(`/api/projects/build`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId, category, title, description, fundingGoal, categoryId })
+    })
+    res.data = await res.json();
+    if (res.ok) {
+      dispatch(loadProject(res.data.projects))
+    }
+    return res
   }
 }
 

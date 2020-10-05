@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category';
+import { createProject } from '../store/project'
 import '../css/startproject.css'
 
 
 export default function StartProject() {
   const [displayCatModal, setDisplayCatModal] = useState(null)
   const [categoryChoice, setCategoryChoice] = useState('Select your category')
+  const [projectTitle, setProjectTitle] = useState('Name your project')
+  const [description, setDescription] = useState('Description')
+  const [projectFunding, setProjectFunding] = useState('Funding goal')
+
 
   const dispatch = useDispatch()
 
@@ -15,9 +20,8 @@ export default function StartProject() {
   }, [dispatch])
 
   const categories = useSelector(state => state.categories.list)
-  console.log(categories)
-  console.log(categoryChoice)
-
+  const currentUser = useSelector(state => state.auth)
+  const userOrg = useSelector(state => state.auth.organization)
 
   const hideCatModal = e => {
     setDisplayCatModal(null)
@@ -28,6 +32,9 @@ export default function StartProject() {
     setCategoryChoice(title)
   }
 
+  const handleProjectCreate = () => {
+    dispatch(createProject(currentUser.id, categoryChoice, projectTitle, description, projectFunding, categories.id))
+  }
 
   const showCatModal = e => {
     setDisplayCatModal(true);
@@ -57,8 +64,8 @@ export default function StartProject() {
             <div id='sp_box-one__bottom-text'>
               Pick a project category to connect with a specific community. You can always update this later.
           </div>
-            <div className='sp_box-one-select' onClick={e => showCatModal()}>
-              <div id='sp_box-one-select-phrase'>
+            <div className='sp_box-select' onClick={e => showCatModal()}>
+              <div id='sp_box-phrase'>
                 {categoryChoice}
               </div>
               <i className='fa fa-caret-down' />
@@ -70,6 +77,16 @@ export default function StartProject() {
               :
               null
             }
+            <div className='input-select'>
+              <input className='title-input' id='sp_box-phrase' onChange={e => setProjectTitle(e.target.value)} placeholder='Name your project'></input>
+            </div>
+            <div className='description-box'>
+              <textarea placeholder='Description...' onChange={e => setDescription(e.target.value)}></textarea>
+            </div>
+            <div className='input-select'>
+              <i className='fas fa-dollar-sign' style={{ "color": "#015738" }} />
+              <input className='title-input funding-input' id='sp_box-phrase' onChange={e => setProjectFunding(e.target.value)} placeholder='What is your funding goal?' />
+            </div>
           </div>
           <div>
             <div className='sp_lower-box'>
@@ -78,7 +95,8 @@ export default function StartProject() {
             </div>
               <div className='sp_start-button'>
                 <div id='sp_button-word'>
-                  Next: Project idea
+                {/* <div id='sp_button-word' onClick={handleProjectCreate()}> */}
+                  Continue
                 </div>
               </div>
             </div>

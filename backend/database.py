@@ -33,14 +33,14 @@ with app.app_context():
 
 
 # CATEGORIES
-  hardware = Category(id = 52, title = "Hardware")
-  apps = Category(id = 332, title = "Apps")
-  printing = Category(id= 331, title = "3D Printing")
-  software = Category(id = 51, title = "Software")
-  robots = Category(id = 338, title = "Robots")
-  gadgets = Category(id = 337, title = "Gadgets")
-  web = Category(id = 342, title = "Web")
-  wearables = Category(id = 341, title = "Wearables")
+  hardware = Category(id = 52, title = "Hardware", default_pic = "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+  apps = Category(id = 332, title = "Apps", default_pic = "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+  printing = Category(id= 331, title = "3D Printing", default_pic = "https://images.unsplash.com/photo-1582879304171-8041c73bedbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+  software = Category(id = 51, title = "Software", default_pic = "https://images.unsplash.com/photo-1581094651181-35942459ef62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+  robots = Category(id = 338, title = "Robots", default_pic = "https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80")
+  gadgets = Category(id = 337, title = "Gadgets", default_pic = "https://images.unsplash.com/photo-1515940175183-6798529cb860?ixlib=rb-1.2.1&auto=format&fit=crop&w=1187&q=80")
+  web = Category(id = 342, title = "Web", default_pic = "https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+  wearables = Category(id = 341, title = "Wearables", default_pic = "https://images.unsplash.com/photo-1471174826377-f3da3bd635e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1225&q=80")
 
   db.session.add(hardware)
   db.session.add(apps)

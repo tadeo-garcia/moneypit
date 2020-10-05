@@ -19,7 +19,7 @@ def load_user():
   projects = [Project.query.filter(Project.id==pledge.project_id).one() for pledge in pledges]
   data = [category.to_dict() for category in categories]
   data2 = [project.to_dict() for project in projects]
-  
+
   for category in data:
     category["length"] = 0
     for project in data2:
@@ -56,10 +56,10 @@ def get_by_id_and_category():
     category_id = request.args.get('category', None)
     pledges = Pledge.query.filter(Pledge.backer_id==user_id).with_entities(Pledge.project_id).distinct()
     projects_data = [Project.query.filter(Project.id==pledge.project_id, Project.category_id==category_id).first() for pledge in pledges]
-    projects = [] 
-    for val in projects_data: 
-      if val != None : 
-        projects.append(val) 
+    projects = []
+    for val in projects_data:
+      if val != None :
+        projects.append(val)
     data = [project.to_dict() for project in projects]
     return {"projects": data}, 200
 
@@ -79,6 +79,29 @@ def get_project():
     rewards = [reward.to_dict() for reward in rewards]
     project = project.to_dict()
     return {"project": project, "rewards": rewards}, 200
+
+@projects_routes.route('/build', methods=['POST'])
+def build_project():
+  # try:
+    print("Getting here")
+    print(request.json.get('categoryImage'))
+    print(request.json.get('categoryId'))
+    project = Project(
+      owner_id= request.json.get('userId'),
+      title = request.json.get('title'),
+      description = request.json.get('description'),
+      organization = 'Demo Boys, Inc.',
+      location = 'Seattle, WA',
+      funding_goal = int(request.json.get('fundingGoal')),
+      pic = request.json.get('categoryImage'),
+      category_id = request.json.get('categoryId')
+    )
+    db.session.add(project)
+    db.session.commit()
+    return {"project": project.to_dict()}, 200
+  # except:
+  #   return jsonify({"msg": "Unsuccessful project build."})
+
 
 @projects_routes.route('/search_by_featured')
 def get_featured_projects():

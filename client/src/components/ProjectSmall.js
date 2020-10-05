@@ -21,14 +21,14 @@ export default function ProjectSmall(props) {
                 <div id={props.project.id} className="listing">
                     <img id={props.project.id} src={props.project.pic} onClick={searchID} alt={props.project.description} />
                     <div id={props.project.id} className="listing-information">
-                        <div className="listing-information-header">
-                            <h3>{props.project.title}</h3>
-                            <h2>{props.project.name}</h2>
+                        <div id={props.project.id} className="listing-information-header">
+                            <h3 id={props.project.id} >{props.project.title}</h3>
+                            <h2 id={props.project.id} >{props.project.name}</h2>
                         </div>
                         <div id={props.project.id} className="spacer-div"></div>
-                        <h3>{props.project.total_funding > 0 ? Math.floor(props.project.funding_goal / props.project.total_funding) : 0.00}% funded</h3>
+                        <h3 id={props.project.id}>{props.project.total_funding > 0 ? Math.floor(props.project.funding_goal / props.project.total_funding) : 0.00}% funded</h3>
                         <div id={props.project.id} className="listing-information-body">
-                            <h3>By {props.project.organization}</h3>
+                            <h3 id={props.project.id}>By {props.project.organization}</h3>
                         </div>
                     </div>
                 </div>

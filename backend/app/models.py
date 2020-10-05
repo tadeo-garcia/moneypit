@@ -98,11 +98,13 @@ class Category(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(50), nullable=False)
+  default_pic = db.Column(db.String(1000))
 
   def to_dict(self):
     return {
       "id": self.id,
-      "title": self.title
+      "title": self.title,
+      "default_pic": self.default_pic
     }
 
 

@@ -93,4 +93,15 @@ with app.app_context():
     db.session.add(reward3)
 
 
+# PLEDGES
+
+  pledge1 = Pledge(project_id = 1431129851, pledge_amount = 100, backer_id = 555)
+  pledge2 = Pledge(project_id = 1273059917, pledge_amount = 100, backer_id = 555)
+  pledge3 = Pledge(project_id = 1898415545, pledge_amount = 100, backer_id = 555)
+
+  db.session.add(pledge1)
+  db.session.add(pledge2)
+  db.session.add(pledge3)
+
+  
   db.session.commit()

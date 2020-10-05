@@ -1,0 +1,31 @@
+#pie-chart-popup{
+  display:flex;
+  flex-direction: row;
+  max-height: 150px;
+}
+
+#category-links{
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  padding-left: 7px;
+  padding-right: 25px;
+  top: 25px;
+}
+
+.category-link{
+  font-size: 12.5px;
+  font-weight: 300;
+  padding: 0px 15px;
+  text-decoration: none;
+
+}
+
+#pie-chart-canvas{
+  min-height: 250px;
+  width: 250px;
+  position: relative;
+  right: 110px;
+  bottom: 60px;
+  /* background-color: #eeeeee; */
+}

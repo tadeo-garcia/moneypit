@@ -1,26 +1,23 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Footer from '../components/Footer'
-import Reward from '../components/Reward'
-import ProjectCardSmall from '../components/ProjectCardSmall'
-import '../css/projectpage.css'
-import '../css/reward.css'
-// import { Route, Router, browserHistory } from 'react-router-dom';
+import {Link} from 'react-scroll';
+import Footer from '../components/Footer';
+import Reward from '../components/Reward';
+import ProjectCardSmall from '../components/ProjectCardSmall';
+import '../css/projectpage.css';
+import '../css/reward.css';
 
 
 export default function Project() {
-    const project = useSelector(state => state.projects.project);
-    const recommended = useSelector(state => state.projects.projects);
+  const pledgeTitleRef= useRef()
+  const project = useSelector(state => state.projects.project);
+  const recommended = useSelector(state => state.projects.projects);
+  const [animateStyle, setAnimateStyle] = useState({ color:'#028858'})
+
     let projects_list = [];
-    // console.log(browserHistory)
     if(!project || !recommended){
-    //   useEffect(() =>{
-    //     dispatch(getCategoriesById(user.id))
-    // }, [dispatch])
-      
       return 'Loading...'
     }
-    
     
     if(!recommended){
       return
@@ -39,6 +36,7 @@ export default function Project() {
     progressPercent = 100;
   }
   const progStyle = {width: `${progressPercent}%`};
+
  
     return (
       <>
@@ -59,8 +57,10 @@ export default function Project() {
                     <div id='progress-container-fill' style={progStyle}/>
                   </div>
                 </div>
+                <canvas id='confetti-canvas'>
+                </canvas>
                 <div id="projectpage-detail-pledge">
-                  <span className='pp-detail-pledge-title green-text'>${project.total_funding}</span>
+                  <span ref={pledgeTitleRef} style={animateStyle}className='pp-detail-pledge-title green-text'>${project.total_funding}</span>
                   <br/>
                   <span className='pp-detail-text'>pledged of ${project.funding_goal} goal</span>
                 </div>
@@ -75,7 +75,9 @@ export default function Project() {
                   <span className='pp-detail-text'>days to go</span>
                 </div>
                 <div id="projectpage-detail-bp">
-                  <button id='projectpage-detail-button'>Back this project</button>
+                  <Link to='pledge_info' smooth={true} duration={500} >
+                    <button id='projectpage-detail-button'>Back this project</button>
+                  </Link>
                   <div id='projectpage-detail-socialmedia'></div>
                   <div id='projectpage-detail-end-date'> This project will only be funded if it reaches its goal by {project.end_date}</div>
                 </div>
@@ -120,7 +122,9 @@ export default function Project() {
                 <span>Support</span>
               </div>
               <div>
-                {project.rewards.map((reward) => <Reward reward={reward} key={reward.id} />)}
+                {project.rewards.map((reward) => <Reward reward={reward} key={reward.id} 
+                pledgeTitleRef={pledgeTitleRef}
+                setAnimateStyle={setAnimateStyle} />)}
               </div>
             </div>
           </div>

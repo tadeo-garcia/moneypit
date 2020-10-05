@@ -53,6 +53,7 @@
 #profile-navbar-link{
   font-weight: 500;
   padding-left:1px;
+  cursor: pointer;
 }
 
 #link-number{
@@ -78,4 +79,26 @@
   grid-template-rows: auto;
   min-width:900px;
   padding: 30px 60px;
+}
+
+#pie-chart-div{
+  display:flex;
+  flex-direction: column;
+  height: 150px;
+  width: 200px;
+  position:absolute;
+  top: 225px;
+  right:50px;
+  background-color: white;
+  border-radius: 15px;
+  
+}
+
+#pie-chart-title{
+  text-align: right;
+  padding-top: 7px;
+  font-size: 12px;
+  font-weight: 300;
+  padding-right: 20px;
+  text-decoration: underline;
 }

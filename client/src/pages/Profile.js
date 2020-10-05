@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesById } from '../store/category';
-import { getProjectsByOwner, getProjectsByPledge} from '../store/project';
+import { getProjectsByOwner, getProjectsByPledge } from '../store/project';
 import Footer from '../components/Footer'
 import ProjectCard from '../components/ProjectCardSmall'
+import Piechart from '../components/Piechart';
 import '../css/profile.css';
 
 
@@ -21,6 +22,7 @@ export default function Profile() {
     dispatch(getCategoriesById(user.id))
     dispatch(getProjectsByOwner(user.id))
     dispatch(getProjectsByPledge(user.id))
+    // dispatch(getProjectsByOwnerAndCategory(user.id, 338))
     if(!projectsPledged){
       return
     }
@@ -34,7 +36,6 @@ export default function Profile() {
   function mapProps(array) {
     return array.map((project) => <ProjectCard project={project} key={project.id}/>)
   }
-
 
   const showCreated = (e) => {
       e.stopPropagation()
@@ -61,6 +62,10 @@ export default function Profile() {
           </div>
         </div>
         <div id='profile-page-middle'>
+          <div id='pie-chart-div'>
+            <div id='pie-chart-title'>Backed Categories</div>
+            <Piechart categories={categories} id='piechart'></Piechart>
+          </div>
           <div id='profile-navbar'>
                 <div className="active-display">
                   <span id='profile-navbar-link' onClick={showBacked}> Backed</span>
@@ -83,3 +88,4 @@ export default function Profile() {
     </>
   )
 }
+

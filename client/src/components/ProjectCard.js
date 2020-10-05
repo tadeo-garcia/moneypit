@@ -29,6 +29,7 @@ const progStyle = { width: `${percentage2}%` };
     <div id={props.project.id} className="card-wrapper">
       <div className="card">
         <Link id={props.project.id} 
+        className="card-link"
         style={{ textDecoration: "none", color: "black" }} 
         onClick={searchID} 
         to={`project/${props.project.id}`}>

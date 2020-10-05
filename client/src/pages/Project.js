@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import {Link} from 'react-scroll';
 import Footer from '../components/Footer';
 import Reward from '../components/Reward';

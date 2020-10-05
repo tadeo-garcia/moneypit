@@ -31,7 +31,6 @@
 7. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) if you haven't already.
 8. Add any Config Vars to your heroku app, either on the Heroku CLI, or on the heroku-app dashboard's Settings tab.
 
-
   ### Prepping Your React App:
 
 9. Run `npm run build` in your React app root folder.

@@ -1,14 +1,8 @@
-/* h2 {
-    font-size: 18px;
-}
-h3 {
-    font-size: 16px;
-    font-weight: bold;
-} */
+#pledge_info {
+    border:0.5px solid #d3d3d3;
+    padding: 20px 15px;
+    margin-bottom: 25px;
 
-
-.pledge_info {
-    border:0.5px solid black;
 }
 .pledge_amount {
     color: #282828;
@@ -17,10 +11,74 @@ h3 {
     margin-bottom: 20px
 }
 
-.pledge_reward {
-
+#pledge_amount-title{
+  font-size: 20px;
+  font-weight: 300;
 }
 
-.delivery-card {
+.pledge_title{
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 15px;
+}
 
+.pledge_reward {
+  font-size: 12;
+  font-weight: 300;
+  line-height: 1.25;
+  padding-bottom: 15px;
+}
+
+#reward-gray{
+  color: #797979;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+#pledge-button{
+  display:flex;
+  flex-direction: column;
+}
+
+#pledge-amount{
+  color: #797979;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.reward-pledge-input{
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  border:0.5px solid #d3d3d3;
+  font-size: 15px;
+}
+
+.reward-pledge-input:invalid{
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  border:2px solid #ff0000;
+  font-size: 15px;
+}
+
+#reward-pledge-button{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #028858;
+  border: 0px;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+#reward-pledge-button:active{
+  background-color: #00cb84;
 }

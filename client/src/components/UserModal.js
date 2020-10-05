@@ -9,14 +9,13 @@ export default function UserModal({ hideModal }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.auth.id);
-
   useEffect(() =>{
     dispatch(getProjectsByPledge(currentUserId))
     dispatch(getProjectsByOwner(currentUserId))
-},[dispatch, currentUserId])
-
-const projects_owned = useSelector(state => state.projects.projectsOwner)
-const projects_pledged = useSelector(state => state.projects.projectsPledge)
+  },[dispatch, currentUserId])
+  
+const projects_owned_data = useSelector(state => state.projects.projectsOwner)
+const projects_pledged_data = useSelector(state => state.projects.projectsPledge)
 
   const handleClick = e => {
     e.preventDefault();
@@ -24,10 +23,16 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
     history.push('/')
   }
 
-  if(!projects_owned || !projects_pledged){
+  const handleModal = e => {
+    hideModal(e)
+  }
+
+  if(!projects_owned_data || !projects_pledged_data){
     return null
   }
 
+ let projects_pledged = Object.entries(projects_pledged_data).slice(0, 4).map(project => project[1])
+  let projects_owned = Object.entries(projects_owned_data).slice(0, 4).map(project => project[1])
   function searchID(e) {
     e.preventDefault()
     hideModal(e)
@@ -43,9 +48,9 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
         <div id='user-modal-top'>
           <div className='user-column1'>
             <div id='usermodal__header'>YOUR ACCOUNT</div>
-            <Link to='/profile' className='user-modal__link'>Profile</Link>
-            <Link to='/settings' className='user-modal__link'>Settings</Link>
-            <Link to='/messages' className='user-modal__link'>Messages</Link>
+            <Link to='/profile' className='user-modal__link' onClick={handleModal}>Profile</Link>
+            <Link to='/settings' className='user-modal__link' onClick={handleModal}>Settings</Link>
+            <Link to='/messages' className='user-modal__link' onClick={handleModal}>Messages</Link>
           </div>
           <div className='user-column2'>
             <div id='usermodal__header'>BACKED PROJECTS</div>
@@ -101,9 +106,7 @@ const projects_pledged = useSelector(state => state.projects.projectsPledge)
         </div>
         <div id='user-modal-bottom'>
           <span id='logout-span' onClick={handleClick}>Log out</span>
-          <button onClick={hideModal} id='close-modal-button' >
-            X
-          </button>
+          <i onClick={hideModal} className='fa fa-times close-modal-button'></i>
         </div>
       </div>
     </div>

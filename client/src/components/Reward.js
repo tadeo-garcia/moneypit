@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import '../css/reward.css';
 import { sendPledge } from '../store/project';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,9 +12,7 @@ export default function Reward(props) {
     clock: 35,
     max: 350,
     size: 4,
-
   }
-
 
   const setAnimateStyle = props.setAnimateStyle
   const [state, setState] = useState({pledge: props.reward.minimum_donation});
@@ -28,12 +26,10 @@ export default function Reward(props) {
   }
 
   const style={};
-  style[`font-weight`] = '900'
+  style[`fontWeight`] = '900'
   style[`color`] = '#051a13'
-  style[`letter-spacing`] = '5px'
+  style[`letterSpacing`] = '5px'
   
-  console.log(style)
-
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
@@ -46,7 +42,6 @@ export default function Reward(props) {
       confetti.clear()
     },3500)
   }
-
 
     return (
         <div id="pledge_info">

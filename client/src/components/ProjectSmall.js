@@ -16,7 +16,7 @@ export default function ProjectSmall(props) {
     }
 
     return (
-        <div id={props.project.id} className="listing-size" onClick={searchID}>
+        <div id={props.project.id} className="listing-size" onClick={searchID} >
             <Link id={props.project.id} style={{ textDecoration: "none", color: "black" }} onClick={searchID} to={`project/${props.project.id}`}>
                 <div id={props.project.id} className="listing">
                     <img id={props.project.id} src={props.project.pic} onClick={searchID} alt={props.project.description} />

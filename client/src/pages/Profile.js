@@ -17,7 +17,7 @@ export default function Profile() {
   const projectsPledged = useSelector((state) => state.projects.projectsPledge)
   const categories = useSelector((state) => state.categories.categoriesById)
   let displayModal = []
-  
+
   useEffect(() =>{
     dispatch(getCategoriesById(user.id))
     dispatch(getProjectsByOwner(user.id))
@@ -29,10 +29,10 @@ export default function Profile() {
     let displayModal = mapProps(projectsPledged)
     setDisplayUserPledged(displayModal)
   }, [dispatch])
-  
-  if(!projectsPledged || !categories || !projectsOwned || 
+
+  if(!projectsPledged || !categories || !projectsOwned ||
     displayModal===[]) return null
-  
+
   function mapProps(array) {
     return array.map((project) => <ProjectCard project={project} key={project.id}/>)
   }
@@ -42,7 +42,7 @@ export default function Profile() {
       setDisplayUserPledged(null)
       setDisplayUserOwned(mapProps(projectsOwned))
     }
-    
+
   const showBacked = (e) => {
       e.stopPropagation()
       setDisplayUserOwned(null)
@@ -78,7 +78,7 @@ export default function Profile() {
           </div>
           <div id='profile-display'>
             <div className="card-container-profile flex-wrap">
-              {displayUserOwned} 
+              {displayUserOwned}
               {displayUserPledged}
             </div>
           </div>
@@ -88,4 +88,3 @@ export default function Profile() {
     </>
   )
 }
-

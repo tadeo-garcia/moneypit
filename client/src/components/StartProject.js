@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category';
-import { createProject, getProjectsByPledge } from '../store/project';
+import { createProject, getProjectsByPledge, getProjectsByOwner } from '../store/project';
 import { useHistory } from 'react-router-dom';
 import '../css/startproject.css';
 
@@ -37,7 +37,6 @@ export default function StartProject() {
     }
   }
 
-
   const hideCatModal = e => {
     setDisplayCatModal(null)
   }
@@ -51,6 +50,7 @@ export default function StartProject() {
   const handleProjectCreate = e => {
     dispatch(createProject(currentUser.id, categoryChoice, projectTitle, description, projectFunding, categoryId, categoryImage))
     dispatch(getProjectsByPledge(currentUser.id))
+    dispatch(getProjectsByOwner(currentUser.id))
     return history.push('/profile')
   }
 
@@ -81,7 +81,7 @@ export default function StartProject() {
             <div id='sp_box-one__top-text'>First, let's get you set up.</div>
             <div id='sp_box-one__bottom-text'>
               Pick a project category to connect with a specific community. You can always update this later.
-          </div>
+            </div>
             <div className='sp_box-select' onClick={e => showCatModal()}>
               <div id='sp_box-phrase'>
                 {categoryChoice}
@@ -95,27 +95,34 @@ export default function StartProject() {
               :
               null
             }
-            <div className='input-select'>
-              <input className='title-input' id='sp_box-phrase' onChange={e => setProjectTitle(e.target.value)} placeholder='Name your project'></input>
-            </div>
-            <div className='description-box'>
-              <textarea placeholder='Description...' onChange={e => setDescription(e.target.value)}></textarea>
-            </div>
-            <div className='input-select'>
-              <i className='fas fa-dollar-sign' style={{ "color": "#015738" }} />
-              <input className='title-input funding-input' id='sp_box-phrase-2' onChange={e => setProjectFunding(e.target.value)} placeholder='What is your funding goal?' />
-            </div>
+            <form>
+              <div className='input-select'>
+                <input type='text' className='title-input' id='sp_box-phrase' onChange={e => setProjectTitle(e.target.value)} placeholder='Name your project' required></input>
+              </div>
+              <div className='description-box'>
+                <textarea placeholder='Description...' onChange={e => setDescription(e.target.value)} required />
+              </div>
+              <div className='input-select'>
+                <i className='fas fa-dollar-sign' style={{ "color": "#015738" }} />
+                <input type='number'
+                  className='title-input funding-input'
+                  id='sp_box-phrase-2' min='1'
+                  onChange={e => setProjectFunding(e.target.value)}
+                  placeholder='What is your funding goal?'
+                  required />
+              </div>
+            </form>
           </div>
           <div>
             <div className='sp_lower-box'>
               <div className='sp_first_proj'>
                 Your first project! Welcome.
             </div>
-              <div className='sp_start-button' onClick={e => handleProjectCreate()}>
-                <div id='sp_button-word'>
-                  Continue
-                </div>
-              </div>
+              <input type='submit'
+              className='sp_start-button'
+              onClick={e => handleProjectCreate()}
+              value='Continue'
+              style={{ "color": "white" }} />
             </div>
           </div>
           <div className='sp_disclaimer'>

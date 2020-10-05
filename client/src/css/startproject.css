@@ -6,7 +6,7 @@
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 200px;
+  margin-top: 150px;
   max-width: 1366px;
   height: 800px;
   padding-left: 60px;
@@ -22,7 +22,7 @@
 .start_project-box {
   padding-top: 15vh;
   max-width: 605px;
-  position: absolute;
+  flex-basis: inherit;
 }
 
 .sp_box-one {
@@ -128,11 +128,8 @@ textarea {
 
 .sp_lower-box {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-grow: inherit;
   position: relative;
-  min-width: 605px;
+  justify-content: space-between;
   align-items: center;
   padding-top: 18px;
   padding-bottom: 18px;
@@ -192,6 +189,7 @@ textarea {
   background-color: #464646;
   height: 44px;
   width: 153px;
+  border: none;
 }
 
 .sp_start-button:hover {

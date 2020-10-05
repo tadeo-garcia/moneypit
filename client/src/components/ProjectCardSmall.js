@@ -25,10 +25,10 @@ export default function ProjectCardSmall(props) {
 
   return (
     <div id={props.project.id} className="card-wrapper-small">
-    <Link id={props.project.id} 
-      style={{ textDecoration: "none", 
-      color: "black" }} 
-      onClick={searchID} 
+    <Link id={props.project.id}
+      style={{ textDecoration: "none",
+      color: "black" }}
+      onClick={searchID}
       to={`project/${props.project.id}`}>
         <Scroll to='modal-navbar-div' smooth={true} duration={750}>
             <div className="card-small-image">
@@ -54,4 +54,3 @@ export default function ProjectCardSmall(props) {
     </div>
   )
 }
-

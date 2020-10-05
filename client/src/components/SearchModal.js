@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjectsByTitle, getProject } from '../store/project';
 import { useHistory } from "react-router-dom";
 import '../css/searchmodal.css'
 import ProjectSmall from './ProjectSmall';
 
-function SearchModal({ searchTerm, hideModal }) {
+function SearchModal({ searchTerm }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +28,11 @@ function SearchModal({ searchTerm, hideModal }) {
       <div className="search_modal__container">
         <div className='projects-label'>Projects</div>
         {
-          (projects.projectsTitle.length > 0) ? projects.projectsTitle.map((project) => <ProjectSmall oncClick={e => handleSubmit(project.id)} project={project} key={project.id} />) : <div id='no-search-results'>Oi! We couldn't find any results.</div>
+          (projects.projectsTitle.length > 0) ?
+            projects.projectsTitle.map((project) =>
+              <ProjectSmall oncClick={e => handleSubmit(project.id)} project={project} key={project.id} />)
+            :
+            <div id='no-search-results'>Oi! We couldn't find any results.</div>
         }
       </div>
     </div>

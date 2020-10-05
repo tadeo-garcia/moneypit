@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import {Link} from 'react-scroll';
 import Footer from '../components/Footer';
 import Reward from '../components/Reward';
@@ -18,7 +18,7 @@ export default function Project() {
     if(!project || !recommended){
       return 'Loading...'
     }
-    
+
     if(!recommended){
       return
     } else {
@@ -37,7 +37,7 @@ export default function Project() {
   }
   const progStyle = {width: `${progressPercent}%`};
 
- 
+
     return (
       <>
         <div id='projectpage-container'>
@@ -122,7 +122,7 @@ export default function Project() {
                 <span>Support</span>
               </div>
               <div>
-                {project.rewards.map((reward) => <Reward reward={reward} key={reward.id} 
+                {project.rewards.map((reward) => <Reward reward={reward} key={reward.id}
                 pledgeTitleRef={pledgeTitleRef}
                 setAnimateStyle={setAnimateStyle} />)}
               </div>
@@ -133,7 +133,7 @@ export default function Project() {
               <span>WE ALSO RECOMMEND</span>
             </div>
             <div id='projectpage-recommended'>
-              { projects_list.map((project) => 
+              { projects_list.map((project) =>
                 <ProjectCardSmall project={project} key={project.id} id='projectpage-recommendedcard'/>)}
             </div>
           </div>

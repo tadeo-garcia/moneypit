@@ -4,11 +4,8 @@ import SearchModal from './SearchModal'
 export default function SearchBar({ hideModal }) {
   const [searchTerm, setSearchTerm] = useState('')
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(searchCity(city,state))
-    // history.push(`/listings/${city}`)
   }
 
   const closeSearch = () => {

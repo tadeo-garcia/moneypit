@@ -1,10 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import '../css/reward.css';
 import { sendPledge } from '../store/project';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-scroll'
+import ConfettiGenerator from 'confetti-js';
+
 
 export default function Reward(props) {
+  const confettiSettings = {
+    target: 'confetti-canvas',
+    clock: 35,
+    max: 350,
+    size: 4,
+
+  }
+
+
+  const setAnimateStyle = props.setAnimateStyle
   const [state, setState] = useState({pledge: props.reward.minimum_donation});
   const user = useSelector((state) => state.auth);
   const project = useSelector((state) => state.projects.project)
@@ -13,18 +25,27 @@ export default function Reward(props) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     setState((prevState) => ({ ...prevState, [inputName]: inputValue }));
-
-
   }
+
+  const style={};
+  style[`font-weight`] = '900'
+  style[`color`] = '#051a13'
+  style[`letter-spacing`] = '5px'
+  
+  console.log(style)
 
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
+    const confetti = new ConfettiGenerator(confettiSettings)
+    confetti.render()
+    setAnimateStyle(style)
     setTimeout(()=>{
       dispatch(sendPledge(state.pledge, user.id, project.id, props.reward.id))
-    },1000)
+      setAnimateStyle({ color:'#028858'})
+      confetti.clear()
+    },3500)
   }
-
 
 
     return (

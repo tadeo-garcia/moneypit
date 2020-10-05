@@ -1,3 +1,10 @@
+#confetti-canvas{
+  background-color: transparent;
+  width:365px;
+  height: 250px;
+  position: absolute;
+}
+
 #projectpage-container{
   width:100%;
   display: flex;
@@ -64,6 +71,7 @@
   flex-direction: column;
   padding-left: 15px;
   padding-right: 45px;
+  z-index: 50;
 }
 
 #progress-container{

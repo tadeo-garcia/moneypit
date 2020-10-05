@@ -1,7 +1,7 @@
 
 <img src="https://i.imgur.com/HmQtgf3.jpg" align=center alt=MoneyPitLogo/>
 
-## Welcome to [MoneyPit](), a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
+## Welcome to [MoneyPit](https://money-pit.herokuapp.com/), a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 
 ### Get your wallet ready, and back your favorite projects!
 #### If nothing catches your eye, create your own project!
@@ -72,4 +72,5 @@
 
 
 ### Credits:
-* [insert image sources]
+* Pictures and data are from https://apify.com/jaroslavhejlek/kickstarter-search
+* Default category pictures from www.unsplash.com

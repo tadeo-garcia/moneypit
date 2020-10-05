@@ -82,21 +82,27 @@ def get_project():
 
 @projects_routes.route('/build', methods=['POST'])
 def build_project():
-    try:
-        project = Project(
-            owner_id= request.json.get('userId')
-            title = request.json.get('title')
-            description = request.json.get('description')
-            organization = 'Demo Street, Inc'
-            location = 'Seattle, WA'
-            funding_goal = int(request.json.get('fundingGoal'))
-            pic = request.json.get('pic')
-            category_id = request.json.get('categoryId')
-        )
-        db.session.add(project)
-        db.session.commit()
-    except:
-        return jsonify({"msg": "Successfully created project."})
+  # try:
+    print("Getting here")
+    print(request.json.get('categoryImage'))
+    print(request.json.get('categoryId'))
+    project = Project(
+      owner_id= request.json.get('userId'),
+      title = request.json.get('title'),
+      description = request.json.get('description'),
+      organization = 'Demo Boys, Inc.',
+      location = 'Seattle, WA',
+      funding_goal = int(request.json.get('fundingGoal')),
+      pic = request.json.get('categoryImage'),
+      category_id = request.json.get('categoryId')
+    )
+    db.session.add(project)
+    db.session.commit()
+    return {"project": project.to_dict()}, 200
+  # except:
+  #   return jsonify({"msg": "Unsuccessful project build."})
+
+
 @projects_routes.route('/search_by_featured')
 def get_featured_projects():
     projects = Project.query.filter(Project.staff_pick==True).all()

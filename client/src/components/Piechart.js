@@ -62,7 +62,6 @@ export default function Piechart({categories}) {
     <div id='pie-chart-popup'> 
       <div id='category-links'>
         {categories.map(category => {
-          console.log(`${category.color}`)
           if (category.color !== '#e9e9e9') {
             let link = `projects/${category.title}`
             let linkStyle = {color: `${category.color}`}

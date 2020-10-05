@@ -32,7 +32,6 @@ export default function Reward(props) {
   style[`color`] = '#051a13'
   style[`letter-spacing`] = '5px'
   
-  console.log(style)
 
   const dispatch = useDispatch();
   const handleSubmit = e => {

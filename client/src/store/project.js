@@ -176,9 +176,7 @@ export const getProjectsByOwnerAndCategory = (id, category) => {
     const res = await fetch (`/api/projects/projects_by_category_and_id?id=${id}&category=${category}`, {
       method: "get",
     })
-    console.log("~~~~~~")
     res.data = await res.json();
-    console.log(res.data)
     if(res.ok) {
       dispatch(loadProjectsByOwnerAndCategory(res.data.projects))
     }
@@ -202,9 +200,6 @@ export const getProjectsByTitle = (title) => {
 
 export const createProject = (userId, category, title, description, fundingGoal, categoryId, categoryImage) => {
   return async dispatch => {
-    console.log("HIT THAT")
-    console.log(categoryId)
-    console.log(categoryImage)
     const res = await fetch(`/api/projects/build`, {
       method: 'post',
       headers: {
@@ -214,7 +209,6 @@ export const createProject = (userId, category, title, description, fundingGoal,
     })
     res.data = await res.json();
     if (res.ok) {
-      console.log(res.data)
       dispatch(loadProject(res.data.projects))
     }
     return res

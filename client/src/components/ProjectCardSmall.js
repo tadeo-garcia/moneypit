@@ -1,7 +1,7 @@
 import React from 'react';
 import { getProject } from '../store/project';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Link as Scroll } from 'react-scroll'
 import '../css/projectcardsmall.css';
 
@@ -25,22 +25,16 @@ export default function ProjectCardSmall(props) {
 
   return (
     <div id={props.project.id} className="card-wrapper-small">
-    <Link id={props.project.id}
-      style={{ textDecoration: "none",
-      color: "black" }}
-      onClick={searchID}
-      to={`project/${props.project.id}`}>
-        <Scroll to='modal-navbar-div' smooth={true} duration={750}>
-            <div className="card-small-image">
-              <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
+      <Scroll to='modal-navbar-div' smooth={true} duration={750}>
+          <div className="card-small-image">
+            <img id={props.project.id} src={props.project.pic} alt='Project' onClick={searchID} />
               <div id='projectpage-detail-progress'>
                 <div id='progress-container'>
                   <div id='progress-container-fill' style={progStyle} />
                 </div>
               </div>
-            </div>
-            </Scroll>
-            </Link>
+          </div>
+        </Scroll>
       <div className="card-small-information">
         <div className="card-small-header">
           <span>{props.project.title}</span>

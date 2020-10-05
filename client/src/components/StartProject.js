@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category';
-import { createProject } from '../store/project'
-import '../css/startproject.css'
+import { createProject, getProjectsByPledge } from '../store/project';
+import { useHistory } from 'react-router-dom';
+import '../css/startproject.css';
 
 
 export default function StartProject() {
@@ -11,7 +12,9 @@ export default function StartProject() {
   const [projectTitle, setProjectTitle] = useState('Name your project')
   const [description, setDescription] = useState('Description')
   const [projectFunding, setProjectFunding] = useState('Funding goal')
-
+  let [categoryImage, setCategoryImage] = useState('')
+  let [categoryId, setCategoryId] = useState('')
+  const history = useHistory()
 
   const dispatch = useDispatch()
 
@@ -19,9 +22,21 @@ export default function StartProject() {
     dispatch(getCategories())
   }, [dispatch])
 
+
   const categories = useSelector(state => state.categories.list)
   const currentUser = useSelector(state => state.auth)
-  const userOrg = useSelector(state => state.auth.organization)
+
+  if (!categories) return null;
+
+  const getCategoryImage = title => {
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].title === title) {
+        setCategoryImage(categories[i].default_pic)
+        setCategoryId(categories[i].id)
+      }
+    }
+  }
+
 
   const hideCatModal = e => {
     setDisplayCatModal(null)
@@ -30,10 +45,13 @@ export default function StartProject() {
   const handleCategory = title => {
     hideCatModal();
     setCategoryChoice(title)
+    getCategoryImage(title)
   }
 
-  const handleProjectCreate = () => {
-    dispatch(createProject(currentUser.id, categoryChoice, projectTitle, description, projectFunding, categories.id))
+  const handleProjectCreate = e => {
+    dispatch(createProject(currentUser.id, categoryChoice, projectTitle, description, projectFunding, categoryId, categoryImage))
+    dispatch(getProjectsByPledge(currentUser.id))
+    return history.push('/profile')
   }
 
   const showCatModal = e => {
@@ -85,7 +103,7 @@ export default function StartProject() {
             </div>
             <div className='input-select'>
               <i className='fas fa-dollar-sign' style={{ "color": "#015738" }} />
-              <input className='title-input funding-input' id='sp_box-phrase' onChange={e => setProjectFunding(e.target.value)} placeholder='What is your funding goal?' />
+              <input className='title-input funding-input' id='sp_box-phrase-2' onChange={e => setProjectFunding(e.target.value)} placeholder='What is your funding goal?' />
             </div>
           </div>
           <div>
@@ -93,9 +111,8 @@ export default function StartProject() {
               <div className='sp_first_proj'>
                 Your first project! Welcome.
             </div>
-              <div className='sp_start-button'>
+              <div className='sp_start-button' onClick={e => handleProjectCreate()}>
                 <div id='sp_button-word'>
-                {/* <div id='sp_button-word' onClick={handleProjectCreate()}> */}
                   Continue
                 </div>
               </div>

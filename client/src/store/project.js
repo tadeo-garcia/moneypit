@@ -200,18 +200,21 @@ export const getProjectsByTitle = (title) => {
   }
 }
 
-export const createProject = (userId, category, title, description, fundingGoal, categoryId) => {
+export const createProject = (userId, category, title, description, fundingGoal, categoryId, categoryImage) => {
   return async dispatch => {
     console.log("HIT THAT")
+    console.log(categoryId)
+    console.log(categoryImage)
     const res = await fetch(`/api/projects/build`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId, category, title, description, fundingGoal, categoryId })
+      body: JSON.stringify({ userId, category, title, description, fundingGoal, categoryId, categoryImage })
     })
     res.data = await res.json();
     if (res.ok) {
+      console.log(res.data)
       dispatch(loadProject(res.data.projects))
     }
     return res

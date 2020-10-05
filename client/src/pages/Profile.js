@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesById } from '../store/category';
 import { getProjectsByOwner, getProjectsByPledge } from '../store/project';
@@ -22,13 +22,13 @@ export default function Profile() {
     dispatch(getCategoriesById(user.id))
     dispatch(getProjectsByOwner(user.id))
     dispatch(getProjectsByPledge(user.id))
-    // dispatch(getProjectsByOwnerAndCategory(user.id, 338))
+
     if(!projectsPledged){
       return
     }
     let displayModal = mapProps(projectsPledged)
     setDisplayUserPledged(displayModal)
-  }, [dispatch])
+  }, [user.id, dispatch])
 
   if(!projectsPledged || !categories || !projectsOwned ||
     displayModal===[]) return null

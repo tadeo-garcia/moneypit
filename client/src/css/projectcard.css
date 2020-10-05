@@ -29,6 +29,12 @@
   border: 1px solid #dbdbdb;
 }
 
+.card-link{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .card img {
   height: 150px;
   width: 275;

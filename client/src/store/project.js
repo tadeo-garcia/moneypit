@@ -90,13 +90,13 @@ export const sendPledge = (pledgeAmount, userId, projectId, rewardId) => {
       body: JSON.stringify({ pledgeAmount, userId, projectId, rewardId })
     },
     )
-  res.data = await res.json();
-  let project = res.data.project
-  let rewards = res.data.rewards
-  project.rewards = rewards
-  if (res.ok) {
-    dispatch(loadProject(res.data.project))
-  }
+    res.data = await res.json();
+    let project = res.data.project
+    let rewards = res.data.rewards
+    project.rewards = rewards
+    if (res.ok) {
+      dispatch(loadProject(res.data.project))
+    }
     return res;
   }
 }
@@ -108,7 +108,7 @@ export const getFeaturedProjects = () => {
       method: "get"
     })
     res.data = await res.json();
-    if(res.ok) {
+    if (res.ok) {
       dispatch(loadFeaturedProjects(res.data.projects))
     }
     return res;
@@ -173,11 +173,12 @@ export const getProjectsByPledge = (id) => {
 
 export const getProjectsByOwnerAndCategory = (id, category) => {
   return async dispatch => {
-    const res = await fetch (`/api/projects/projects_by_category_and_id?id=${id}&category=${category}`, {
+    const res = await fetch(`/api/projects/projects_by_category_and_id?id=${id}&category=${category}`, {
       method: "get",
     })
     res.data = await res.json();
-    if(res.ok) {
+    console.log(res.data)
+    if (res.ok) {
       dispatch(loadProjectsByOwnerAndCategory(res.data.projects))
     }
     return res;
@@ -230,9 +231,9 @@ export default function projectsReducer(state = {}, action) {
     case GET_PROJECTS_BY_TITLE:
       return { ...state, projectsTitle: action.projects }
     case GET_FEATURED_PROJECTS:
-      return { ...state, featuredProjects: action.projects}
+      return { ...state, featuredProjects: action.projects }
     case GET_PROJECTS_BY_OWNER_AND_CATEGORY:
-      return {...state, projectsPledge: action.projects}
+      return { ...state, projectsPledge: action.projects }
     default:
       return state;
   }

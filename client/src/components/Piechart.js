@@ -1,22 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import { getProjectsByOwnerAndCategory } from '../store/project'
 import '../css/piechart.css';
 
 export default function Piechart({categories}) {
-  const user = useSelector((state) => state.auth);
   const canvasRef = useRef(null)
-  const dispatch = useDispatch();
   
   const randomColor = () => {
     return '#' + Math.random().toString(16).slice(2,8)
-  }
-
-  function handleClick(e) {
-    e.preventDefault()
-    let category = e.target.id
-    dispatch(getProjectsByOwnerAndCategory(user.id, category))
   }
 
   let colors = []
@@ -36,7 +26,6 @@ export default function Piechart({categories}) {
     const context = canvas.getContext('2d')
     canvas.width=175;
     canvas.height=175;
-    let total = 8;
     let startAngle = 0;
     let radius = (100/3);
     let cx = canvas.width/2;
@@ -66,9 +55,14 @@ export default function Piechart({categories}) {
             let link = `projects/${category.title}`
             let linkStyle = {color: `${category.color}`}
             let title = `${category.title}`
-            return <Link className='category-link' 
-            id={category.id} onClick={handleClick} 
-            to={link} style={linkStyle} > {title} </Link>
+            return (<Link className='category-link'
+            key={category.id} 
+            id={category.id}
+            to={link} style={linkStyle}> 
+            {title} 
+            </Link>)
+          } else {
+            return null
           }
         })
         }

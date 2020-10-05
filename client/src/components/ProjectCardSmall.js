@@ -48,7 +48,7 @@ export default function ProjectCardSmall(props) {
           <span>By {props.project.organization}</span>
         </div>
         <div className="card-small-footer">
-          <span id='card-small-description'>${props.project.description}</span>
+          <span id='card-small-description'>{props.project.description}</span>
         </div>
       </div>
     </div>

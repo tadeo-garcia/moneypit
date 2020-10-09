@@ -70,7 +70,7 @@ class Project(db.Model):
 
   def increment(self, amount):
     self.total_funding += amount
-  
+
   def increase_pledge(self):
     self.total_pledges += 1
 
@@ -150,11 +150,11 @@ class Pledge(db.Model):
   project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  
+
   backer = db.relationship("User", foreign_keys=[backer_id])
   project = db.relationship("Project", foreign_keys=[project_id])
   reward = db.relationship("Reward", foreign_keys=[reward_id])
-  
+
   def to_dict():
     return {
       "id": self.id,

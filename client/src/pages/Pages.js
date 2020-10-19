@@ -1,12 +1,12 @@
 import React from 'react';
 import Category from '../components/Category';
-import Navbar from '../components/Navbar'
-import Auth from '../components/Auth'
-import Project from './Project'
+import Navbar from '../components/Navbar';
+import Auth from '../components/Auth';
+import Project from './Project';
 import { Route } from 'react-router-dom';
-import HomePage from './HomePage'
+import HomePage from './HomePage';
 import StartProject from '../components/StartProject';
-import Profile from './Profile'
+import Profile from './Profile';
 
 
 

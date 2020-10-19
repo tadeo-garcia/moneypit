@@ -2,8 +2,8 @@ import React, { useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoriesById } from '../store/category';
 import { getProjectsByOwner, getProjectsByPledge } from '../store/project';
-import Footer from '../components/Footer'
-import ProjectCard from '../components/ProjectCardSmall'
+import Footer from '../components/Footer';
+import ProjectCard from '../components/ProjectCardSmall';
 import Piechart from '../components/Piechart';
 import '../css/profile.css';
 

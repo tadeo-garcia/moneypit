@@ -30,7 +30,7 @@ def load_user():
   for category in data:
     category["length"] = 0
     for project in data2:
-      if project["category_id"] == ca tegory["id"]:
+      if project["category_id"] == category["id"]:
         category["length"] += 1
   return {"categories": data}
 

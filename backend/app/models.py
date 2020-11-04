@@ -6,161 +6,180 @@ import datetime
 db = SQLAlchemy()
 
 user_rewards = db.Table('user_rewards',
-  db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-  db.Column('reward_id', db.Integer, db.ForeignKey('rewards.id'), primary_key=True)
-)
+                        db.Column('user_id', db.Integer, db.ForeignKey(
+                            'users.id'), primary_key=True),
+                        db.Column('reward_id', db.Integer, db.ForeignKey(
+                            'rewards.id'), primary_key=True)
+                        )
+
 
 class User(db.Model, UserMixin):
-  __tablename__ = 'users'
+    __tablename__ = 'users'
 
-  id = db.Column(db.Integer, primary_key=True)
-  username = db.Column(db.String(30), nullable=False)
-  email = db.Column(db.String(30), nullable=False, unique=True)
-  hashed_password = db.Column(db.String(100), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(30), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(100), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
 
-  user_rewards = db.relationship("Reward", secondary=user_rewards, lazy='subquery',
-                                backref=db.backref('users', lazy=True))
-  # projects = db.relationship("Project", foreign_keys = [id])
+    user_rewards = db.relationship("Reward", secondary=user_rewards, lazy='subquery',
+                                   backref=db.backref('users', lazy=True))
+    # projects = db.relationship("Project", foreign_keys = [id])
 
-  @property
-  def password(self):
-    return self.hashed_password
+    @property
+    def password(self):
+        return self.hashed_password
 
-  @password.setter
-  def password(self, password):
-    self.hashed_password = generate_password_hash(password)
+    @password.setter
+    def password(self, password):
+        self.hashed_password = generate_password_hash(password)
 
-  def check_password(self, password):
-    return check_password_hash(self.password, password)
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
-  def to_dict(self):
-    return {
-      "id": self.id,
-      "username": self.username,
-      "email": self.email,
-      "created_at": self.created_at.strftime("%B %Y")
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "created_at": self.created_at.strftime("%B %Y")
+        }
+
 
 class Project(db.Model):
-  __tablename__ = 'projects'
+    __tablename__ = 'projects'
 
-  id = db.Column(db.Integer, primary_key=True, nullable=False)
-  owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-  title = db.Column(db.String(1000), nullable=False)
-  description = db.Column(db.String(1000), nullable=False)
-  organization = db.Column(db.String(50))
-  avatar = db.Column(db.String(100))
-  location = db.Column(db.String(100), nullable=False)
-  pic = db.Column(db.String(300), nullable=False)
-  category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
-  funding_goal = db.Column(db.Integer, nullable=False, default=0)
-  total_funding = db.Column(db.Integer, nullable=False, default=0)
-  launch_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  end_date = db.Column(db.DateTime, nullable=False, default= "2030-10-28 23:06:16.227442")
-  total_pledges = db.Column(db.Integer, default=0)
-  staff_pick = db.Column(db.Boolean, default=False)
-  days_remaining = db.Column(db.Integer, default=20)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    title = db.Column(db.String(1000), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
+    organization = db.Column(db.String(50))
+    avatar = db.Column(db.String(100))
+    location = db.Column(db.String(100), nullable=False)
+    pic = db.Column(db.String(300), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey(
+        'categories.id'), nullable=False)
+    funding_goal = db.Column(db.Integer, nullable=False, default=0)
+    total_funding = db.Column(db.Integer, nullable=False, default=0)
+    launch_date = db.Column(db.DateTime, nullable=False,
+                            default=datetime.datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=False,
+                         default="2030-10-28 23:06:16.227442")
+    total_pledges = db.Column(db.Integer, default=0)
+    staff_pick = db.Column(db.Boolean, default=False)
+    days_remaining = db.Column(db.Integer, default=20)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
 
-  owner = db.relationship("User", foreign_keys=[owner_id])
-  project_rewards = db.relationship("Reward", lazy='subquery')
+    owner = db.relationship("User", foreign_keys=[owner_id])
+    project_rewards = db.relationship("Reward", lazy='subquery')
 
-  def increment(self, amount):
-    self.total_funding += amount
+    def increment(self, amount):
+        self.total_funding += amount
 
-  def increase_pledge(self):
-    self.total_pledges += 1
+    def increase_pledge(self):
+        self.total_pledges += 1
 
-  def to_dict(self):
-    return {
-      "id": self.id,
-      "title": self.title,
-      "owner_id": self.owner_id,
-      "description": self.description,
-      "organization": self.organization,
-      "avatar": self.avatar,
-      "location": self.location,
-      "days_remaining": self.days_remaining,
-      "total_funding": self.total_funding,
-      "category_id": self.category_id,
-      "pic": self.pic,
-      "funding_goal": self.funding_goal,
-      "total_funding": self.total_funding,
-      "launch_date": self.launch_date,
-      "end_date": self.end_date,
-      "total_pledges": self.total_pledges
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "owner_id": self.owner_id,
+            "description": self.description,
+            "organization": self.organization,
+            "avatar": self.avatar,
+            "location": self.location,
+            "days_remaining": self.days_remaining,
+            "total_funding": self.total_funding,
+            "category_id": self.category_id,
+            "pic": self.pic,
+            "funding_goal": self.funding_goal,
+            "total_funding": self.total_funding,
+            "launch_date": self.launch_date,
+            "end_date": self.end_date,
+            "total_pledges": self.total_pledges
+        }
+
 
 class Category(db.Model):
-  __tablename__ = 'categories'
+    __tablename__ = 'categories'
 
-  id = db.Column(db.Integer, primary_key=True)
-  title = db.Column(db.String(50), nullable=False)
-  default_pic = db.Column(db.String(1000))
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    default_pic = db.Column(db.String(1000))
 
-  def to_dict(self):
-    return {
-      "id": self.id,
-      "title": self.title,
-      "default_pic": self.default_pic
-    }
-
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "default_pic": self.default_pic
+        }
 
 
 class Reward(db.Model):
-  __tablename__ = 'rewards'
+    __tablename__ = 'rewards'
 
-  id = db.Column(db.Integer, primary_key=True)
-  title = db.Column(db.String(50), nullable=False)
-  minimum_donation = db.Column(db.Integer, nullable=False)
-  picture = db.Column(db.String)
-  description = db.Column(db.Text, nullable=False)
-  delivery_date = db.Column(db.DateTime)
-  reward_count = db.Column(db.Integer, default=0)
-  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    minimum_donation = db.Column(db.Integer, nullable=False)
+    picture = db.Column(db.String)
+    description = db.Column(db.Text, nullable=False)
+    delivery_date = db.Column(db.DateTime)
+    reward_count = db.Column(db.Integer, default=0)
+    project_id = db.Column(db.Integer, db.ForeignKey(
+        "projects.id"), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
 
-  project = db.relationship("Project", foreign_keys=[project_id])
+    project = db.relationship("Project", foreign_keys=[project_id])
 
-  def increment(self):
-    self.reward_count += 1
+    def increment(self):
+        self.reward_count += 1
 
-  def to_dict(self):
-    return {
-      "id": self.id,
-      "title": self.title,
-      "minimum_donation": self.minimum_donation,
-      "picture": self.picture,
-      "description": self.description,
-      "delivery_date": self.delivery_date.strftime("%B %Y"),
-      "reward_count": self.reward_count,
-      "project_id": self.project_id
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "minimum_donation": self.minimum_donation,
+            "picture": self.picture,
+            "description": self.description,
+            "delivery_date": self.delivery_date.strftime("%B %Y"),
+            "reward_count": self.reward_count,
+            "project_id": self.project_id
+        }
+
 
 class Pledge(db.Model):
-  __tablename__ = 'pledges'
+    __tablename__ = 'pledges'
 
-  id = db.Column(db.Integer, primary_key=True)
-  pledge_amount = db.Column(db.Integer, nullable=False)
-  reward_id = db.Column(db.Integer, db.ForeignKey("rewards.id"))
-  backer_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-  project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    pledge_amount = db.Column(db.Integer, nullable=False)
+    reward_id = db.Column(db.Integer, db.ForeignKey("rewards.id"))
+    backer_id = db.Column(
+        db.Integer, db.ForeignKey("users.id"), nullable=False)
+    project_id = db.Column(db.Integer, db.ForeignKey(
+        "projects.id"), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
 
-  backer = db.relationship("User", foreign_keys=[backer_id])
-  project = db.relationship("Project", foreign_keys=[project_id])
-  reward = db.relationship("Reward", foreign_keys=[reward_id])
+    backer = db.relationship("User", foreign_keys=[backer_id])
+    project = db.relationship("Project", foreign_keys=[project_id])
+    reward = db.relationship("Reward", foreign_keys=[reward_id])
 
-  def to_dict():
-    return {
-      "id": self.id,
-      "pledge_amount": self.pledge_amount,
-      "reward_id": self.reward_id,
-      "backer_id": self.backer_id,
-      "project_id": self.project_id
-    }
+    def to_dict():
+        return {
+            "id": self.id,
+            "pledge_amount": self.pledge_amount,
+            "reward_id": self.reward_id,
+            "backer_id": self.backer_id,
+            "project_id": self.project_id
+        }

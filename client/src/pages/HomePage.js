@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category'
-import { getProject, getProjectsByCategory, getFeaturedProjects, getProjectsByCategory2 } from '../store/project';
+import { getProjectsByCategory, getFeaturedProjects, getProjectsByCategory2 } from '../store/project';
 import '../css/homepage.css'
 import Footer from '../components/Footer'
 import { useHistory } from 'react-router-dom';
@@ -28,7 +28,6 @@ export default function HomePage() {
   function searchID(e) {
     e.preventDefault()
     let id = e.target.id.trim()
-    dispatch(getProject(id))
     history.push(`/project/${id}`)
   }
   

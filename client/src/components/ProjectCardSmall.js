@@ -1,18 +1,14 @@
 import React from 'react';
-import { getProject } from '../store/project';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Link as Scroll } from 'react-scroll'
 import '../css/projectcardsmall.css';
 
 export default function ProjectCardSmall(props) {
   const history = useHistory();
-  const dispatch = useDispatch();
 
   function searchID(e) {
     e.preventDefault()
     let id = e.target.id.trim()
-    dispatch(getProject(id))
     history.push(`/project/${id}`)
   }
   if (!props.project) return null

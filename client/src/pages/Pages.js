@@ -15,9 +15,9 @@ export default function Pages() {
   return (
     <>
       <Navbar />
-      <Route path="/category" component={Category} />
+      <Route path="/category/:category" component={Category} />
       <Route exact path="/" component={HomePage} />
-      <Route path="/project" component={Project} />
+      <Route path="/project/:id" component={Project} />
       <Route path='/start' component={StartProject} />
       <Route exact path="/profile" component={Profile} />
       <Auth />

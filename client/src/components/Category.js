@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProjectCard from './ProjectCard';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer'
 import '../css/projectcard.css';
+import { useParams } from 'react-router-dom';
+import { getProjectsByCategory} from '../store/project';
 
 
 
 export default function Category() {
   const projects_list = useSelector(state => state.projects)
-
+  const { category } = useParams();
   const notLoaded = projects_list.projects && projects_list.projects.length > 0;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProjectsByCategory(category));
+  }, [category]);
 
   if (!notLoaded) return 'Loading...'
 

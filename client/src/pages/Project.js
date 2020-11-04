@@ -1,18 +1,27 @@
-import React, {useRef, useState} from 'react';
-import { useSelector} from 'react-redux';
+import React, {useRef, useState, useEffect} from 'react';
+import { useSelector, useDispatch} from 'react-redux';
 import {Link} from 'react-scroll';
 import Footer from '../components/Footer';
 import Reward from '../components/Reward';
 import ProjectCardSmall from '../components/ProjectCardSmall';
 import '../css/projectpage.css';
 import '../css/reward.css';
+import { useParams } from 'react-router-dom';
+import { getProject, getFeaturedProjects } from '../store/project';
 
 
 export default function Project() {
+  const { id } = useParams();
   const pledgeTitleRef= useRef()
   const project = useSelector(state => state.projects.project);
-  const recommended = useSelector(state => state.projects.projects);
+  const recommended = useSelector(state => state.projects.featuredProjects);
   const [animateStyle, setAnimateStyle] = useState({ color:'#028858'})
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProject(id));
+    dispatch(getFeaturedProjects());
+  }, [id]);
 
     let projects_list = [];
     if(!project || !recommended){

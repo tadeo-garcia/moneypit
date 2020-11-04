@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../store/category'
-import { getProjectsByCategory } from '../store/project'
 import { useHistory } from 'react-router-dom';
 
 export default function Explorer({ hideModal }) {
@@ -15,7 +14,6 @@ export default function Explorer({ hideModal }) {
   function searchCategory(e) {
     e.preventDefault()
     let category = e.target.innerHTML.trim()
-    dispatch(getProjectsByCategory(category))
     hideModal(e)
     history.push(`/category/${category}`)
   }

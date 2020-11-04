@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/auth'
 import '../css/usermodal.css'
-import { getProjectsByOwner, getProject, getProjectsByPledge } from '../store/project'
+import { getProjectsByOwner, getProjectsByPledge } from '../store/project'
 
 export default function UserModal({ hideModal }) {
   const history = useHistory();
@@ -37,7 +37,6 @@ const projects_pledged_data = useSelector(state => state.projects.projectsPledge
     e.preventDefault()
     hideModal(e)
     let id = e.target.id.trim()
-    dispatch(getProject(id))
     history.push(`/project/${id}`)
   }
 

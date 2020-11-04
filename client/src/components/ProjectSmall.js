@@ -1,17 +1,13 @@
 import React from 'react';
-import { getProject } from '../store/project';
-import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/projectsmall.css';
 
 export default function ProjectSmall(props) {
     const history = useHistory();
-    const dispatch = useDispatch();
 
     function searchID(e) {
         e.preventDefault()
         let id = e.target.id.trim()
-        dispatch(getProject(id))
         history.push(`/project/${id}`)
     }
 

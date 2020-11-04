@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProjectsByTitle, getProject } from '../store/project';
-import { useHistory } from "react-router-dom";
+import { getProjectsByTitle } from '../store/project';
 import '../css/searchmodal.css'
 import ProjectSmall from './ProjectSmall';
 

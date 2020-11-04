@@ -61,7 +61,7 @@ function Signup() {
                 </div>
                 <div>
                   <span style={{ color: 'red' }}>{noInfo}</span>
-                  <input type='email' className={emailDiv} name='email' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
+                  <input type='email' className={emailDiv} name='confirmEmail' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
                 </div>
                 <span style={{ color: 'red' }}>{noEmail}</span>
                 <div>
@@ -69,7 +69,7 @@ function Signup() {
                 </div>
                 <span style={{ color: 'red' }}>{noPassword}</span>
                 <div>
-                  <input type='password' className={passwordDiv} name='password' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
+                  <input type='password' className={passwordDiv} name='confirmPassword' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
                 </div>
                 <div>
                   <button type='submit' className='signup-button'>Create account</button>

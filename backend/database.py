@@ -51,13 +51,7 @@ with app.app_context():
   db.session.add(web)
   db.session.add(wearables)
 
-#   id
-#   title = db.Column(db.String(50), nullable=False)
-#   minimum_donation = db.Column(db.Integer, nullable=False)
-#   picture = db.Column(db.String)
-#   description = db.Column(db.Text, nullable=False)
-#   reward_count = db.Column(db.Integer, default=0)
-#   project.backers_count
+
 # PROJECTS
   for project in data:
     if project["creatorId"] == 555:
@@ -103,5 +97,11 @@ with app.app_context():
   db.session.add(pledge2)
   db.session.add(pledge3)
 
+# PROJECTS
+
+for project in random:
+  random_id = random.randrang(1,6)
+  project_to_add = Project(id = project["id"], title = project["name"], owner_id = random_id, pic = project["photo"], description = project["description"], funding_goal = project["goal"], total_funding = project["pledged"], total_pledges = project["backers_count"], organization = project["creatorName"], avatar = project["creatorAvatar"], location = project["locationName"] )
+  db.session.add(project_to_add)
   
   db.session.commit()

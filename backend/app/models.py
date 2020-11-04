@@ -51,8 +51,8 @@ class Project(db.Model):
   title = db.Column(db.String(1000), nullable=False)
   description = db.Column(db.String(1000), nullable=False)
   organization = db.Column(db.String(50))
-  avatar = db.Column(db.String(1000))
-  location = db.Column(db.String(1000), nullable=False)
+  avatar = db.Column(db.String(100))
+  location = db.Column(db.String(100), nullable=False)
   pic = db.Column(db.String(300), nullable=False)
   category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
   funding_goal = db.Column(db.Integer, nullable=False, default=0)
@@ -84,6 +84,7 @@ class Project(db.Model):
       "avatar": self.avatar,
       "location": self.location,
       "days_remaining": self.days_remaining,
+      "total_funding": self.total_funding,
       "category_id": self.category_id,
       "pic": self.pic,
       "funding_goal": self.funding_goal,

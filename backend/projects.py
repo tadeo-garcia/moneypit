@@ -367,6 +367,7 @@ gadgets = [{
     "launched_at_formatted": "Tue, 29 Sep 2020 12:00:02 +0000"
   }]
 
+<<<<<<< HEAD
 
 software = [{
     "id": 2019482927,
@@ -6088,3 +6089,6 @@ web = [{
 
 
 data = gadgets + robots + software + apps + hardware + printing + wearables + web
+=======
+data = gadgets
+>>>>>>> 2ec427ccba713ac1dc3397359bca02ea95f51dbf

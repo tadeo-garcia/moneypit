@@ -16,13 +16,13 @@ export default function ProjectSmall(props) {
     }
 
     return (
-        <div id={props.project.id} className="listing-size" onClick={searchID, props.hideModal} >
+        <div id={props.project.id} className="listing-size" onClick={searchID} >
             <Link id={props.project.id} style={{ textDecoration: "none", color: "black" }} onClick={searchID} to={`project/${props.project.id}`}>
                 <div onClick={props.hideModal} id={props.project.id} className="listing">
                     <img id={props.project.id} src={props.project.pic} onClick={searchID} alt={props.project.description} />
                     <div id={props.project.id} className="listing-information">
                         <div id={props.project.id} className="listing-information-header">
-                            <h3 id={props.project.id} >{props.project.title}</h3>
+                            <h3 onClick={searchID} id={props.project.id} >{props.project.title}</h3>
                             <h2 id={props.project.id} >{props.project.name}</h2>
                         </div>
                         <div className="spacer-div"></div>

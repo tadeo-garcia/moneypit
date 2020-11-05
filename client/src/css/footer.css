@@ -11,25 +11,30 @@
 }
 
 .footer_categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   border-bottom: 1px solid lightgray;
   margin-bottom: 8px;
   background-color: white;
 }
 
-#footer-category-list {
+#footer-developer-list {
   font-size: 14px;
   padding: 24px;
   background-color: white;
 }
 
-#footer-category-list_category {
-  padding: 10px;
+#footer-link {
   text-decoration: none;
+  color: #282828;
+  padding: 10px;
+  font-weight: 500;
 }
 
-#footer-category-list_category:hover {
+#footer-link:hover {
   text-decoration: underline;
-  color: #037362
+  color: #037362;
 }
 
 .footer_icons-box {

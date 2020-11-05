@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../css/reward.css';
 import { sendPledge } from '../store/project';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-scroll'
+import { Link, Redirect } from 'react-scroll'
 import ConfettiGenerator from 'confetti-js';
 
 
@@ -69,9 +69,15 @@ export default function Reward(props) {
                 <input min={props.reward.minimum_donation} type="number" className='reward-pledge-input' name="pledge" value={state.pledge} onChange={handleChange} required>
                 </input>
                 <div id='reward-pledge-button'>
-                  <Link to='projectpage-top' id='reward-pledge-button' onClick={handleSubmit} smooth={true} duration={500}>
-                  Pledge
-                  </Link>
+                  {user.id ? (
+                    <Link to='projectpage-top' id='reward-pledge-button' onClick={handleSubmit} smooth={true} duration={500}>
+                       Pledge
+                    </Link>
+                  ):(
+                    <a href='/login' id='reward-pledge-button' >
+                       Login to Pledge
+                    </a>
+                  )}
                 </div>
             </form>
           </div>

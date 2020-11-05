@@ -1,7 +1,16 @@
 
 <img src="https://i.imgur.com/HmQtgf3.jpg" align=center alt=MoneyPitLogo/>
 
-## Welcome to [MoneyPit](https://money-pit.herokuapp.com/), a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
+# Welcome to [MoneyPit](https://money-pit.herokuapp.com/)
+
+## The Developers:
+- [Brandon Held](https://brandonheld.netlify.app/)
+- [Nick Litz](http://www.nicholaslitz.com/)
+- [Steven Tegnelia](https://uribgp.com)
+- [Tadeo Garcia](https://tadeogarcia.me)
+
+
+ a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 
 ### Get your wallet ready, and back your favorite projects!
 #### If nothing catches your eye, create your own project!

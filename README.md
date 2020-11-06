@@ -19,18 +19,55 @@
 
 MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 
- The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
+The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
 
- Users can explore projects by category, search using the searchbar, or just browse the front page.
+Users can explore projects by category, search using the searchbar, or just browse the front page.
 
-![MP Homepage](/client/public/homepage.gif)
 ![MP Explore](/client/public/explore.gif)
-
-Find a project you want to be a part of?  Become a backer and pledge a donation.
-![MP Pledge](/client/public/pledge.gif)
 
 
 ## Application Architecture
+MoneyPit is a fullstack Flask and React application. API calls are made to the Flask backend, and the responses are made available to the React components via the Redux store.
+
+To deploy the app you simply need to have an updated build of the React Front-end, and run the docker file in the Back-end.
+
+![MP Architecture](/client/public/moneypitarch.png)
+
+# Front-end Overview
+## React
+React components are used throughout the site to provide a seamless user interface, whether that be navigating from project to project, searching for a project, or browsing projects by category. Additionally, there is an animation whenever a user successfully pledges to a project, which is achieved by using the React-confetti module.
+![MP Pledge](/client/public/pledge.gif)
+
+## Redux
+Redux, react-redux, and redux-thunk are the foundation that manage the application's state, and provide requests and responses between React and Flask.
+
+Depending on the page, project information is fetched on the page load and then stored in the Redux store. This allows the user to refresh the page and have the information persist.
+
+Redux also stores and sets the information of the user that is currently logged in. This allows for different functionality across the site depending on if the user is authenticated. By storing the user's information in state, they have access to their created or backed projects. These projects, which are just a click away, show up in the user modal which is accesible throughout the whole site.
+
+<!-- insert user modal gif  -->
+# Back-end Overview
+
+
+
+
+
+# Code Snippets:
+- [insert code snippets]
+
+## Moving Forward
+The next steps for MoneyPit would be to implement AWS so that users can upload pictures for their projects, and their profile pictures. Additionally we would like to integrate a service such as Stripe in order to securely process pledge transactions. Lastly, we would like to expand on the projects section in order to provide a place for community comments on the projects, if you have backed it.
+
+
+- Users can search projects by category, keywords in the title, keywords in the description
+- Users can explore projects by category, with a modal in the navbar
+- Users can see their backed projects through a user modal in the navbar
+- Users can see their created projects through a user modal in the navbar
+
+# Bonus Features:
+
+- Users can create a project
+- Logged in user session will persist after the page refreshes
 
 
 
@@ -67,7 +104,7 @@ Find a project you want to be a part of?  Become a backer and pledge a donation.
     * Project Id
 * Pledges are based on the owner of the project
 
-    
+  
 ### Rewards
 * Each Reward has a:
     * Title
@@ -81,20 +118,6 @@ Find a project you want to be a part of?  Become a backer and pledge a donation.
 
 ---
 
-### Code Snippets:
-* [insert code snippets]
-
----
-
-### Features to be added:
-* Users can search projects by category, keywords in the title, keywords in the description
-* Users can explore projects by category, with a modal in the navbar
-* Users can see their backed projects through a user modal in the navbar
-* Users can see their created projects through a user modal in the navbar
-
-### Bonus Features:
-* Users can create a project
-* Logged in user session will persist after the page refreshes
 
 
 ### Credits:

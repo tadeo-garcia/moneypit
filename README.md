@@ -9,8 +9,19 @@
 - [Steven Tegnelia](https://uribgp.com)
 - [Tadeo Garcia](https://tadeogarcia.me)
 
+**Table of Contents**
+- [MoneyPit Overview](#moneypit-overview)
+- [Application Architecture & Technologies Used](#application-architecture)
+- [Front-end Overview](#front-end-overview)
+- [Back-end Overview](#back-end-overview)
+- [Moving Forward](#moving-forward)
 
- a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
+## MoneyPit Overview
+
+MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
+
+
+ The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
 
 ### Get your wallet ready, and back your favorite projects!
 #### If nothing catches your eye, create your own project!

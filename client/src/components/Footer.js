@@ -14,7 +14,7 @@ function Footer() {
             <ul id='footer-developer-list'>
               <span>Developers:</span>
               <span>
-                <a href='https://brandonheld.netlify.app/' id='footer-link'>Brandon Held</a>
+                <a href='https://brandonheld.dev' id='footer-link'>Brandon Held</a>
               </span>
               <span>
                 <a href='http://www.nicholaslitz.com/' id='footer-link'>Nick Litz</a>

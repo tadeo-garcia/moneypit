@@ -57,7 +57,7 @@ class Project(db.Model):
     title = db.Column(db.String(1000), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     organization = db.Column(db.String(50))
-    avatar = db.Column(db.String(100))
+    avatar = db.Column(db.String(1000))
     location = db.Column(db.String(100), nullable=False)
     pic = db.Column(db.String(300), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey(

@@ -367,7 +367,6 @@ gadgets = [{
     "launched_at_formatted": "Tue, 29 Sep 2020 12:00:02 +0000"
   }]
 
-<<<<<<< HEAD
 
 software = [{
     "id": 2019482927,
@@ -2584,52 +2583,6 @@ apps = [
     "pubDate": "Tue, 29 Sep 2020 12:44:32 +0000",
     "created_at_formatted": "Thu, 11 Jun 2020 04:03:20 +0000",
     "launched_at_formatted": "Tue, 29 Sep 2020 12:44:32 +0000"
-  },
-  {
-    "id": 739695352,
-    "photo": "https://ksr-ugc.imgix.net/missing_project_photo.png?ixlib=rb-2.1.0&crop=faces&w=560&h=315&fit=crop&v=&auto=format&frame=1&q=92&s=ef9622ff4223deef49fa8ad823aea9e2",
-    "name": "The next generation Dating app",
-    "blurb": "The winkizzz is an all-new dating app. Meet people near you and around the world. Take part in competitions and much more!!!",
-    "goal": 277800,
-    "pledged": 1,
-    "state": "live",
-    "slug": "dating-app",
-    "disable_communication": False,
-    "country": "GR",
-    "country_displayable_name": "Greece",
-    "currency": "EUR",
-    "currency_symbol": "€",
-    "currency_trailing_code": False,
-    "deadline": 1605149324,
-    "state_changed_at": 1601257725,
-    "created_at": 1601249780,
-    "launched_at": 1601257724,
-    "staff_pick": False,
-    "is_starrable": True,
-    "backers_count": 1,
-    "static_usd_rate": 1.16315046,
-    "usd_pledged": "1.16315046",
-    "converted_pledged_amount": 1,
-    "fx_rate": 1.17294623,
-    "current_currency": "USD",
-    "usd_type": "domestic",
-    "spotlight": False,
-    "creatorId": 1323071962,
-    "creatorName": "Harry Winkizzz",
-    "creatorAvatar": "https://ksr-ugc.imgix.net/assets/030/773/165/7a5852cca71e98a4345c8f998f75df21_original.png?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1601257492&auto=format&frame=1&q=92&s=913cf9ea29d34e9c78cf94ad1e261020",
-    "creatorUrl": "https://www.kickstarter.com/profile/winkizzz",
-    "locationId": 946738,
-    "locationName": "Athens, Greece",
-    "categoryId": 332,
-    "categoryName": "Apps",
-    "categorySlug": "technology/apps",
-    "url": "https://www.kickstarter.com/projects/winkizzz/dating-app?ref=discovery_category_newest",
-    "title": "The next generation Dating app",
-    "description": "The winkizzz is an all-new dating app. Meet people near you and around the world. Take part in competitions and much more!!!",
-    "link": "https://www.kickstarter.com/projects/winkizzz/dating-app?ref=discovery_category_newest",
-    "pubDate": "Mon, 28 Sep 2020 01:48:44 +0000",
-    "created_at_formatted": "Sun, 27 Sep 2020 23:36:20 +0000",
-    "launched_at_formatted": "Mon, 28 Sep 2020 01:48:44 +0000"
   },
   {
     "id": 424906111,
@@ -6089,6 +6042,3 @@ web = [{
 
 
 data = gadgets + robots + software + apps + hardware + printing + wearables + web
-=======
-data = gadgets
->>>>>>> 2ec427ccba713ac1dc3397359bca02ea95f51dbf

@@ -1,4 +1,3 @@
-
 <img src="https://i.imgur.com/HmQtgf3.jpg" align=center alt=MoneyPitLogo/>
 
 # Welcome to [MoneyPit](https://money-pit.herokuapp.com/)
@@ -26,7 +25,7 @@ MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focu
 ### Get your wallet ready, and back your favorite projects!
 #### If nothing catches your eye, create your own project!
 
-### This site was made using React, React-Redux, Flask .
+![MP Homepage](/client/public/homepage.gif)
 
 ### Users can:
 * Create a project

@@ -19,13 +19,20 @@
 
 MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
 
-
  The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
 
-### Get your wallet ready, and back your favorite projects!
-#### If nothing catches your eye, create your own project!
+ Users can explore projects by category, search using the searchbar, or just browse the front page.
 
 ![MP Homepage](/client/public/homepage.gif)
+![MP Explore](/client/public/explore.gif)
+
+Find a project you want to be a part of?  Become a backer and pledge a donation.
+![MP Pledge](/client/public/pledge.gif)
+
+
+## Application Architecture
+
+
 
 ### Users can:
 * Create a project

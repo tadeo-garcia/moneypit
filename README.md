@@ -17,7 +17,7 @@
 
 ## MoneyPit Overview
 
-MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new technology around the world!
+MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new promoting technology around the world!
 
 The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
 

@@ -23,26 +23,20 @@ The front-end portion was built using the React and Redux libraries in JavaScrip
 
 Users can explore projects by category, search using the searchbar, or just browse the front page.
 
-<br>
 ![MP Explore](/client/public/explore.gif)
-<br>
 
 ## Application Architecture
 MoneyPit is a fullstack Flask and React application. API calls are made to the Flask backend, and the responses are made available to the React components via the Redux store.
 
 To deploy the app you simply need to have an updated build of the React Front-end, and run the docker file in the Back-end.
 
-<br>
 ![MP Architecture](/client/public/moneypitarch.png)
-<br>
 
 # Front-end Overview
 ## React
 React components are used throughout the site to provide a seamless user interface, whether that be navigating from project to project, searching for a project, or browsing projects by category. Additionally, there is an animation whenever a user successfully pledges to a project, which is achieved by using the React-confetti module.
 
-<br>
 ![MP Pledge](/client/public/pledge.gif)
-<br>
 
 ## Redux
 Redux, react-redux, and redux-thunk are the foundation that manage the application's state, and provide requests and responses between React and Flask.
@@ -51,9 +45,7 @@ Depending on the page, project information is fetched on the page load and then 
 
 Redux also stores and sets the information of the user that is currently logged in. This allows for different functionality across the site depending on if the user is authenticated. By storing the user's information in state, they have access to their created or backed projects. These projects, which are just a click away, show up in the user modal which is accesible throughout the whole site.
 
-<br>
 ![MP User Modal](client/public/usermodal.gif)
-<br>
 
 # Back-end Overview
 

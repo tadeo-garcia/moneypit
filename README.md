@@ -45,7 +45,8 @@ Depending on the page, project information is fetched on the page load and then 
 
 Redux also stores and sets the information of the user that is currently logged in. This allows for different functionality across the site depending on if the user is authenticated. By storing the user's information in state, they have access to their created or backed projects. These projects, which are just a click away, show up in the user modal which is accesible throughout the whole site.
 
-<!-- insert user modal gif  -->
+![MP User Modal](/client/public/usermodal.gif)
+
 # Back-end Overview
 
 

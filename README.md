@@ -22,6 +22,7 @@ MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focu
 The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
 
 Users can explore projects by category, search using the searchbar, or just browse the front page.
+
 <br>
 ![MP Explore](/client/public/explore.gif)
 <br>
@@ -30,6 +31,7 @@ Users can explore projects by category, search using the searchbar, or just brow
 MoneyPit is a fullstack Flask and React application. API calls are made to the Flask backend, and the responses are made available to the React components via the Redux store.
 
 To deploy the app you simply need to have an updated build of the React Front-end, and run the docker file in the Back-end.
+
 <br>
 ![MP Architecture](/client/public/moneypitarch.png)
 <br>
@@ -37,6 +39,7 @@ To deploy the app you simply need to have an updated build of the React Front-en
 # Front-end Overview
 ## React
 React components are used throughout the site to provide a seamless user interface, whether that be navigating from project to project, searching for a project, or browsing projects by category. Additionally, there is an animation whenever a user successfully pledges to a project, which is achieved by using the React-confetti module.
+
 <br>
 ![MP Pledge](/client/public/pledge.gif)
 <br>
@@ -49,7 +52,7 @@ Depending on the page, project information is fetched on the page load and then 
 Redux also stores and sets the information of the user that is currently logged in. This allows for different functionality across the site depending on if the user is authenticated. By storing the user's information in state, they have access to their created or backed projects. These projects, which are just a click away, show up in the user modal which is accesible throughout the whole site.
 
 <br>
-![MP User Modal](/client/public/usermodal.gif)
+![MP User Modal](client/public/usermodal.gif)
 <br>
 
 # Back-end Overview

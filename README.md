@@ -17,7 +17,7 @@
 
 ## MoneyPit Overview
 
-MoneyPit is a [KickStarter](https://www.kickstarter.com/) inspired web app, focused on new promoting technology around the world!
+MoneyPit is a [Kickstarter](https://www.kickstarter.com/) inspired web app, focused on new promoting technology around the world!
 
 The front-end portion was built using the React and Redux libraries in JavaScript, while the back-end was developed using the Flask framework in Python.
 
@@ -48,7 +48,7 @@ Additionally, there is an animation whenever a user successfully pledges to a pr
 
 The following code demonstrates how the confetti is rendered only after a succesful pledge has been submitted. The component renders a pledge button only when a user is logged in, otherwise the user is redirected to login. Additionally the minimum pledge is set upon rendering, and error handling prevents the user from donating an amount under that minimum.  Timeouts and page-scroll animations ensure that the user's vision is focused on the confetti, and the update of the total backing amount after their pledge has been received. This reward component updates the backend with the new pledge amount, and rerenders the parent component to show the real time update.
 
-# Front-end Code Snippets:
+## Front-end Code Snippets:
 ```
 const handleSubmit = e => { 
   e.preventDefault(); 
@@ -81,12 +81,21 @@ return (
       </div>
       <div className="pledge-button">
         <form >
-            <label htmlFor='pledge' id='pledge-amount'>Pledge Amount</label>
-            <input min={minimum_donation} type="number" className='reward-pledge-input' name="pledge" value={pledge} onChange={handleChange} required>
-            </input>
+            <label htmlFor='pledge' 
+            id='pledge-amount'>
+              Pledge Amount
+            </label>
+            <input min={minimum_donation} 
+            type="number"
+            className='reward-pledge-input' 
+            name="pledge" 
+            value={pledge} 
+            onChange={handleChange} required/>
             <div id='reward-pledge-button'>
               {user_id ? (
-                <Link to='projectpage-top' id='reward-pledge-button' onClick={handleSubmit} smooth={true} duration={500}>
+                <Link to='projectpage-top' id='reward-pledge-button' 
+                onClick={handleSubmit} 
+                smooth={true} duration={500}>
                    Pledge
                 </Link>
               ):(
@@ -106,78 +115,19 @@ Redux also stores and sets the information of the user that is currently logged 
 ![MP User Modal](client/public/usermodal.gif)
 
 # Back-end Overview
-We created a seed file 
+MoneyPit uses a Flask server in tandem with a Postgres database.  In comparison to the frontend, our backend is fairly simple.  Requests are received from the Redux store after a React component dispatches an action, the data is retrieved from the PSQL database and then returned to the Redux store where it is set in the state.
 
+## Back-end Technologies
+Flask was used to create our PSQL relational database.  SQLAlchemy was used to create the models, and their relationships.  Migrations were handled using Alembic.  
 
+## MoneyPit Dataset
+We created a seed file by scraping real Kickstarter projects.  Information which was not available from scraping, such as Pledge values and Rewards, were faked using several lists and assigning them based on different tier levels.  
 
-
-# Code Snippets:
-- [insert code snippets]
+<!-- # Code Snippets:
+- [insert code snippets] -->
 
 ## Moving Forward
-The next steps for MoneyPit would be to implement AWS so that users can upload pictures for their projects, and their profile pictures. Additionally we would like to integrate a service such as Stripe in order to securely process pledge transactions. Lastly, we would like to expand on the projects section in order to provide a place for community comments on the projects, if you have backed it.
-
-
-- Users can search projects by category, keywords in the title, keywords in the description
-- Users can explore projects by category, with a modal in the navbar
-- Users can see their backed projects through a user modal in the navbar
-- Users can see their created projects through a user modal in the navbar
-
-# Bonus Features:
-
-- Users can create a project
-- Logged in user session will persist after the page refreshes
-
-
-
-### Users can:
-* Create a project
-* Back a project
-* Choose how to back a project, depending on the reward level
-
-### Projects
-* Projects will belong to a certain category
-* Each project has a:
-    * Owner
-    * Title
-    * Description
-    * Organization
-    * Location
-    * Days Remaining (time left until you can no longer back this project)
-    * Category
-    * Funding Goal
-    * End Date
-    * Total Pledges
-* Users can create and customize projects.
-* Project cannot be backed once it has no more days remaining, because it has reached the end date.
-    
-### Categories
-* Each category has a:
-    * Title
-* All projects belong to a category
-
-### Pledge
-* Each pledge has :
-    * Amount
-    * Backer Id
-    * Project Id
-* Pledges are based on the owner of the project
-
-  
-### Rewards
-* Each Reward has a:
-    * Title
-    * Description
-    * Amount to Unlock
-    * Delivery Date
-    * Project Id
-    * Backer Id
-* Users can earn a reward if they pledge the amount necessary to unlock that reward
-* Total rewards will be kept track of, so the owner can see how many of each reward level he has accomplished
-
----
-
-
+The next step for MoneyPit would be to implement AWS so that users can upload pictures for their projects, and their profile pictures. Additionally we would like to integrate a service such as Stripe in order to securely process pledge transactions. Lastly, we would like to expand on the projects section in order to provide a place for community comments on the projects, if you have backed it.
 
 ### Credits:
 * Pictures and data are from https://apify.com/jaroslavhejlek/kickstarter-search

@@ -1,22 +1,21 @@
 #pledge_info {
-    border:0.5px solid #d3d3d3;
-    padding: 20px 15px;
-    margin-bottom: 25px;
-
+  border: 0.5px solid #d3d3d3;
+  padding: 20px 15px;
+  margin-bottom: 25px;
 }
 .pledge_amount {
-    color: #282828;
-    font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 20px
+  color: #282828;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 20px;
 }
 
-#pledge_amount-title{
+#pledge_amount-title {
   font-size: 20px;
   font-weight: 300;
 }
 
-.pledge_title{
+.pledge_title {
   font-size: 14px;
   font-weight: 400;
   padding-bottom: 15px;
@@ -29,43 +28,43 @@
   padding-bottom: 15px;
 }
 
-#reward-gray{
+#reward-gray {
   color: #797979;
   font-size: 10px;
   font-weight: 300;
 }
 
-#pledge-button{
-  display:flex;
+#pledge-button {
+  display: flex;
   flex-direction: column;
 }
 
-#pledge-amount{
+#pledge-amount {
   color: #797979;
   font-size: 10px;
   font-weight: 500;
 }
 
-.reward-pledge-input{
+.reward-pledge-input {
   width: 100%;
   height: 40px;
   padding-left: 15px;
   margin-bottom: 15px;
-  border:0.5px solid #d3d3d3;
+  border: 0.5px solid #d3d3d3;
   font-size: 15px;
 }
 
-.reward-pledge-input:invalid{
+.reward-pledge-input:invalid {
   width: 100%;
   height: 40px;
   padding-left: 15px;
   margin-bottom: 15px;
-  border:2px solid #ff0000;
+  border: 2px solid #ff0000;
   font-size: 15px;
 }
 
-#reward-pledge-button{
-  display:flex;
+#reward-pledge-button {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -74,11 +73,12 @@
   width: 100%;
   height: 40px;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 300;
   cursor: pointer;
+  text-decoration: none;
 }
 
-#reward-pledge-button:active{
+#reward-pledge-button:active {
   background-color: #00cb84;
 }

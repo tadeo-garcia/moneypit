@@ -1,117 +1,117 @@
-#confetti-canvas{
+#confetti-canvas {
   background-color: transparent;
-  width:365px;
+  width: 365px;
   height: 250px;
   position: absolute;
 }
 
-#projectpage-container{
-  width:100%;
+#projectpage-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#projectpage-top{
+#projectpage-top {
   min-width: 840px;
   max-width: 1030px;
   height: 500px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   border-bottom: 1px #cbcbcb solid;
 }
 
-#projectpage-title{
-  display:flex;
+#projectpage-title {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 125px;
 }
 
-#pp-title{
+#pp-title {
   font-weight: 500;
   font-size: 18px;
   line-height: 3;
 }
 
-#pp-description{
+#pp-description {
   font-weight: 300;
-  width:75%;
+  width: 75%;
   text-align: center;
 }
 
-#projectpage-detail{
-  display:flex;
+#projectpage-detail {
+  display: flex;
   justify-content: center;
   flex-direction: row;
   height: 350px;
 }
 
-#projectpage-detail-left{
-  display:flex;
+#projectpage-detail-left {
+  display: flex;
   flex-direction: column;
   padding-left: 45px;
   padding-right: 15px;
 }
 
-#pp-image{
+#pp-image {
   height: 300px;
 }
 
-#pp-location{
+#pp-location {
   padding-top: 20px;
   padding-left: 20px;
   font-size: 14px;
   font-weight: 300;
 }
 
-#projectpage-detail-right{
-  display:flex;
+#projectpage-detail-right {
+  display: flex;
   flex-direction: column;
   padding-left: 15px;
   padding-right: 45px;
   z-index: 50;
 }
 
-#progress-container{
-  width:100%;
+#progress-container {
+  width: 100%;
   height: 7.5px;
   background-color: #e6e6e6;
 }
 
-#progress-container-fill{
+#progress-container-fill {
   height: 7.5px;
-  background-color: #028858
+  background-color: #028858;
 }
 
-#projectpage-detail-pledge{
+#projectpage-detail-pledge {
   padding-top: 25px;
 }
 
-.pp-detail-pledge-title{
+.pp-detail-pledge-title {
   font-weight: 500;
   font-size: 24px;
 }
 
-.green-text{
+.green-text {
   color: #028858;
 }
 
-.pp-detail-text{
+.pp-detail-text {
   font-weight: 300;
 }
 
-#projectpage-detail-backers{
+#projectpage-detail-backers {
   padding-top: 25px;
 }
 
-#projectpage-detail-days{
+#projectpage-detail-days {
   padding-top: 25px;
   padding-bottom: 25px;
 }
 
-#projectpage-detail-button{
+#projectpage-detail-button {
   background-color: #028858;
   border: 0px;
   width: 100%;
@@ -119,19 +119,20 @@
   color: white;
   font-size: 15px;
   font-weight: 300;
+  cursor: pointer;
 }
 
-#projectpage-detail-end-date{
+#projectpage-detail-end-date {
   font-size: 10px;
   font-weight: 300;
   padding-top: 15px;
 }
 
-#projectpage-middle{
+#projectpage-middle {
   min-width: 840px;
   max-width: 1030px;
   min-height: 1000px;
-  display:grid;
+  display: grid;
   grid-template-columns: 2fr 1fr;
   padding-top: 25px;
   padding-bottom: 35px;
@@ -140,53 +141,51 @@
   position: relative;
   line-height: 1.75;
   border-bottom: 1px #cbcbcb solid;
+}
 
-  }
-
-#pp-middle-title{
+#pp-middle-title {
   font-size: 22px;
   font-weight: 300;
   padding-bottom: 30px;
 }
 
-#projectpage-info{
-  display:flex;
+#projectpage-info {
+  display: flex;
   flex-direction: column;
   padding-right: 20px;
   font-weight: 400;
 }
 
-#projectpage-pledges{
+#projectpage-pledges {
   display: flex;
   flex-direction: column;
   padding-left: 20px;
 }
 
-#projectpage-bottom{
-  display:flex;
+#projectpage-bottom {
+  display: flex;
   flex-direction: column;
   min-width: 840px;
   max-width: 1030px;
   height: 550px;
   padding: 35px 45px;
   position: relative;
-
 }
 
-#projectpage-recommended{
+#projectpage-recommended {
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: row;
   overflow-x: scroll;
 }
 
-#projectpage-recommended-title{
+#projectpage-recommended-title {
   font-size: 12px;
   font-weight: 500;
   color: #555555;
   padding-bottom: 20px;
 }
 
-#projectpage-recommendedcard{
+#projectpage-recommendedcard {
   height: 100px;
 }

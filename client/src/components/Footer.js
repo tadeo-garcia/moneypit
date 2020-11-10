@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import '../css/footer.css'
 
 
@@ -11,30 +11,19 @@ function Footer() {
       <div className='footer-wrapper'>
         <div className='footer_categories'>
           <div className='footer_categories-ul'>
-            <ul id='footer-category-list'>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/arts' style={{ textDecoration: 'none', color: '#282828' }}>Arts</Link>
+            <ul id='footer-developer-list'>
+              <span>Developers:</span>
+              <span>
+                <a href='https://brandonheld.dev' id='footer-link'>Brandon Held</a>
               </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/comics&illustrations' style={{ textDecoration: 'none', color: '#282828' }}>Comics & Illustrations</Link>
+              <span>
+                <a href='http://www.nicholaslitz.com/' id='footer-link'>Nick Litz</a>
               </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/design&tech' style={{ textDecoration: 'none', color: '#282828' }}>Design & Tech</Link>
+              <span>
+                <a href='https://uribgp.com' id='footer-link'>Steven Tegnelia</a>
               </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/film' style={{ textDecoration: 'none', color: '#282828' }}>Film</Link>
-              </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/food&craft' style={{ textDecoration: 'none', color: '#282828' }}>Food & Craft</Link>
-              </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/games' style={{ textDecoration: 'none', color: '#282828' }}>Games</Link>
-              </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/music' style={{ textDecoration: 'none', color: '#282828' }}>Music</Link>
-              </span>
-              <span id='footer-category-list_category'>
-                <Link to='/projects/publishing' style={{ textDecoration: 'none', color: '#282828' }}>Publishing</Link>
+              <span>
+                <a href='https://tadeogarcia.me' id='footer-link'>Tadeo Garcia</a>
               </span>
             </ul>
           </div>

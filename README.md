@@ -127,7 +127,12 @@ We created a seed file by scraping real Kickstarter projects.  Information which
 - [insert code snippets] -->
 
 ## Moving Forward
-The next step for MoneyPit would be to implement AWS so that users can upload pictures for their projects, and their profile pictures. Additionally we would like to integrate a service such as Stripe in order to securely process pledge transactions. Lastly, we would like to expand on the projects section in order to provide a place for community comments on the projects, if you have backed it.
+The next step for MoneyPit would be to implement AWS so that users can upload pictures for their projects, and their profile pictures.
+Additionally we would like to integrate a service such as Stripe in order to securely process pledge transactions. 
+Lastly, we would like to expand on the projects section in order to provide a place for community comments on the projects, if you have backed it.
+
+### Thanks!
+If you made it this far thank you so much for taking the time to read this, we really appreciated it! We had a great time working on this project as a team and look forward to adding more features in the future.
 
 ### Credits:
 * Pictures and data are from https://apify.com/jaroslavhejlek/kickstarter-search

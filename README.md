@@ -118,7 +118,7 @@ Redux also stores and sets the information of the user that is currently logged 
 MoneyPit uses a Flask server in tandem with a Postgres database.  In comparison to the frontend, our backend is fairly simple.  Requests are received from the Redux store after a React component dispatches an action, the data is retrieved from the PSQL database and then returned to the Redux store where it is set in the state.
 
 ## Back-end Technologies
-Flask was used to create our PSQL relational database.  SQLAlchemy was used to create the models, and their relationships.  Migrations were handled using Alembic.  
+Flask was used to create our back-end server, and PostgresSQL our relational database.  SQLAlchemy was used to create the models, and their relationships.  Migrations were handled using Alembic.  
 
 ## MoneyPit Dataset
 We created a seed file by scraping real Kickstarter projects.  Information which was not available from scraping, such as Pledge values and Rewards, were faked using several lists and assigning them based on different tier levels.  

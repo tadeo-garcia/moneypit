@@ -7,16 +7,22 @@ import '../css/signup.css'
 
 let emailDiv = "signup-input";
 let passwordDiv = "signup-input";
+let usernameDiv = "signup-input";
 
 function Signup() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('');
+  const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [noInfo, setNoInfo] = useState('');
+  const [noUsername, setNoUsername] = useState('');
   const [noEmail, setNoEmail] = useState('');
   const [noPassword, setNoPassword] = useState('');
   const currentUserId = useSelector(state => state.auth.id);
   const dispatch = useDispatch();
+
+
   const handleSubmit = e => {
     e.preventDefault();
     emailDiv = "signup-input";
@@ -24,21 +30,44 @@ function Signup() {
     setNoEmail('');
     setNoPassword('');
     setNoInfo('');
-    if (email && password) {
-      dispatch(signup(username, email.toLocaleLowerCase(), password));
-    } else if (!email && password) {
+    setNoUsername('');
+
+    if (email && password && username && confirmEmail && confirmPassword) {
+      if (password === confirmPassword) {
+        dispatch(signup(username, email.toLocaleLowerCase(), password));
+      }
+    }
+
+    if (!email) {
       emailDiv = "bad-input";
-      setNoEmail("Oi! We're gonna need that email of yours!")
-    } else if (email && !password) {
+      setNoEmail("Oi! We're gonna need that email of yours.")
+    } else if (email && !confirmEmail) {
       passwordDiv = "bad-input";
-      setNoPassword("What's the password?");
-    } else {
+      setNoEmail("Please confirm your email.");
+    }
+    if (!password) {
+      passwordDiv = "bad-input";
+      setNoPassword('You need to provide a password.')
+    } else if (password && !confirmPassword) {
+      passwordDiv = "bad-input";
+      setNoPassword('Your passwords do not match.');
+    }
+    if (!username) {
+      usernameDiv = 'bad-input';
+      setNoUsername('Please provide a username.');
+    }
+    if (password !== confirmPassword) {
+      passwordDiv = "bad-input";
+      setNoPassword("Your passwords must match.");
+    }
+    if (email !== confirmEmail) {
       emailDiv = "bad-input";
-      passwordDiv = "bad-input";
-      setNoInfo("You can't get in if you're not a member!")
+      setNoEmail("The emails you provided don't match!");
     }
   }
+
   if (currentUserId) return <Redirect to='/' />
+
   return (
     <>
       <div className='signup_master'>
@@ -53,23 +82,23 @@ function Signup() {
                   Sign up
                 </div>
                 <div>
-                  <input type='text' className={emailDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
+                  <span style={{ color: 'red' }}>{noInfo}</span>
+                  <span id="bad-span" style={{ color: 'red' }}>{noUsername}</span>
+                  <input type='text' className={usernameDiv} name='username' value={username} placeholder="Username" onChange={e => setUsername(e.target.value)} />
                 </div>
                 <div>
-                  <span style={{ color: 'red' }}>{noInfo}</span>
+                  <span style={{ color: 'red' }}>{noEmail}</span>
                   <input type='email' className={emailDiv} name='email' value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <span style={{ color: 'red' }}>{noInfo}</span>
-                  <input type='email' className={emailDiv} name='confirmEmail' value={email} placeholder="Re-enter Email" onChange={e => setEmail(e.target.value)} />
+                  <input type='email' className={emailDiv} name='confirmEmail' value={confirmEmail} placeholder="Re-enter Email" onChange={e => setConfirmEmail(e.target.value)} />
                 </div>
-                <span style={{ color: 'red' }}>{noEmail}</span>
                 <div>
+                  <span style={{ color: 'red' }}>{noPassword}</span>
                   <input type='password' className={passwordDiv} name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)} />
                 </div>
-                <span style={{ color: 'red' }}>{noPassword}</span>
                 <div>
-                  <input type='password' className={passwordDiv} name='confirmPassword' value={password} placeholder='Re-Enter Password' onChange={e => setPassword(e.target.value)} />
+                  <input type='password' className={passwordDiv} name='confirmPassword' value={confirmPassword} placeholder='Re-Enter Password' onChange={e => setConfirmPassword(e.target.value)} />
                 </div>
                 <div>
                   <button type='submit' className='signup-button'>Create account</button>
